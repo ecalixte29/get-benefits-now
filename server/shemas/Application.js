@@ -19,7 +19,7 @@ const schema = Joi.object({
         street: Joi.string().required(true),
         city: Joi.string().required(true),
         state: Joi.string().required(true),
-        zip: Joi.number().required(true),
+        zip: Joi.string().required(true),
         us_national: Joi.bool().required(true),
         recent_employer: Joi.string().required(true),
     }).concat(commonDetails).required(true),
