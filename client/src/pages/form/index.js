@@ -8,7 +8,6 @@ import toast, { Toaster } from "react-hot-toast";
 
 const Form = () => {
   const { state, initializeForm, parseData } = useForm();
-  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,6 +17,7 @@ const Form = () => {
 
   const submit = async (setLoading) => {
     const {
+      type,
       current_insurance,
       income,
       details,
@@ -49,9 +49,8 @@ const Form = () => {
       },
       spouse_details,
       dependents,
-      type: searchParams.get("type") || "single",
+      type: type.toLowerCase().replace(" ", "-"),
     };
-
     try {
       const req = await fetch(`${process.env.REACT_APP_BACKEND_URL}/leads`, {
         headers: {
