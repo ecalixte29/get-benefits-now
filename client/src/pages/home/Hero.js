@@ -1,5 +1,4 @@
 import React from "react";
-import "./Hero.scss";
 import { useNavigate } from "react-router-dom";
 import TextInput from "../../components/form/TextInput";
 import { SecondaryButton } from "../../components/buttons";
@@ -10,7 +9,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="hero min-h-screen flex items-center justify-center"
+      className="hero min-h-screen flex items-center justify-center bg-primary"
     >
       <div className="text-white text-center flex items-center justify-center flex-col max-w-[800px]">
         <h1

@@ -14,13 +14,13 @@ const Navbar = () => {
     const navigate = useNavigate()
 
     return (
-        <nav className={`w-full absolute top-0 left-0`}>
+        <nav className={`w-full`}>
             <div className='container md:flex md:items-center md:justify-between p-4 mx-auto'>
-                <h1 onClick={() => navigate('/')} className= {`hidden md:block text-white text-sm md:text-xl font-semibold cursor-pointer`}>Get Benefits Now</h1>
+                <h1 onClick={() => navigate('/')} className= {`hidden md:block text-[#141414] text-sm md:text-xl font-semibold cursor-pointer`}>Get Benefits Now</h1>
                 <ul className="flex items-center justify-between space-x-8">
                     {SECTIONS.map((section, index) => (
                         <li key={index}>
-                            <button onClick={() => scrollTo(index)} className='text-white hover:text-secondary text-md md:text-[100%]'>{section}</button>
+                            <button onClick={() => scrollTo(index)} className='text-[#141414] hover:text-dark text-md md:text-[100%]'>{section}</button>
                         </li>
                     ))}
                 </ul>
