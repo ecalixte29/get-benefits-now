@@ -1,3 +1,4 @@
+import React from 'react'
 import { SecondaryButton } from '../../components/buttons';
 import { FaStar, FaCheck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';

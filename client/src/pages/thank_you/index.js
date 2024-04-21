@@ -1,3 +1,4 @@
+import React from "react"
 import Logo from '../../components/shared/Logo';
 // import { BiSolidCheckShield } from "react-icons/bi";
 import { FaFlagCheckered } from "react-icons/fa";
