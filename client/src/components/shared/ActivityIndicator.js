@@ -1,4 +1,4 @@
-import { forwardRef } from "react"
+import React, { forwardRef } from "react"
 
 const ActivityIndicator = forwardRef(({ width, height, spinnerClass, backgroundClass }, ref) => {
     return (

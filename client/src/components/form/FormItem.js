@@ -1,4 +1,4 @@
-import { memo } from "react";
+import React, { memo } from "react";
 import useForm from "../../hooks/useForm";
 import AppendableForm from "./AppendableForm";
 import CurrencyInput from "./CurrencyInput";

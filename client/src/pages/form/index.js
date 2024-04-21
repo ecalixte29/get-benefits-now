@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Stepper from "./Stepper";
 import FormContainer from "../../components/form/FormContainer";
 import useForm from "../../hooks/useForm";
