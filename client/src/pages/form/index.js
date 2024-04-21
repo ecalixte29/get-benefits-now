@@ -51,6 +51,7 @@ const Form = () => {
       dependents,
       type: type.toLowerCase().replace(" ", "-"),
     };
+
     try {
       const req = await fetch(`${process.env.REACT_APP_BACKEND_URL}/leads`, {
         headers: {

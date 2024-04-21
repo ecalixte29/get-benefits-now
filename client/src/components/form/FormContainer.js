@@ -58,7 +58,7 @@ const FormContainer = ({ submit }) => {
             text="See plans"
             classNames="w-full"
             onClick={() => {
-              setLoading(true);
+              setLoading(false);
               nextStep(
                 (i) => setErrorIndex(i),
                 () => {
