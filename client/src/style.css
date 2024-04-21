@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,7 +9,7 @@ html, body {
 }
 
 :root {
-    --primary-color: #01aed1b3;
+    --primary-color: #4ff095;
     --secondary-color: #f04b4c;
     --light-color: #d0d0d0;
     --dark-color: #2c2c2c;
@@ -20,7 +20,7 @@ html, body {
     --gray-color: #dee2e6;
     --blue-color: #1DA1F2;
     --border-radius: 7px;
-    --font-family: 'Outfit', sans-serif;
+    --font-family: 'Poppins', sans-serif;
     --alert-color: #fcbf49;
     --box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }

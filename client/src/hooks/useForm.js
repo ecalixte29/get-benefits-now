@@ -70,17 +70,6 @@ const useForm = () => {
       )
         return true;
         return false
-    //   if (field.type === "currency_slider") {
-    //     const dependencyValue = currentStep.subSteps[
-    //       state.currentSubStep
-    //     ].fields.find((f) => f.name === field?.value_dependency)?.value;
-    //     const minMax = dependencyValue
-    //       ? field.minMax[dependencyValue]
-    //       : { min: field.min, max: field.max };
-    //     return (
-    //       Number(field.value) < minMax.min || Number(field.value) > minMax.max
-    //     );
-    //   }
     });
 
     if (invalidFieldIndex >= 0) return onError(invalidFieldIndex);

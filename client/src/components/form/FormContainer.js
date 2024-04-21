@@ -28,7 +28,7 @@ const FormContainer = ({ submit }) => {
           {currentStep.subtitle}
         </p>
       </div>
-      <div className="bg-white border border-light shadow rounded-lg p-6 mb-8">
+      <div className="bg-gray-50 border border-light shadow p-6 mb-8">
         {currentStep.fields.map((field, index) => (
           <FormItem
             error={errorIndex === index}

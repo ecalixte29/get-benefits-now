@@ -15,6 +15,21 @@ export const STEPS = [
     {
         name: 'eligibility', subSteps: [
             {
+                name: "type",
+                title: "Who would you like to insure?",
+                icon: insurance,
+                fields: [
+                    {
+                        name: 'type', label: 'Insurance Type', type: 'radio_group', required: true, value: '', data: [
+                            'Single',
+                            'Couple',
+                            'Family',
+                            'Single Parent'
+                        ]
+                    }
+                ]
+            },
+            {
                 name: 'current_insurance',
                 title: 'Are you on Medicaid or Medicare?',
                 icon: insurance,
@@ -86,6 +101,30 @@ export const STEPS = [
                 ]
             },
             {
+                name: 'spouse_details',
+                title: 'Add spouse details',
+                subtitle: 'Provide Information About Your Spouse',
+                icon: newlyweds,
+                dependency: {
+                    name: 'type',
+                    values: ["Couple", "Family"]
+                },
+                fields: [
+                    { name: 'first_name', placeholder: 'john', type: 'text', value: '', required: true, label: 'first name' },
+                    { name: 'last_name', placeholder: 'doe', type: 'text', value: '', required: true, label: 'last name' },
+                    {
+                        name: 'gender', label: 'gender', type: 'radio_group', value: '', required: true, data: [
+                            'male', 'female',
+                        ]
+                    },
+                    { name: 'dob', placeholder: 'john', type: 'date', value: '', required: true, label: 'date of birth' },
+                    { name: 'social_security_number', type: 'number', value: '', required: true, label: 'social security number' },
+                    { name: 'email', type: 'email', placeholder: 'john.doe@example.com', value: '', required: true, label: 'email' },
+                    { name: 'phone', type: 'tel', placeholder: '(123) 456-7890', value: '', required: true, label: 'phone number' },
+                    { name: "uses_tobacco", type: 'radio_group', value: '', required: true, label: 'Are you a tobacco user?', data: ['Yes', 'No'] }
+                ]
+            },
+            {
                 name: 'contact',
                 title: 'Add your contact details',
                 subtitle: 'Give us your contact details so we can contact you',
@@ -104,31 +143,7 @@ export const STEPS = [
                     { name: 'street', type: 'text', placeholder: '1234 Main St.', value: '', required: true, label: 'street' },
                     { name: 'city', type: 'text', placeholder: 'city', value: '', required: true, label: 'city' },
                     { name: 'state', type: 'select', placeholder: 'state', value: '', required: true, label: 'state', data: states.map(state => state.name) },
-                    { name: 'zip', type: 'number', placeholder: '12345', value: '', required: true, label: 'zip code' },
-                ]
-            },
-            {
-                name: 'spouse_details',
-                title: 'Add spouse details',
-                subtitle: 'Provide Information About Your Spouse',
-                icon: newlyweds,
-                required_query: {
-                    name: 'type',
-                    value: ['family', 'couple']
-                },
-                fields: [
-                    { name: 'first_name', placeholder: 'john', type: 'text', value: '', required: true, label: 'first name' },
-                    { name: 'last_name', placeholder: 'doe', type: 'text', value: '', required: true, label: 'last name' },
-                    {
-                        name: 'gender', label: 'gender', type: 'radio_group', value: '', required: true, data: [
-                            'male', 'female',
-                        ]
-                    },
-                    { name: 'dob', placeholder: 'john', type: 'date', value: '', required: true, label: 'date of birth' },
-                    { name: 'social_security_number', type: 'number', value: '', required: true, label: 'social security number' },
-                    { name: 'email', type: 'email', placeholder: 'john.doe@example.com', value: '', required: true, label: 'email' },
-                    { name: 'phone', type: 'tel', placeholder: '(123) 456-7890', value: '', required: true, label: 'phone number' },
-                    { name: "uses_tobacco", type: 'radio_group', value: '', required: true, label: 'Are you a tobacco user?', data: ['Yes', 'No'] }
+                    { name: 'zip', type: 'text', placeholder: '12345', value: '', required: true, label: 'zip code' },
                 ]
             },
             {
@@ -136,9 +151,9 @@ export const STEPS = [
                 title: 'Dependents',
                 subtitle: 'Individuals relying on you financially',
                 icon: family,
-                required_query: {
+                dependency: {
                     name: 'type',
-                    value: ['family', 'single-parent']
+                    values: ["Single Parent", "Family"]
                 },
                 fields: [
                     {
