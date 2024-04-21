@@ -3,10 +3,10 @@ import React from 'react';
 const AttestableCard = ({ initials, isSelected, title, text, onSelect }) => (
     <div
         onClick={onSelect}
-        className={`flex gap-x-3 cursor-pointer rounded-lg mb-3 p-2 border border-gray-200 bg-white shadow ${ isSelected && 'border-primary'}`}
+        className={`flex gap-x-3 cursor-pointer mb-3 p-3 border-2 border-gray-200 bg-white shadow ${ isSelected && 'border-secondary'}`}
     >
         <div
-            className={`h-6 min-w-6 mt-1 rounded flex items-center justify-center text-xs font-semibold ${isSelected ? 'text-primary border-2 border-primary' : 'text-gray-400 border border-gray-300 hover:border-primary'}`}
+            className={`h-6 min-w-6 mt-1 flex items-center justify-center text-xs font-semibold ${isSelected ? 'text-secondary border-2 border-secondary' : 'text-gray-400 border border-gray-300 hover:border-primary'}`}
         >
             {isSelected ? initials : ' '}
         </div>

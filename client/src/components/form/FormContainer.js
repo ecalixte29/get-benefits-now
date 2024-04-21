@@ -56,7 +56,7 @@ const FormContainer = ({ submit }) => {
         }
         {isEndReached ? (
           <SecondaryButton
-            text={"See plans"}
+            text="See plans"
             fullWidth={true}
             onClick={() => {
               setLoading(true);
