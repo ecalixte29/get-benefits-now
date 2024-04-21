@@ -17,7 +17,7 @@ const TextInput = ({ label, error, onChange, id, required, width, wrapperClasses
                 onChange={(e) => onChange(e.target.value)}
                 min={0}
                 {...additional_options}
-                className={`block ${width ? width : 'w-full'} py-3 text-gray-900 shadow-sm outline-0 border-0 ${error ? 'ring-2 ring-error' : 'ring-1 ring-gray-300'} placeholder:text-gray-400 ${error ? 'focus:ring-2 focus:ring-error' : 'focus:ring-2 focus:ring-inset focus:ring-primary'} sm:text-sm sm:leading-6 ${innerClasses}`}
+                className={`block ${width ? width : 'w-full'} py-3 text-gray-900 shadow-sm outline-0 border-0 ${error ? 'ring-2 ring-error' : 'ring-0'} placeholder:text-gray-400 ${error ? 'focus:ring-2 focus:ring-error' : 'focus:ring-2 focus:ring-inset focus:ring-primary'} sm:text-sm sm:leading-6 ${innerClasses}`}
             />
         </div>
     );

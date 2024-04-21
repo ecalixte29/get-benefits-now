@@ -15,12 +15,12 @@ const Navbar = () => {
 
     return (
         <nav className={`w-full`}>
-            <div className='container md:flex md:items-center md:justify-between p-4 mx-auto'>
-                <h1 onClick={() => navigate('/')} className= {`hidden md:block text-[#141414] text-sm md:text-2xl font-bold cursor-pointer uppercase`}>Get Benefits Now</h1>
+            <div className='container flex flex-col md:flex-row md:items-center justify-center md:justify-between p-4 mx-auto'>
+                <h1 onClick={() => navigate('/')} className='text-dark text-xl text-center md:text-2xl font-bold cursor-pointer uppercase mb-3 sm:mb-0'>Get Benefits Now</h1>
                 <ul className="flex items-center justify-between space-x-8">
                     {SECTIONS.map((section, index) => (
                         <li key={index}>
-                            <button onClick={() => scrollTo(index)} className='text-dark border-b-2 border-transparent hover:border-dark text-md md:text-[100%] font-semibold'>{section}</button>
+                            <button onClick={() => scrollTo(index)} className='text-dark border-b-2 border-transparent hover:border-dark text-sm sm:text-base md:text-[100%] font-semibold'>{section}</button>
                         </li>
                     ))}
                 </ul>

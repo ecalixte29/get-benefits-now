@@ -44,8 +44,7 @@ const FormContainer = ({ submit }) => {
         {
           <SecondaryButton
             text="Back"
-            classNames="col-span-1"
-            fullWidth={true}
+            classNames="w-full col-span-1"
             invert={true}
             disabled={state.currentStep === 0 && state.currentSubStep === 0}
             onClick={() => {
@@ -57,7 +56,7 @@ const FormContainer = ({ submit }) => {
         {isEndReached ? (
           <SecondaryButton
             text="See plans"
-            fullWidth={true}
+            classNames="w-full"
             onClick={() => {
               setLoading(true);
               nextStep(
@@ -72,7 +71,7 @@ const FormContainer = ({ submit }) => {
         ) : (
           <SecondaryButton
             text={"Continue"}
-            fullWidth={true}
+            classNames="w-full"
             onClick={() => nextStep((i) => setErrorIndex(i))}
           />
         )}

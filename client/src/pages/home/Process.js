@@ -26,7 +26,7 @@ const Process = () => {
                     <ProcessCard key={index} imageSrc={step.imageSrc} title={step.title} />
                 ))}
             </div>
-            <SecondaryButton text='qualify now!' onClick={() => scrollToTop()} />
+            <SecondaryButton text='qualify now!' classNames='w-[90%] sm:w-auto' onClick={() => scrollToTop()} />
         </section>
     )
 }
@@ -34,9 +34,9 @@ const Process = () => {
 const ProcessCard = ({ imageSrc, title }) => {
     return (
         <div className="card max-w-sm mx-5 md:mx-0 flex flex-col relative">
-            <img className="card-img w-full object-cover h-80" src={imageSrc} alt="" />
-            <div className="p-5 bg-primary flex-1">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-dark uppercase">{title}</h5>
+            <img className="card-img w-full object-cover object-top h-40 md:h-80" src={imageSrc} alt="" />
+            <div className="py-2 px-4 md:p-5 bg-primary flex-1">
+                <h5 className="mb-2 text-lg md:text-2xl font-bold tracking-tight text-dark uppercase">{title}</h5>
             </div>
         </div>
     );

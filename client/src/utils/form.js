@@ -35,9 +35,9 @@ export const STEPS = [
                 icon: insurance,
                 fields: [
                     {
-                        name: 'current_insurance', label: 'current insurance', type: 'radio_group', required: true, value: '', data: [
-                            'Medicaid',
-                            'Medicare'
+                        name: 'current_insurance', label: 'are you on Medicare or Medicaid?', type: 'radio_group', required: true, value: '', data: [
+                            'Yes',
+                            'No'
                         ]
                     }
                 ]
