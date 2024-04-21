@@ -89,7 +89,7 @@ const Plans = () => {
                         <>
                             <h4 className="text-base font-thin text-dark">
                                 We have found
-                                <span className='text-base text-secondary font-normal mx-1'>{data.pages[0]?.total}</span>
+                                <span className='bg-secondary px-1 text-base text-white font-normal mx-1'>{data.pages[0]?.total}</span>
                                 plans matching your profile!
                             </h4>
                             {data.pages.map((page, pageIndex) => (

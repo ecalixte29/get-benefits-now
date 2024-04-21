@@ -17,7 +17,7 @@ const CurrencySlider = ({ error, onChange, field }) => {
     if (field.value_dependency && dependencyValue.length > 0) {
         return (
             <div
-                className={`relative border ${error ? "border-red" : "border-light"
+                className={`relative border ${error ? "border-red-600" : "border-light"
                     } py-2 `}
             >
                 <label

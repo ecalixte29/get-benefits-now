@@ -31,22 +31,22 @@ const PlanCard = ({ plan }) => {
 
     return (
         <div>
-            <span className='bg-primary text-white px-3 py-1 text-sm rounded-t'>Lowest premium plan</span>
-            <div className='flex flex-col w-full border border-gray-300 rounded-b rounded-tr shadow'>
-                <div className="bg-white border-b border-gray-200 rounded-tr-lg px-4 py-2">
+            <span className='bg-primary text-dark px-3 py-1 text-sm'>Lowest premium plan</span>
+            <div className='flex flex-col w-full border border-gray-300 shadow'>
+                <div className="bg-white border-b border-gray-200 px-4 py-2">
                     <div className='text-xs text-gray-400'>{plan.name}</div>
                     <div className='text-md font-semibold text-dark'>{plan.issuer.name}</div>
                 </div>
                 <div className="bg-white shadow p-4 grid grid-cols-10 gap-x-4 gap-y-4">
-                    <div className='col-span-5 md:col-span-2 flex flex-col items-center justify-center bg-gray-100 rounded-lg'>
+                    <div className='col-span-5 md:col-span-2 flex flex-col items-center justify-center bg-gray-100'>
                         <h1 className='text-gray-600 text-xs capitalize'>Monthly premium</h1>
-                        <div className='text-3xl text-blue-600'>${plan.premium_w_credit}</div>
+                        <div className='text-3xl text-blue-500'>${plan.premium_w_credit}</div>
                         <div className='text-xs font-light text-red-600 line-through'>was ${plan.premium}</div>
                     </div>
                     {plan.benefits[0].cost_sharings.find(cost_sharing => cost_sharing.network_tier === "In-Network") && (
-                        <div className='p-5 col-span-5 md:col-span-2 flex flex-col items-center text-center justify-center bg-gray-100 rounded-lg'>
+                        <div className='p-5 col-span-5 md:col-span-2 flex flex-col items-center text-center justify-center bg-gray-100'>
                             <h1 className='text-gray-600 text-xs capitalize'>Primary Care Visit Copay</h1>
-                            <div className='text-3xl text-blue-600'>${plan.benefits[0].cost_sharings.find(cost_sharing => cost_sharing.network_tier === "In-Network").copay_amount}</div>
+                            <div className='text-3xl text-blue-500'>${plan.benefits[0].cost_sharings.find(cost_sharing => cost_sharing.network_tier === "In-Network").copay_amount}</div>
                         </div>
                     )}
                     <div className='md:col-span-6 col-span-10'>
@@ -58,7 +58,7 @@ const PlanCard = ({ plan }) => {
                         ))}
                     </div>
                 </div>
-                <div className="bg-gray-100 rounded-b-lg flex flex-col sm:flex-row justify-between">
+                <div className="bg-gray-100 flex flex-col sm:flex-row justify-between">
                     <div className='flex gap-x-2 items-center py-2 pl-4'>
                         <img className='w-5 h-5' alt='' src={plan.metal_level === "Bronze" ? Bronze : plan.metal_level === "Gold" ? Gold : Silver} />
                         <p className={`${plan.metal_level === "Bronze" ? 'text-bronze' : plan.metal_level === "Gold" ? 'text-gold' : 'text-gray-400'}`}>{plan.metal_level}</p>
@@ -76,7 +76,7 @@ const PlanCard = ({ plan }) => {
                             })}
                         </div>
                     </div>
-                    <SecondaryButton classNames={'rounded-none rounded-b sm:rounded-bl-none rounded-br botder border-gray-300 text-sm px-3 py-1'} onClick={onPlanEnroll} text="enroll now" />
+                    <SecondaryButton classNames={'text-sm px-3 py-1'} onClick={onPlanEnroll} text="enroll now" />
                 </div>
             </div>
         </div>
