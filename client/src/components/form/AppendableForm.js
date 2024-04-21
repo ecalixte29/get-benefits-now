@@ -22,7 +22,7 @@ const AppendableForm = ({ label, fields, onAppend, required, error }) => {
     }
 
     return (
-        <div className='relative mb-5 rounded-md p-6 shadow-sm ring-1 ring-inset ring-gray-300'>
+        <div className='relative mb-5 p-6 shadow-sm ring-1 ring-inset ring-gray-300'>
             <label
                 className={`absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium ${error ? 'text-secondary' : 'text-dark'} capitalize`}
             >

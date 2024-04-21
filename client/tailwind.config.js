@@ -9,15 +9,15 @@ module.exports = {
         colors: {
             ...colors,
             ...{
-                'primary': '#01aed1',
-                'secondary': '#f04b4c',
+                'primary': '#F5C396',
+                'secondary': '#813405',
                 'light': '#d0d0d0',
-                'dark': '#2c2c2c',
+                'dark': '#141414',
                 'bronze': '#CD7F32',
                 'gold': '#FFD700',
                 'silver': '#C0C0C0',
                 'error': 'rgb(255, 0, 0)',
-                'red': '#EF233C'
+                'red': '#EF233C',
             }
         },
         extend: {

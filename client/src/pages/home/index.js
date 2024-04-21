@@ -8,8 +8,10 @@ import Navbar from '../../components/shared/Navbar'
 const Home = () => {
   return (
     <>
-        <Navbar backgroundTransparent={true}/>
-        <Hero />
+        <div className="min-h-screen flex flex-col">
+            <Navbar backgroundTransparent={true}/>
+            <Hero />
+        </div>
         <About />
         <Process />
         <Footer />
