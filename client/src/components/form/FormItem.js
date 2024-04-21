@@ -31,9 +31,9 @@ const FormItem = ({ field, error, changeHandler }) => {
         case 'appendable_form':
             return <div>
                 {field.value.map((f, i) => (
-                    <div className="rounded-md py-3 px-3 mb-5 shadow-sm ring-1 ring-gray-300 flex flex-row justify-between">
+                    <div className=" py-3 px-3 mb-5 shadow-sm ring-1 ring-gray-300 flex flex-row justify-between">
                         <p>{f.first_name}&nbsp;{f.last_name}</p>
-                        <p className="font-bold cursor-pointer border border-2 border-dark rounded-2xl px-1.5 hover:bg-secondary hover:border-secondary hover:text-white"
+                        <p className="font-bold cursor-pointer border border-2 border-dark px-1.5 hover:bg-secondary hover:border-secondary hover:text-white"
                          onClick={() => removeDependent(field.name, i)}> X </p>
                     </div>
                 ))}

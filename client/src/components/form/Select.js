@@ -16,7 +16,7 @@ const Select = ({ label, options, id, onChange, value, error, required, addition
                 onChange={(e) => onChange(e.target.value)}
                 defaultValue={value}
                 {...additional_options}
-                className={`block w-full ${error ? 'outline-error' : 'outline-gray-300'} rounded-md border-0 p-4 text-gray-900 shadow-sm outline outline-1 border-r-8 border-r-transparent placeholder:text-gray-400 focus:border-0 focus:ring-0 focus:z-10 focus:outline-2 focus-visible:outline-secondary focus:outline-secondary sm:text-sm sm:leading-6`}
+                className={`block w-full ${error ? 'outline-error' : 'outline-gray-300'} border-0 p-4 text-gray-900 shadow-sm outline outline-1 border-r-8 border-r-transparent placeholder:text-gray-400 focus:border-0 focus:ring-0 focus:z-10 focus:outline-2 focus-visible:outline-secondary focus:outline-secondary sm:text-sm sm:leading-6`}
             >
                 {options.map((option, index) => (
                     <option key={index} value={option}>

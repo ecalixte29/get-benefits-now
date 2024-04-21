@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const RadioButton = ({ id , label, onChange, value, isFirst, setShowConditionalComponent }) => {
 
     return (
-        <li className={`w-full border-b border-gray-200 ${isFirst ? 'rounded-t-lg' : ''}`}>
+        <li className={`w-full border-b border-gray-200`}>
             <div className="flex items-center ps-3">
                 <input
                     id={id}

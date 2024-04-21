@@ -6,7 +6,7 @@ const RadioGroup = ({ data, onChange, id, error, label, value, required, conditi
     const [showConditionalComponent, setShowConditionalComponent] = useState(false);
 
     return (
-        <div key={id} className={`${label ? 'relative mb-5 rounded-md shadow-sm' : ''} `}>
+        <div key={id} className={`${label ? 'relative mb-5 shadow-sm' : ''} `}>
             {label && (
                 <label
                     htmlFor={label}
@@ -15,7 +15,7 @@ const RadioGroup = ({ data, onChange, id, error, label, value, required, conditi
                     {error ? `Please select a valid ${label.toLowerCase()}` : `${label.toLowerCase()} ${required ? '*' : ''}`}
                 </label>
             )}
-            <ul className={`w-full mb-5 text-sm font-medium text-gray-600 bg-white border ${error ? 'ring-2 ring-error' : 'border-light'} rounded-lg`}>
+            <ul className={`w-full mb-5 text-sm font-medium text-gray-600 bg-white border ${error ? 'ring-2 ring-error' : 'border-light'}`}>
                 {data.map((item, index) => (
                     <RadioButton key={id  + index} id={id + index} label={item} value={value} setShowConditionalComponent={setShowConditionalComponent} onChange={onChange} isFirst={index === 0} />
                 ))}

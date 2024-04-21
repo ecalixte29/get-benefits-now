@@ -1,7 +1,7 @@
 import React from 'react';
 import ActivityIndicator from '../shared/ActivityIndicator';
 
-const SecondaryButton = ({ text, invert, type, classNames, onClick, fullWidth, loading, style, disabled }) => {
+const SecondaryButton = ({ text, invert, type, classNames = '', onClick, fullWidth, loading, style, disabled }) => {
     return (
         <button
             type={type ? type : 'button'}
@@ -9,7 +9,7 @@ const SecondaryButton = ({ text, invert, type, classNames, onClick, fullWidth, l
                 width: fullWidth ? '100%' : 'auto',
                 ...style,
             }}
-            className={`${(disabled || loading) ? 'cursor-not-allowed' : ''} rounded-md capitalize text-lg border ${invert ? 'text-secondary border-secondary' : 'text-white border-secondary bg-secondary'} ${classNames}`}
+            className={`${(disabled || loading) ? 'cursor-not-allowed' : ''} capitalize text-lg border ${invert ? 'text-secondary border-secondary' : 'text-white border-secondary bg-secondary'} ${classNames}`}
             onClick={onClick ? onClick : undefined}
             disabled={loading || disabled}
         >

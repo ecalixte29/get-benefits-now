@@ -13,7 +13,7 @@ const App = () => {
     const queryClient = new QueryClient()
     return (
         <Router>
-            <div className="bg-[#f5f5f5] overflow-y-auto">
+            <div className="bg-white overflow-y-auto">
                 <Routes>
                     <Route exact path="/" element={<Home />} />
                     <Route path="/form" element={
