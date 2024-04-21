@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import AttestableCard from "../../components/T&C/AttestableCard"
 import Layout from '../../components/Layout'
 import { SecondaryButton, DisableButton } from "../../components/buttons"
