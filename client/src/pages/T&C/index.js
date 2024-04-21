@@ -157,7 +157,7 @@ const TermsAndConditions = () => {
                     />
                 ))}
                 <h1 className="text-left text-dark capitalize">Signature</h1>
-                <SignaturePad ref={signaturePadRef} canvasProps={{ className: 'w-full h-48 bg-white mt-5 border border-gray-200 rounded-lg shadow', height: 200 }} />
+                <SignaturePad ref={signaturePadRef} canvasProps={{ className: 'w-full h-48 bg-white mt-5 border border-gray-200 shadow', height: 200 }} />
                 <div className="flex justify-end">
                     <DisableButton
                         text='Clear'

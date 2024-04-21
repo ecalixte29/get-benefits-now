@@ -17,7 +17,6 @@ module.exports = {
                 'gold': '#FFD700',
                 'silver': '#C0C0C0',
                 'error': 'rgb(255, 0, 0)',
-                'red': '#EF233C',
             }
         },
         extend: {
