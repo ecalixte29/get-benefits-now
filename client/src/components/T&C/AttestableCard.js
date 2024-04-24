@@ -10,7 +10,7 @@ const AttestableCard = ({ initials, isSelected, title, text, onSelect }) => (
         >
             {isSelected ? initials : ' '}
         </div>
-        <div className='h-20 overflow-y-auto text-sm pr-4 text-justify'>
+        <div className='max-h-36 overflow-y-auto text-sm pr-4 text-justify'>
             <div className="text-gray-500">{title}</div>
             <div className="text-gray-400 font-light">{text}</div>
         </div>
