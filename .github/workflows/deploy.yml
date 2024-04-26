@@ -13,18 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Installing dependencies
-        run: |
-          cd ~/apps/get-benefits-now/client
-          npm install
-          cd ~/apps/get-benefits-now/server
-          npm install
-
-      - name: Building client
-        run: |
-          cd ~/apps/get-benefits-now/client
-          npm run build
-
       - name: Deploying to DigitalOcean droplet
         uses: appleboy/ssh-action@v0.1.9
         with:
@@ -32,11 +20,14 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd ~/apps/get-benefits-now
             pm2 kill
+            cd apps/get-benefits-now
             git pull --rebase origin main
-            cd ~/apps/get-benefits-now/client
+            cd client
+            npm install
+            npm run build
             pm2 serve --spa build 3000
-            cd ~/apps/get-benefits-now/server
+            cd ../server
+            npm install
             pm2 start index.js
             pm2 save --force
