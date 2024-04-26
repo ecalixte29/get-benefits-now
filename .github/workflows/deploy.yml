@@ -15,14 +15,14 @@ jobs:
 
       - name: Installing dependencies
         run: |
-          cd client
+          cd ~/apps/get-benefits-now/client
           npm install
-          cd ../server
+          cd ~/apps/get-benefits-now/server
           npm install
 
       - name: Building client
         run: |
-          cd client
+          cd ~/apps/get-benefits-now/client
           npm run build
 
       - name: Deploying to DigitalOcean droplet
@@ -32,12 +32,11 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd
+            cd ~/apps/get-benefits-now
             pm2 kill
-            cd apps/get-benefits-now
             git pull --rebase origin main
-            cd client
+            cd ~/apps/get-benefits-now/client
             pm2 serve --spa build 3000
-            cd ../server
+            cd ~/apps/get-benefits-now/server
             pm2 start index.js
             pm2 save --force
