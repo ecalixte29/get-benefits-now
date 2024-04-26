@@ -67,7 +67,7 @@ To get started with the Get Benefits Now website, follow these steps:
    npm run dev
    ```
 
-   The server will be running at [http://localhost:5001](http://localhost:5001).
+   The server will be running at [http://localhost:5001](http://localhost:5001)
 
 ## Deployment
     The Get Benefits Now website is deployed and accessible at [benefitsritenow.com](https://benefitsritenow.com).
