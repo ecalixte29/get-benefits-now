@@ -35,6 +35,9 @@ module.exports = {
                 fadeinLeft: 'fadeinLeft 300ms ease-in-out',
             },
         },
+        fontFamily: {
+            josefin: ["Josefin Sans", "sans-serif"]
+        }
     },
     plugins: [
         require('@tailwindcss/forms'),

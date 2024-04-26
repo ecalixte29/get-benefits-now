@@ -1,0 +1,43 @@
+name: Auto Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Installing dependencies
+        run: |
+          cd client
+          npm install
+          cd ../server
+          npm install
+
+      - name: Building client
+        run: |
+          cd client
+          npm run build
+
+      - name: Deploying to DigitalOcean droplet
+        uses: appleboy/ssh-action@v0.1.9
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd
+            pm2 kill
+            cd apps/get-benefits-now
+            git pull origin main
+            cd client
+            pm2 serve --spa build 3000
+            cd ../server
+            pm2 start index.js
+            pm2 save --force

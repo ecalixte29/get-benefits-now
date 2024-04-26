@@ -32,3 +32,4 @@ server/.env.test.local
 server/.env.production.local
 
 request.http
+**/.DS_Store
