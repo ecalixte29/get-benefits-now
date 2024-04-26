@@ -5,9 +5,9 @@ import user from '../assets/images/user-details.png'
 import phone from '../assets/images/phone-icon.png'
 import location from '../assets/images/location.png'
 import newlyweds from '../assets/images/newlyweds.png'
-import family from '../assets/images/family.png'
+import family from '../assets/images/family.webp'
 import flag from '../assets/images/united-states-flag.png'
-import employer from '../assets/images/computer-worker.png'
+import employer from '../assets/images/computer-worker.webp'
 //types: radio_group, text, currency, email, tel, select, number
 //TODO: Add icons for each
 //TODO: Add advance validation ie max length, min length

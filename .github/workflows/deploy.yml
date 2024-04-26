@@ -35,7 +35,7 @@ jobs:
             cd
             pm2 kill
             cd apps/get-benefits-now
-            git pull origin main
+            git pull --rebase origin main
             cd client
             pm2 serve --spa build 3000
             cd ../server

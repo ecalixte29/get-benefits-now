@@ -2,7 +2,7 @@ import React from 'react';
 import { BsChevronDoubleUp } from "react-icons/bs";
 import useSmoothScroll from '../../hooks/useSmoothScoll';
 import { useNavigate } from 'react-router-dom';
-import LogoImg from '../../assets/images/logo.png'
+import LogoImg from '../../assets/images/logo.webp'
 
 const SECTIONS = [
     "Home",

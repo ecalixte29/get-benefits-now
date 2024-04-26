@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import TextInput from "../../components/form/TextInput";
 import { SecondaryButton } from "../../components/buttons";
-import HeroImg from '../../assets/images/hero.png'
+import HeroImg from '../../assets/images/hero.webp'
 
 const Hero = () => {
     const navigate = useNavigate();

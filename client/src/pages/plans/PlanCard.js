@@ -2,8 +2,8 @@ import React from 'react'
 import { SecondaryButton } from '../../components/buttons';
 import { FaStar, FaCheck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import Bronze from '../../assets/images/bronze.png';
-import Gold from '../../assets/images/gold.png';
+import Bronze from '../../assets/images/bronze.webp';
+import Gold from '../../assets/images/gold.webp';
 import Silver from '../../assets/images/silver.png';
 
 const PlanCard = ({ plan }) => {
