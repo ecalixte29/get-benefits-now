@@ -94,14 +94,18 @@ const Form = () => {
                 phone: data.details.phone,
                 firstName: data.details.first_name,
                 lastName: data.details.last_name,
-                name: data.details.first_name,
+                name: `${data.details.first_name} ${data.details.last_name}`,
                 dateOfBirth: formatDate(data.details.dob),
                 address1: data.details.street,
                 city: data.details.city,
                 state: data.details.state,
                 country: 'US',
-                postalCode: data.details.postalCode,
+                postalCode: data.details.zip,
                 source: "benefitsritenow.com",
+                tags: [
+                    "benefitsritenow.com",
+                    process.env.NODE_ENV
+                ],
                 customField: {
                     [GHL_CUSTOM_FIELDS["contact.current_insurance"]]: data.details.current_insurance,
                     [GHL_CUSTOM_FIELDS["contact.estimated_household_annual_income"]]: data.details.estimated_income,
