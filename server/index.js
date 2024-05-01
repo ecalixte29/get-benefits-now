@@ -37,17 +37,19 @@ initializeApp({
 const firestore = getFirestore();
 
 const router = express.Router();
+
 router
   .post("/", async (req, res) => {
     const id = uuid();
     const data = req.body;
 
     const { value, error } = ApplicationSchema.validate(data);
-    if (error)
+    if (error){
       return res.status(400).json({
         message: error.details[0].message,
       });
-
+    }
+    
     let countyfips = await fetch(
       `https://marketplace.api.healthcare.gov/api/v1/counties/by/zip/${value.details.zip}?apikey=${process.env.API_KEY}`
     );
