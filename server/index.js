@@ -22,7 +22,7 @@ dotenv.config();
 app.use(parser.json());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: process.env.CLIENT_URL.split(','),
   })
 );
 
