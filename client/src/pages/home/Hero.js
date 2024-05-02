@@ -19,6 +19,10 @@ const Hero = () => {
                             <h1 className="text-4xl md:text-6xl font-semibold mb-6">
                                 Insurance made easy for everyone
                             </h1>
+                            <p className="capitalize text-xl">
+                                call us at
+                                <a className="ml-2 px-1 bg-gray-800 text-sky-400 visited:text-purple-500" href="tel:8555611045">8555611045</a>
+                            </p>
                         </div>
                     </div>
                     <div className="sm:col-span-2 hidden sm:block">

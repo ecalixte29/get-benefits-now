@@ -37,12 +37,6 @@ const About = () => {
                         At Get Benefits Now, we firmly believe that EVERYONE should have access to quality health
                         insurance that fits with their budget. Let us find that plan for you today!
                     </p>
-                    <br />
-                    <p className='text-dark-color'>Sincerely,</p>
-                    <p className='text-dark-color'>
-                        <b>Erick</b>
-                    </p>
-                    <p className='text-dark-color'>Lead Benefit Specialist</p>
                 </div>
             </div>
         </section>

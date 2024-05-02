@@ -19,7 +19,7 @@ const Navbar = () => {
             <div className='container flex flex-col md:flex-row md:items-center justify-center md:justify-between p-4 mx-auto'>
                 <div className='flex items-center gap-x-2'>
                     <img src={LogoImg} alt="" width={30} />
-                    <h1 onClick={() => navigate('/')} className='font-josefin lowercase leading-0 text-dark text-xl text-center md:text-2xl font-bold cursor-pointer mb-3 sm:mb-0'>benefits-rite-now</h1>
+                    <h1 onClick={() => navigate('/')} className='font-josefin uppercase leading-0 text-dark text-xl text-center md:text-2xl font-bold cursor-pointer mb-3 sm:mb-0'>benefits-rite-now</h1>
                 </div>
                 <ul className="flex items-center justify-between space-x-8">
                     {SECTIONS.map((section, index) => (
