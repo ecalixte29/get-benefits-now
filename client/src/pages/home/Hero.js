@@ -21,7 +21,7 @@ const Hero = () => {
                             </h1>
                             <p className="capitalize text-xl">
                                 call us at
-                                <a className="ml-2 px-1 bg-gray-800 text-sky-400 visited:text-purple-500" href="tel:8555611045">8555611045</a>
+                                <a className="ml-2 p-1 bg-gray-800 text-sky-400 visited:text-purple-500" href="tel:8555611045">(855) 561-1045</a>
                             </p>
                         </div>
                     </div>

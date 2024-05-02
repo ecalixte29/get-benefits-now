@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react"
-import AttestableCard from "../../components/T&C/AttestableCard"
+import AttestableCard from "../../components/consent_form/AttestableCard"
 import Layout from '../../components/Layout'
 import { SecondaryButton, DisableButton } from "../../components/buttons"
 import SignaturePad from 'react-signature-canvas'
 import { useNavigate } from "react-router-dom"
 
-const TermsAndConditions = () => {
+const ConsentForm = () => {
     const navigate = useNavigate()
     
     const terms = [
@@ -113,4 +113,4 @@ const TermsAndConditions = () => {
     )
 }
 
-export default TermsAndConditions
+export default ConsentForm
