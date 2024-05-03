@@ -10,10 +10,10 @@ const Logo = ({ title }) => {
     return (
         <nav>
             <div className='text-center p-8'>
-                <h1 onClick={() => navigate('/')} className='text-secondary text-3xl font-semibold cursor-pointer'>Get Benefits Now ®</h1>
+                <h1 onClick={() => navigate('/')} className='text-secondary text-xl sm:text-3xl font-semibold cursor-pointer'>Get Benefits Now ®</h1>
                 {
                     title && (
-                        <h1 className='text-xl bg-primary w-1/4 mx-auto my-2'>{title}</h1>
+                        <h1 className='text-xl bg-primary w-full sm:w-1/3 md:w-1/2 lg:w-1/4 mx-auto my-2'>{title}</h1>
                     )
                 }
             </div>

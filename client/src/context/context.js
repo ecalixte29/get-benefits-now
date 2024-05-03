@@ -2,7 +2,6 @@ import React, { createContext, useContext, useReducer } from "react";
 import { STEPS } from '../utils/form'
 import { formReducer } from "./reducers/reducer";
 
-
 const FormContext = createContext({
     state: {
         form: STEPS,

@@ -4,7 +4,7 @@ import Layout from "../../components/Layout"
 const TermsAndConditions = () => {
     return (
         <Layout title='Terms and Conditions'>
-            <div className="w-2/3 mx-auto pb-10">
+            <div className="w-11/12 md:w-2/3 mx-auto pb-10">
                 <p>
                     These Terms and Conditions
                     <span className="bg-primary p-1 text-sm font-semibold mx-1">"Terms"</span>

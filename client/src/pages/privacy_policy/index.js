@@ -4,7 +4,7 @@ import Layout from "../../components/Layout"
 const PrivacyPolicy = () => {
     return (
         <Layout title='Privacy Policy'>
-            <div className="w-2/3 mx-auto pb-10">
+            <div className="w-11/12 md:w-2/3 mx-auto pb-10">
                 <h4 className="font-semibold text-red-600 mb-3 text-center">Effective Date: 04/20/2024</h4>
                 <p>
                     Welcome to K & A Insurance Agency's Privacy Policy. We are committed to protecting the privacy and security of your personal information. This Privacy Policy outlines the types of personal information we collect, how we use and safeguard that information, and your rights regarding your personal data.

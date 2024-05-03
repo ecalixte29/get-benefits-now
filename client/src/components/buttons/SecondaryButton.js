@@ -6,7 +6,7 @@ const SecondaryButton = ({ text, invert, type, classNames = '', onClick, loading
         <button
             type={type ? type : 'button'}
             style={{...style}}
-            className={`${(disabled || loading) ? 'cursor-not-allowed' : ''} flex items-center justify-center md:px-8 py-2 capitalize text-lg border ${invert ? 'text-secondary border-secondary' : 'text-white border-secondary bg-secondary'} ${classNames}`}
+            className={`${(disabled || loading) ? 'cursor-not-allowed' : ''} flex items-center justify-center px-3 md:px-8 py-2 capitalize text-lg border ${invert ? 'text-secondary border-secondary' : 'text-white border-secondary bg-secondary'} ${classNames}`}
             onClick={onClick ? onClick : undefined}
             disabled={loading || disabled}
         >
