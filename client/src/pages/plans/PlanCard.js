@@ -27,7 +27,7 @@ const PlanCard = ({ plan }) => {
                 plan_id: plan.id
             })
         });
-        navigate('/terms-and-conditions');
+        navigate('/consent');
     };
 
     return (

@@ -9,7 +9,7 @@ const Logo = ({ title }) => {
 
     return (
         <nav>
-            <div className='text-center p-8'>
+            <div className='text-center p-4 sm:p-8'>
                 <h1 onClick={() => navigate('/')} className='text-secondary text-xl sm:text-3xl font-semibold cursor-pointer'>Get Benefits Now ®</h1>
                 {
                     title && (
