@@ -1,8 +1,8 @@
 import { useSearchParams } from "react-router-dom";
-import { useFormState } from "../context/context";
+import { useFormContext } from "../context/FormContext";
 
 const useForm = () => {
-    const { state, dispatch } = useFormState();
+    const { state, dispatch } = useFormContext();
     const [searchParams] = useSearchParams();
 
     const currentStep = state.form[state.currentStep];

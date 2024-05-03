@@ -4,12 +4,12 @@ import Form from './pages/form';
 import Plans from './pages/plans';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import "./style.css"
-import { FormContextProvider } from './context/context';
+import { FormContextProvider } from './context/FormContext';
 import ConsentForm from './pages/consent_form';
 import TermsAndConditions from './pages/terms_and_conditions';
 import PrivacyPolicy from './pages/privacy_policy';
 import ThankYou from './pages/thank_you';
+import "./style.css"
 
 const App = () => {
     const queryClient = new QueryClient()

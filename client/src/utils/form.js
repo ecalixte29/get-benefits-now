@@ -7,7 +7,7 @@ import location from '../assets/images/location.png'
 import newlyweds from '../assets/images/newlyweds.png'
 import family from '../assets/images/family.webp'
 import flag from '../assets/images/united-states-flag.png'
-import employer from '../assets/images/computer-worker.webp'
+
 //types: radio_group, text, currency, email, tel, select, number
 //TODO: Add icons for each
 //TODO: Add advance validation ie max length, min length
@@ -96,7 +96,6 @@ export const STEPS = [
                         ]
                     },
                     { name: 'dob', placeholder: 'john', type: 'date', value: '', required: true, label: 'date of birth' },
-                    { name: 'social_security_number', type: 'number', value: '', required: true, label: 'social security number' },
                     { name: "uses_tobacco", type: 'radio_group', value: '', required: true, label: 'Are you a tobacco user?', data: ['Yes', 'No'] }
                 ]
             },
@@ -217,18 +216,7 @@ export const STEPS = [
                         ]
                     },
                 ]
-            },
-            {
-                name: 'recent_employer',
-                title: 'Recent employer',
-                subtitle: 'Where were you last employed? If you are self employed, please type in "Self employed"',
-                icon: employer,
-                fields: [
-                    {
-                        name: 'recent_employer', type: 'text', placeholder: 'Google Inc.', value: '', required: true, label: 'most recent employer',
-                    }
-                ]
-            },
+            }
         ]
     }
 ]

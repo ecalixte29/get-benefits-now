@@ -34,6 +34,9 @@ module.exports = {
                 fadein: 'fadein 300ms ease-in-out',
                 fadeinLeft: 'fadeinLeft 300ms ease-in-out',
             },
+            boxShadow: {
+                'global': '0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15)',
+            }
         },
         fontFamily: {
             josefin: ["Josefin Sans", "sans-serif"]

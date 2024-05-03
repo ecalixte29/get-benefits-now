@@ -13,8 +13,7 @@ const Form = () => {
 
     useEffect(() => {
         initializeForm();
-        // eslint-disable-next-line
-    }, []); //Do not include in dependency array as it will cause an infinite call cycle
+    }, [])
 
     const submit = async (setLoading) => {
         const {
