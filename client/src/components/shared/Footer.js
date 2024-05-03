@@ -1,16 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import LogoImg from '../../assets/images/logo.webp'
+import Logo from './Logo';
 
 const Footer = () => {
     return (
         <div className='bg-dark mt-8'>
             <div className='container mx-auto text-white space-y-8 pt-8 pb-4'>
-                <div className='w-11/12 sm:w-auto mx-auto grid grid-cols-1 sm:grid-cols-4 justify-between'>
-                    <div className='col-span-1 col-start-1 flex gap-x-2'>
-                        <img src={LogoImg} alt="" className='h-6' />
-                        <h1 className='font-josefin uppercase text-lg text-center md:text-2xl font-bold cursor-pointer mb-3 sm:mb-0'>benefits-rite-now</h1>
-                    </div>
+                <div className='w-11/12 sm:w-auto mx-auto grid grid-cols-1 sm:grid-cols-4 items-start justify-between'>
+                    <Logo invert={true} />
                     <div className='col-span-1 sm:col-span-2 col-start-1 sm:col-end-5'>
                         <h1 className='font-semibold'>Attention: </h1>
                         <p className='text-gray-400 text-xs text-justify'>
