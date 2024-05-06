@@ -25,49 +25,21 @@ To get started with the Get Benefits Now website, follow these steps:
    cd get-benefits-now
    ```
 
-### Setting up the Client
+### Setting up the App
 
-3. Navigate to the client directory:
-
-   ```bash
-   cd client
-   ```
-
-4. Install dependencies:
+2. Install dependencies:
 
    ```bash
    npm install
    ```
 
-5. Run the client application:
+5. Run the application:
 
    ```bash
    npm start
    ```
 
    The client application will be available at [http://localhost:3000](http://localhost:3000) in your web browser.
-
-### Setting up the Server
-
-6. Navigate to the server directory:
-
-   ```bash
-   cd ../server
-   ```
-
-7. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-8. Run the server:
-
-   ```bash
-   npm run dev
-   ```
-
-   The server will be running at [http://localhost:5001](http://localhost:5001)
 
 ## Deployment
     The Get Benefits Now website is deployed and accessible at [benefitsritenow.com](https://benefitsritenow.com).
