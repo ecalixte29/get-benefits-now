@@ -9,7 +9,7 @@ import useContacts from "../../hooks/useContacts"
 
 const ConsentForm = () => {
     const navigate = useNavigate()
-    const { getContact, updateContact } = useContacts()
+    const { getContact, updateContact, sendContactToGHL } = useContacts()
 
     const signaturePadRef = useRef();
 
@@ -34,6 +34,7 @@ const ConsentForm = () => {
         const signature = signaturePadRef.current.toDataURL();
 
         await updateContact(uuid, { signature })
+        sendContactToGHL(uuid)
         navigate('/thank-you');
     };
 

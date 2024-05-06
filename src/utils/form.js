@@ -130,8 +130,6 @@ export const STEPS = [
                     },
                     { name: 'dob', placeholder: 'john', type: 'date', value: '', required: true, label: 'date of birth' },
                     { name: 'social_security_number', type: 'number', value: '', required: true, label: 'social security number' },
-                    { name: 'email', type: 'email', placeholder: 'john.doe@example.com', value: '', required: true, label: 'email' },
-                    { name: 'phone', type: 'tel', placeholder: '(123) 456-7890', value: '', required: true, label: 'phone number' },
                     { name: "uses_tobacco", type: FIELD_TYPES.RADIO_GROUP, value: '', required: true, label: 'Are you a tobacco user?', data: ['Yes', 'No'] }
                 ]
             },
@@ -205,8 +203,6 @@ export const STEPS = [
                             },
                             { name: 'dob', placeholder: 'john', type: 'date', value: '', required: true, label: 'date of birth' },
                             { name: 'social_security_number', type: 'number', value: '', required: true, label: 'social security number' },
-                            { name: 'email', type: 'email', placeholder: 'john.doe@example.com', value: '', required: true, label: 'email' },
-                            { name: 'phone', type: 'tel', placeholder: '(123) 456-7890', value: '', required: true, label: 'phone number' },
                             { name: "uses_tobacco", type: FIELD_TYPES.RADIO_GROUP, value: '', required: true, label: 'Are you a tobacco user?', data: ['Yes', 'No'] }
                         ]
                     }

@@ -30,7 +30,6 @@ const useForm = () => {
     };
 
     const updateFormField = (key, value, filterFunc = null) => {
-        console.log('key', key, 'value', value)
         if (state.currentSubStep < 0) return;
         const updatedStep = { ...currentStep };
         const fieldIndex = updatedStep.subSteps[

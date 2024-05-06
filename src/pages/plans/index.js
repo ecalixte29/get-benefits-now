@@ -36,6 +36,7 @@ const Plans = () => {
             const uuid = localStorage.getItem('uuid');
             if (!uuid) return navigate('/');
             let lead = await getContact(uuid);
+
             let countyfips;
             try {
                 const response = await fetch(`https://marketplace.api.healthcare.gov/api/v1/counties/by/zip/${lead.details.zip}?apikey=${process.env.REACT_APP_API_KEY}`);
@@ -59,6 +60,7 @@ const Plans = () => {
             }
             console.log('countyfips', countyfips)
             const hasMarriedCouple = ['family', 'couple'].includes(lead.type);
+            
             const parsedData = {
                 household: {
                     income: lead.details.gross_income * 12,
@@ -66,7 +68,7 @@ const Plans = () => {
                     people: [
                         dataToPeople({ ...lead.details, relationship: 'Self' }),
                         ...(hasMarriedCouple ? [dataToPeople({ ...lead.spouse_details, relationship: 'Spouse' })] : []),
-                        ...(lead.dependents ? lead.dependents.map(dependent => dataToPeople(dependent)) : [])
+                        ...(lead?.dependents ? lead?.dependents.map(dependent => dataToPeople(dependent)) : [])
                     ].filter(Boolean)
                 },
                 market: 'Individual',

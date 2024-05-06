@@ -6,6 +6,7 @@ import RadioGroup from "./RadioGroup";
 import Select from "./Select";
 import TextInput from "./TextInput";
 import CurrencySlider from "./CurrencySlider";
+import { IoCloseOutline } from "react-icons/io5";
 
 const FormItem = ({ field, error, changeHandler }) => {
     const { currentStep, removeDependent } = useForm()
@@ -33,8 +34,9 @@ const FormItem = ({ field, error, changeHandler }) => {
                 {field.value.map((f, i) => (
                     <div className=" py-3 px-3 mb-5 shadow-sm ring-1 ring-gray-300 flex flex-row justify-between">
                         <p>{f.first_name}&nbsp;{f.last_name}</p>
-                        <p className="font-bold cursor-pointer border border-2 border-dark px-1.5 hover:bg-secondary hover:border-secondary hover:text-white"
-                         onClick={() => removeDependent(field.name, i)}> X </p>
+                        <button className="border border-secondary bg-white hover:bg-primary p  -1" onClick={() => removeDependent(field.name, i)}>
+                            <IoCloseOutline size={20} className="text-secondary" />
+                        </button>
                     </div>
                 ))}
                 <AppendableForm {...commonProps} fields={field.fields} onAppend={commonProps.onChange} />

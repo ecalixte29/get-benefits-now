@@ -34,7 +34,7 @@ const Form = () => {
             dependents,
         } = parseData();
 
-        const data = {
+        let data = {
             details: _.pickBy({
                 current_insurance,
                 ...income,
@@ -47,10 +47,11 @@ const Form = () => {
                 medications_in_network,
                 procedures_in_network,
             }, _.identity),
-            ...(spouse_details && { spouse_details: _.pickBy(spouse_details, _.identity) }),
-            ...(dependents && { dependents: _.pickBy(dependents, _.identity) }),
             type: type.toLowerCase().replace(" ", "-"),
         };
+
+        if(dependents) data['dependents'] = dependents
+        if(spouse_details) data['spouse_details'] = spouse_details
 
         try {
             const response = await createContact(data)
