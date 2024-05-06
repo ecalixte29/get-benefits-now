@@ -18,7 +18,9 @@ const Navbar = () => {
                 <ul className="flex items-center justify-between space-x-8">
                     {SECTIONS.map((section, index) => (
                         <li key={index}>
-                            <button onClick={() => scrollTo(index)} className='text-dark border-b-2 border-transparent hover:border-dark text-sm sm:text-base md:text-[100%] font-semibold'>{section}</button>
+                            <button onClick={() => scrollTo(index)} className='text-dark border-b-2 border-transparent hover:border-dark text-sm sm:text-base md:text-[100%] font-semibold'>
+                                {section}
+                            </button>
                         </li>
                     ))}
                 </ul>

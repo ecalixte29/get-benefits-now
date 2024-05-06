@@ -23,11 +23,7 @@ jobs:
             pm2 kill
             cd apps/get-benefits-now
             git pull --rebase origin main
-            cd client
             npm install
             npm run build
             pm2 serve --spa build 3000
-            cd ../server
-            npm install
-            pm2 start index.js
             pm2 save --force

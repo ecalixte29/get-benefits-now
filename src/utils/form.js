@@ -11,6 +11,18 @@ import flag from '../assets/images/united-states-flag.png'
 //types: radio_group, text, currency, email, tel, select, number
 //TODO: Add icons for each
 //TODO: Add advance validation ie max length, min length
+const FIELD_TYPES = {
+    RADIO_GROUP: 'radio_group',
+    TEXT: 'text',
+    CURRENCY: 'currency',
+    EMAIL: 'email',
+    TEL: 'tel',
+    SELECT: 'select',
+    NUMBER: 'number',
+    DATE: 'date',
+    APPENDABLE_FORM: 'appendable_form',
+};
+
 export const STEPS = [
     {
         name: 'eligibility', subSteps: [
@@ -20,7 +32,7 @@ export const STEPS = [
                 icon: insurance,
                 fields: [
                     {
-                        name: 'type', label: 'Insurance Type', type: 'radio_group', required: true, value: '', data: [
+                        name: 'type', label: 'Insurance Type', type: FIELD_TYPES.RADIO_GROUP, required: true, value: '', data: [
                             'Single',
                             'Couple',
                             'Family',
@@ -35,7 +47,7 @@ export const STEPS = [
                 icon: insurance,
                 fields: [
                     {
-                        name: 'current_insurance', label: 'are you on Medicare or Medicaid?', type: 'radio_group', required: true, value: '', data: [
+                        name: 'current_insurance', label: 'are you on Medicare or Medicaid?', type: FIELD_TYPES.RADIO_GROUP, required: true, value: '', data: [
                             'Yes',
                             'No'
                         ]
@@ -49,7 +61,7 @@ export const STEPS = [
                 icon: wage,
                 fields: [
                     {
-                        name: 'estimated_income', label: "estimated income", type: 'radio_group', required: true, value: '', data: [
+                        name: 'estimated_income', label: "estimated income", type: FIELD_TYPES.RADIO_GROUP, required: true, value: '', data: [
                             '$0 - $1215',
                             '$1216 - $2000',
                             '$2001 - $3500',
@@ -91,12 +103,12 @@ export const STEPS = [
                     { name: 'first_name', placeholder: 'john', type: 'text', value: '', required: true, label: 'first name' },
                     { name: 'last_name', placeholder: 'doe', type: 'text', value: '', required: true, label: 'last name' },
                     {
-                        name: 'gender', type: 'radio_group', value: '', required: true, data: [
+                        name: 'gender', type: FIELD_TYPES.RADIO_GROUP, value: '', required: true, data: [
                             'male', 'female'
                         ]
                     },
                     { name: 'dob', placeholder: 'john', type: 'date', value: '', required: true, label: 'date of birth' },
-                    { name: "uses_tobacco", type: 'radio_group', value: '', required: true, label: 'Are you a tobacco user?', data: ['Yes', 'No'] }
+                    { name: "uses_tobacco", type: FIELD_TYPES.RADIO_GROUP, value: '', required: true, label: 'Are you a tobacco user?', data: ['Yes', 'No'] }
                 ]
             },
             {
@@ -112,7 +124,7 @@ export const STEPS = [
                     { name: 'first_name', placeholder: 'john', type: 'text', value: '', required: true, label: 'first name' },
                     { name: 'last_name', placeholder: 'doe', type: 'text', value: '', required: true, label: 'last name' },
                     {
-                        name: 'gender', label: 'gender', type: 'radio_group', value: '', required: true, data: [
+                        name: 'gender', label: 'gender', type: FIELD_TYPES.RADIO_GROUP, value: '', required: true, data: [
                             'male', 'female',
                         ]
                     },
@@ -120,7 +132,7 @@ export const STEPS = [
                     { name: 'social_security_number', type: 'number', value: '', required: true, label: 'social security number' },
                     { name: 'email', type: 'email', placeholder: 'john.doe@example.com', value: '', required: true, label: 'email' },
                     { name: 'phone', type: 'tel', placeholder: '(123) 456-7890', value: '', required: true, label: 'phone number' },
-                    { name: "uses_tobacco", type: 'radio_group', value: '', required: true, label: 'Are you a tobacco user?', data: ['Yes', 'No'] }
+                    { name: "uses_tobacco", type: FIELD_TYPES.RADIO_GROUP, value: '', required: true, label: 'Are you a tobacco user?', data: ['Yes', 'No'] }
                 ]
             },
             {
@@ -160,7 +172,7 @@ export const STEPS = [
                             { name: 'first_name', placeholder: 'john', type: 'text', value: '', required: true, label: 'first name' },
                             { name: 'last_name', placeholder: 'doe', type: 'text', value: '', required: true, label: 'last name' },
                             {
-                                name: 'gender', label: 'gender', type: 'radio_group', value: '', required: true, data: [
+                                name: 'gender', label: 'gender', type: FIELD_TYPES.RADIO_GROUP, value: '', required: true, data: [
                                     'male', 'female',
                                 ]
                             },
@@ -195,7 +207,7 @@ export const STEPS = [
                             { name: 'social_security_number', type: 'number', value: '', required: true, label: 'social security number' },
                             { name: 'email', type: 'email', placeholder: 'john.doe@example.com', value: '', required: true, label: 'email' },
                             { name: 'phone', type: 'tel', placeholder: '(123) 456-7890', value: '', required: true, label: 'phone number' },
-                            { name: "uses_tobacco", type: 'radio_group', value: '', required: true, label: 'Are you a tobacco user?', data: ['Yes', 'No'] }
+                            { name: "uses_tobacco", type: FIELD_TYPES.RADIO_GROUP, value: '', required: true, label: 'Are you a tobacco user?', data: ['Yes', 'No'] }
                         ]
                     }
                 ]
@@ -211,7 +223,7 @@ export const STEPS = [
                 icon: flag,
                 fields: [
                     {
-                        name: 'us_national', label: 'nationality', type: 'radio_group', value: '', required: true, data: [
+                        name: 'us_national', label: 'nationality', type: FIELD_TYPES.RADIO_GROUP, value: '', required: true, data: [
                             'Yes', 'No'
                         ]
                     },

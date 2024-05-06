@@ -5,9 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import Bronze from '../../assets/images/bronze.webp';
 import Gold from '../../assets/images/gold.webp';
 import Silver from '../../assets/images/silver.png';
+import useContacts from '../../hooks/useContacts';
+import toast from 'react-hot-toast';
 
 const PlanCard = ({ plan }) => {
     const navigate = useNavigate();
+    const { updateContact } = useContacts();
 
     const metalLevelIndex = {
         Bronze: { index: 1, color: '#CD7F32' },
@@ -17,17 +20,14 @@ const PlanCard = ({ plan }) => {
     };
 
     const onPlanEnroll = async () => {
-        await fetch(`${process.env.REACT_APP_BACKEND_URL}/leads/${localStorage.getItem('uuid')}`, {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: 'PUT',
-            body: JSON.stringify({
+        try {
+            await updateContact(localStorage.getItem('uuid'), {
                 plan_id: plan.id
             })
-        });
-        navigate('/consent');
+            navigate('/identity-verification');
+        } catch (error) {
+            return toast.error(String(error), { duration: 3000 });
+        }
     };
 
     return (

@@ -9,6 +9,7 @@ import ConsentForm from './pages/consent_form';
 import TermsAndConditions from './pages/terms_and_conditions';
 import PrivacyPolicy from './pages/privacy_policy';
 import ThankYou from './pages/thank_you';
+import Identity from './pages/identity';
 import { BsChevronDoubleUp } from "react-icons/bs";
 import useSmoothScroll from './hooks/useSmoothScoll';
 import "./style.css"
@@ -31,6 +32,9 @@ const App = () => {
                         <QueryClientProvider client={queryClient}>
                             <Plans />
                         </QueryClientProvider>
+                    } />
+                    <Route path="/identity-verification" element={
+                        <Identity />
                     } />
                     <Route path="/consent" element={
                         <ConsentForm />

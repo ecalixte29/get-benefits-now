@@ -5,9 +5,11 @@ import { SecondaryButton } from "../../components/buttons"
 import SignaturePad from 'react-signature-canvas'
 import { useNavigate } from "react-router-dom"
 import { CONSENT_DATA } from "../../utils/consent_data"
+import useContacts from "../../hooks/useContacts"
 
 const ConsentForm = () => {
     const navigate = useNavigate()
+    const { getContact, updateContact } = useContacts()
 
     const signaturePadRef = useRef();
 
@@ -20,26 +22,18 @@ const ConsentForm = () => {
             const storedUUID = localStorage.getItem('uuid');
             if (!storedUUID) return navigate('/');
             setUUID(storedUUID);
-            let lead = await fetch(`${process.env.REACT_APP_BACKEND_URL}/leads/${storedUUID}`);
-            lead = await lead.json();
-            if (!lead?.data?.plan_id) return navigate('/plans');
-            setInitials(`${lead.data.details.first_name[0].toUpperCase()}${lead.data.details.last_name[0].toUpperCase()}`);
+            let lead = await getContact(storedUUID)
+            
+            if (!lead?.plan_id) return navigate('/plans');
+            setInitials(`${lead.details.first_name[0].toUpperCase()}${lead.details.last_name[0].toUpperCase()}`);
         };
         validate();
     }, [navigate]);
 
     const onSubmit = async () => {
         const signature = signaturePadRef.current.toDataURL();
-        await fetch(`${process.env.REACT_APP_BACKEND_URL}/leads/${uuid}`, {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: 'PUT',
-            body: JSON.stringify({
-                signature
-            })
-        });
+
+        await updateContact(uuid, { signature })
         navigate('/thank-you');
     };
 
@@ -57,12 +51,12 @@ const ConsentForm = () => {
                     />
                 ))}
                 <h2 className="text-xl text-dark capitalize">Signature</h2>
-                <SignaturePad 
-                    ref={signaturePadRef} 
-                    canvasProps={{ 
-                        className: 'w-full h-48 bg-white mt-5 shadow-global', 
-                        height: 200 
-                    }} 
+                <SignaturePad
+                    ref={signaturePadRef}
+                    canvasProps={{
+                        className: 'w-full h-48 bg-white mt-5 shadow-global',
+                        height: 200
+                    }}
                 />
                 <div className="flex justify-end">
                     <SecondaryButton
