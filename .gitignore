@@ -33,3 +33,4 @@ server/.env.production.local
 
 request.http
 **/.DS_Store
+node_modules
