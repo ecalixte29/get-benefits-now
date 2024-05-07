@@ -1,6 +1,6 @@
 import React from 'react'
 import useSmoothScroll from '../../hooks/useSmoothScoll';
-import { SecondaryButton } from '../../components/buttons';
+import { SecondaryButton } from '../buttons';
 import FillFormImg from '../../assets/images/form.jpg'
 import EvaluationImg from '../../assets/images/evaluation.jpg'
 import GetInsuredImg from '../../assets/images/insurance.jpg'

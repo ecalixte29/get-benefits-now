@@ -1,6 +1,6 @@
 import React from 'react';
 import useSmoothScroll from '../../hooks/useSmoothScoll';
-import Logo from './Logo';
+import Logo from '../shared/Logo';
 
 const SECTIONS = [
     "Home",

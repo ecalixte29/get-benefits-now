@@ -1,15 +1,15 @@
 import React from 'react';
-import Home from './pages/home';
-import Form from './pages/form';
-import Plans from './pages/plans';
+import Home from './components/Home';
+import Form from './components/Form';
+import Plans from './components/Plans';
+import Identity from './components/Identity';
+import ConsentForm from './components/ConsentForm';
+import TermsAndConditions from './components/TermsAndConditions';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import ThankYou from './components/ThankYou';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { FormContextProvider } from './context/FormContext';
-import ConsentForm from './pages/consent_form';
-import TermsAndConditions from './pages/terms_and_conditions';
-import PrivacyPolicy from './pages/privacy_policy';
-import ThankYou from './pages/thank_you';
-import Identity from './pages/identity';
 import { BsChevronDoubleUp } from "react-icons/bs";
 import useSmoothScroll from './hooks/useSmoothScoll';
 import "./style.css"

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Layout from "../../components/Layout";
 import employerImg from '../../assets/images/employer.webp'
 import toast, { Toaster } from "react-hot-toast";
-import TextInput from '../../components/form/TextInput';
+import TextInput from '../../components/formComponents/TextInput';
 import useContacts from '../../hooks/useContacts';
 import { useNavigate } from 'react-router-dom';
 import { SecondaryButton } from '../../components/buttons';
