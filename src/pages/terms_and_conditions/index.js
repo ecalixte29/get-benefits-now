@@ -10,7 +10,7 @@ const TermsAndConditions = () => {
                     <span className="bg-primary p-1 text-sm font-semibold mx-1">"Terms"</span>
                     outline the eligibility criteria and requirements for individuals seeking to enroll in the Zero Monthly Premium insurance plan 
                     <span className="bg-primary p-1 text-sm font-semibold mx-1">"Plan"</span>
-                    provided by K & A Insurance Agency 
+                    provided by K&A insurance Agency 
                     <span className="bg-primary p-1 text-sm font-semibold mx-1">"we", "us", or "our"</span>
                     . By submitting an application for enrollment in the Plan, you acknowledge and agree to comply with these Terms.
                 </p>
@@ -33,7 +33,7 @@ const TermsAndConditions = () => {
                     </li>
                     <li>
                         <span className="font-semibold">Residency:</span>
-                        Applicants must be legal residents of the geographic area serviced by K & A Insurance Agency and eligible for enrollment in the offered insurance plans.
+                        Applicants must be legal residents of the geographic area serviced by K&A insurance Agency and eligible for enrollment in the offered insurance plans.
                     </li>
                 </ul>
                 <h4 className="text-secondary font-semibold my-3">2. Income Verification Process</h4>
@@ -64,23 +64,23 @@ const TermsAndConditions = () => {
                 </p>
                 <h4 className="text-secondary font-semibold my-3">5. Possibility of Monthly Premiums</h4>
                 <p>
-                    While the Zero Monthly Premium plan offers coverage without a monthly premium for eligible individuals, it is important to note that some plans offered by K & A Insurance Agency may have a monthly premium based on factors such as income, household size, and tax filing status. Applicants should review plan details carefully to understand any applicable premium amounts.
+                    While the Zero Monthly Premium plan offers coverage without a monthly premium for eligible individuals, it is important to note that some plans offered by K&A insurance Agency may have a monthly premium based on factors such as income, household size, and tax filing status. Applicants should review plan details carefully to understand any applicable premium amounts.
                 </p>
                 <h4 className="text-secondary font-semibold my-3">6. Contact Consent</h4>
                 <p>
-                    By submitting an application for enrollment in the Zero Monthly Premium plan, you consent to K & A Insurance Agency contacting you via phone and email for purposes related to your enrollment and ongoing communication regarding your insurance coverage.
+                    By submitting an application for enrollment in the Zero Monthly Premium plan, you consent to K&A insurance Agency contacting you via phone and email for purposes related to your enrollment and ongoing communication regarding your insurance coverage.
                 </p>
                 <h4 className="text-secondary font-semibold my-3">7. Changes in Eligibility Status</h4>
                 <p>
-                    Applicants who experience changes in income, household size, or tax filing status after enrollment in the Zero Monthly Premium plan are required to notify K & A Insurance Agency promptly. Changes in eligibility status may affect plan coverage and premium amounts, and failure to report changes may result in termination of coverage.
+                    Applicants who experience changes in income, household size, or tax filing status after enrollment in the Zero Monthly Premium plan are required to notify K&A insurance Agency promptly. Changes in eligibility status may affect plan coverage and premium amounts, and failure to report changes may result in termination of coverage.
                 </p>
                 <h4 className="text-secondary font-semibold my-3">8. Compliance with Laws and Regulations</h4>
                 <p>
-                    Enrollment in the Zero Monthly Premium plan is subject to compliance with all applicable federal, state, and local laws, regulations, and guidelines governing health insurance coverage. K & A Insurance Agency reserves the right to verify eligibility and enforce compliance with these Terms and applicable laws and regulations.
+                    Enrollment in the Zero Monthly Premium plan is subject to compliance with all applicable federal, state, and local laws, regulations, and guidelines governing health insurance coverage. K&A insurance Agency reserves the right to verify eligibility and enforce compliance with these Terms and applicable laws and regulations.
                 </p>
                 <h4 className="text-secondary font-semibold my-3">9. Disclaimers</h4>
                 <p>
-                    Enrollment in the Zero Monthly Premium plan is subject to availability and may be limited based on factors such as plan capacity, funding constraints, and regulatory requirements. K & A Insurance Agency reserves the right to modify or terminate the Zero Monthly Premium plan or these Terms at any time without prior notice, subject to applicable law.
+                    Enrollment in the Zero Monthly Premium plan is subject to availability and may be limited based on factors such as plan capacity, funding constraints, and regulatory requirements. K&A insurance Agency reserves the right to modify or terminate the Zero Monthly Premium plan or these Terms at any time without prior notice, subject to applicable law.
                 </p>
                 <h4 className="text-secondary font-semibold my-3">10. Contact Information</h4>
                 <p>

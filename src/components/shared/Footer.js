@@ -11,8 +11,8 @@ const Footer = () => {
                     <div className='col-span-1 sm:col-span-2 col-start-1 sm:col-end-5'>
                         <h1 className='font-semibold'>Attention: </h1>
                         <p className='text-gray-400 text-xs text-justify'>
-                            This website is operated by K & A Insurance and is not the Health Insurance Marketplace®️ website.
-                            In offering this website, K & A Insurance is required to comply with all applicable Federal law,
+                            This website is operated by K&A insurance and is not the Health Insurance Marketplace®️ website.
+                            In offering this website, K&A insurance is required to comply with all applicable Federal law,
                             including the standards established under 45 CFR 155.220 (c) and (d) and standards established
                             under 45 CFR 155.260 to protect the privacy and security of personally identifiable information.
                             This website may not support enrollment in all Qualified Health Plans (QHPs) being offered in your
