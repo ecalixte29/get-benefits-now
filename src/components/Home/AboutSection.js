@@ -1,7 +1,7 @@
 import React from 'react';
 import AboutImg from '../../assets/images/about.jpg';
 
-const About = () => {
+const AboutSection = () => {
     return (
         <section id="about" className='container mx-auto min-h-screen flex justify-between items-center'>
             <div className='grid grid-cols-5 space-x-5 md:space-x-10'>
@@ -43,4 +43,4 @@ const About = () => {
     );
 };
 
-export default About;
+export default AboutSection;

@@ -1,5 +1,5 @@
 import React from 'react'
-import { SecondaryButton } from '../../components/buttons';
+import { SecondaryButton } from '../buttons';
 import { FaStar, FaCheck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Bronze from '../../assets/images/bronze.webp';

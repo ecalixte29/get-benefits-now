@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TextInput from "../../components/form/TextInput";
-import { SecondaryButton } from "../../components/buttons";
+import TextInput from "../formComponents/TextInput";
+import { SecondaryButton } from "../buttons";
 import HeroImg from '../../assets/images/hero.webp'
+import useForm from "../../hooks/useForm";
 
-const Hero = () => {
+const HeroSection = () => {
+    const { initializeForm, inputChangeHandler } = useForm();
     const navigate = useNavigate();
+    const [zipCode, setZipCode] = useState('');
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        initializeForm();
+    }, [initializeForm]);
+
+    const handleNextButtonClick = () => {
+        if (zipCode.trim() !== '') {
+            navigate('/form');
+        } else {
+            setError(true);
+        }
+    };
 
     return (
         <section
@@ -39,11 +55,18 @@ const Hero = () => {
                         <TextInput
                             placeholder="123456"
                             label={""}
-                            onChange={() => { }}
+                            onChange={(value) => {
+                                inputChangeHandler('zip', value);
+                                setZipCode(value);
+                                setError(false);
+                            }}
                             wrapperClasses='flex-1'
-                            innerClasses='py-4 sm:text-xl font-bold'
+                            innerClasses={`py-4 sm:text-xl font-bold ${error ? 'border-error' : 'border-light'}`}
+                            required={true}
+                            error={error}
+                            type='number'
                         />
-                        <SecondaryButton onClick={() => navigate('/form')} text="Next" classNames="font-bold text-xl mb-5 border border-secondary" />
+                        <SecondaryButton onClick={handleNextButtonClick} text="Next" classNames="font-bold text-xl mb-5 border border-secondary" />
                     </div>
                 </div>
             </div>
@@ -51,4 +74,4 @@ const Hero = () => {
     );
 };
 
-export default Hero;
+export default HeroSection;

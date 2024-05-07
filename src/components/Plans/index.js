@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Layout from '../../components/Layout';
-import PlanCard from '../plans/PlanCard';
+import Layout from '../Layout';
+import PlanCard from './PlanCard';
 import { useNavigate } from 'react-router-dom';
 import states from 'states-us';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useInView } from 'react-intersection-observer';
-import ActivityIndicator from '../../components/shared/ActivityIndicator';
+import ActivityIndicator from '../shared/ActivityIndicator';
 import useContacts from '../../hooks/useContacts';
 
 const Plans = () => {
