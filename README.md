@@ -70,8 +70,9 @@ To get started with the Benefits Rite Now website, follow these steps:
    The admin application will be available at [http://localhost:9000](http://localhost:9000) in your web browser
 
 ## Deployment
-    Benefits Rite Now is deployed and accessible at 
-        - [benefitsritenow.com](https://benefitsritenow.com)
-        - [insurancemadesimple.ai](https://insurancemadesimple.ai)
 
-    To access the admin dashboard, go to [admin.benefitsritenow.com](https://admin.benefitsritenow.com)
+Benefits Rite Now is deployed and accessible at 
+- [benefitsritenow.com](https://benefitsritenow.com)
+- [insurancemadesimple.ai](https://insurancemadesimple.ai)
+
+To access the admin dashboard, go to [admin.benefitsritenow.com](https://admin.benefitsritenow.com)
