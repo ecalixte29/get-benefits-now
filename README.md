@@ -1,6 +1,6 @@
-# Get Benefits Now
+# Benefits Rite Now
 
-Get Benefits Now is a MERN (MongoDB, Express.js, React, Node.js) website that provides users with information and services related to benefits. This repository serves as a monorepo containing both the client-side and server-side code.
+Benefits Rite Now is a MERN (MongoDB, Express.js, React, Node.js) website that provides users with information and services related to benefits. This repository serves as a monorepo containing both the client-side and server-side code.
 
 ## Prerequisites
 
@@ -11,7 +11,7 @@ Before running the application, ensure you have the following prerequisites inst
 
 ## Getting Started
 
-To get started with the Get Benefits Now website, follow these steps:
+To get started with the Benefits Rite Now website, follow these steps:
 
 1. Clone the repository to your local machine:
 
@@ -25,9 +25,15 @@ To get started with the Get Benefits Now website, follow these steps:
    cd get-benefits-now
    ```
 
-### Setting up the App
+### Setting up the Client
 
-2. Install dependencies:
+3. Navigate to the client directory:
+
+   ```bash
+   cd client
+   ```
+
+4. Install dependencies:
 
    ```bash
    npm install
@@ -39,7 +45,33 @@ To get started with the Get Benefits Now website, follow these steps:
    npm start
    ```
 
-   The client application will be available at [http://localhost:3000](http://localhost:3000) in your web browser.
+   The client application will be available at [http://localhost:3000](http://localhost:3000) in your web browser
+
+### Setting up the Admin Panel
+
+3. Navigate to the client directory:
+
+   ```bash
+   cd admin
+   ```
+
+4. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+5. Run the application:
+
+   ```bash
+   npm start
+   ```
+
+   The admin application will be available at [http://localhost:9000](http://localhost:9000) in your web browser
 
 ## Deployment
-    The Get Benefits Now website is deployed and accessible at [benefitsritenow.com](https://benefitsritenow.com).
+    Benefits Rite Now is deployed and accessible at 
+        - [benefitsritenow.com](https://benefitsritenow.com)
+        - [insurancemadesimple.ai](https://insurancemadesimple.ai)
+
+    To access the admin dashboard, go to [admin.benefitsritenow.com](https://admin.benefitsritenow.com)
