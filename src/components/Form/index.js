@@ -25,8 +25,6 @@ const Form = () => {
         if (zip && zip.length > 0) inputChangeHandler('zip', zip);
     }, [currentSubStep])
 
-
-
     const submit = async (setLoading) => {
         const {
             type,
