@@ -1,27 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import TextInput from "../formComponents/TextInput";
-import { SecondaryButton } from "../buttons";
+import TextField from "../shared/FormElements/TextField";
+import { SecondaryButton } from '../shared/Buttons';
 import HeroImg from '../../assets/images/hero.webp'
-import useForm from "../../hooks/useForm";
 
 const HeroSection = () => {
-    const { initializeForm, inputChangeHandler } = useForm();
     const navigate = useNavigate();
     const [zipCode, setZipCode] = useState('');
     const [error, setError] = useState(false);
 
-    useEffect(() => {
-        initializeForm();
-    }, [initializeForm]);
-
     const handleNextButtonClick = () => {
         if (zipCode.trim() !== '') {
+            localStorage.setItem("zip", zipCode.trim());
             navigate('/form');
         } else {
             setError(true);
         }
     };
+
+    useEffect(() => localStorage.removeItem("zip"), [])
 
     return (
         <section
@@ -52,11 +49,10 @@ const HeroSection = () => {
                         Enter your zip code to see if you qualify
                     </p>
                     <div className="flex flex-col sm:flex-row items-stretch justify-center">
-                        <TextInput
+                        <TextField
                             placeholder="123456"
                             label={""}
                             onChange={(value) => {
-                                inputChangeHandler('zip', value);
                                 setZipCode(value);
                                 setError(false);
                             }}

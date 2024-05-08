@@ -1,5 +1,5 @@
 import React from 'react';
-import ActivityIndicator from '../shared/ActivityIndicator';
+import ActivityIndicator from '../ActivityIndicator';
 
 const PrimaryButton = ({
   text,

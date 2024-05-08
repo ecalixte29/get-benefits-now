@@ -8,7 +8,7 @@ const Footer = () => {
             <div className='container mx-auto text-white space-y-8 pt-8 pb-4'>
                 <div className='w-11/12 sm:w-auto mx-auto grid grid-cols-1 sm:grid-cols-4 items-start justify-between'>
                     <Logo invert={true} />
-                    <div className='col-span-1 sm:col-span-2 col-start-1 sm:col-end-5'>
+                    <div className='col-span-1 mt-3 sm:mt-0 sm:col-span-2 col-start-1 sm:col-end-5'>
                         <h1 className='font-semibold'>Attention: </h1>
                         <p className='text-gray-400 text-xs text-justify'>
                             This website is operated by K&A insurance and is not the Health Insurance Marketplace®️ website.

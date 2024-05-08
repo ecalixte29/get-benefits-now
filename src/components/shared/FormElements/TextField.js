@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TextInput = ({ label, error, onChange, id, required, width, wrapperClasses = '', innerClasses = '', ...additional_options }) => {
+const TextField = ({ label, type, value, error, onChange, id, required, wrapperClasses = '', innerClasses = '', ...additional_options }) => {
     return (
         <div key={id} className={`relative mb-5 ${wrapperClasses}`}>
             <label
@@ -14,19 +14,21 @@ const TextInput = ({ label, error, onChange, id, required, width, wrapperClasses
                 key={id}
                 id={id}
                 name={id}
+                type={type}
+                value={value}
                 onChange={(e) => onChange(e.target.value)}
                 min={0}
                 {...additional_options}
-                className={`block ${width ? width : 'w-full'} border border-light py-3 text-gray-900 shadow-sm outline-0 ring-0 ${error ? 'border-error' : 'border-light'} placeholder:text-gray-400 ${error ? 'focus:border-error' : 'focus:border-primary'} sm:text-sm sm:leading-6 ${innerClasses}`}
+                className={`block w-full border border-light py-3 text-gray-900 shadow-sm outline-0 ring-0 focus:ring-0 ${error ? 'border-error' : 'border-light'} placeholder:text-gray-400 ${error ? 'focus:border-error' : 'focus:border-primary'} sm:text-sm sm:leading-6 ${innerClasses}`}
             />
         </div>
     );
 };
 
-TextInput.propTypes = {
+TextField.propTypes = {
     label: PropTypes.string.isRequired,
     autoComplete: PropTypes.bool,
     error: PropTypes.bool.isRequired
 };
 
-export default TextInput;
+export default TextField;

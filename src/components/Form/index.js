@@ -4,8 +4,8 @@ import useForm from "../../hooks/useForm";
 import Layout from "../Layout";
 import toast, { Toaster } from "react-hot-toast";
 import useContacts from '../../hooks/useContacts'
-import FormItem from '../formComponents/FormItem'
-import { SecondaryButton } from "../buttons";
+import InputField from '../shared/FormElements/InputField'
+import { SecondaryButton } from '../shared/Buttons';
 import _ from 'lodash'
 
 const Form = () => {
@@ -13,12 +13,19 @@ const Form = () => {
     const [loading, setLoading] = useState(false);
 
     const { createContact } = useContacts()
-    const { currentStep, state, initializeForm, parseData, nextStep, previousStep, inputChangeHandler, isEndReached } = useForm();
+    const { initializeForm, currentStep, currentSubStep, state, parseData, nextStep, previousStep, inputChangeHandler, isEndReached } = useForm();
     const navigate = useNavigate();
 
     useEffect(() => {
         initializeForm();
-    }, [initializeForm])
+    }, []);
+
+    useEffect(() => {
+        const zip = localStorage.getItem('zip')
+        if (zip && zip.length > 0) inputChangeHandler('zip', zip);
+    }, [currentSubStep])
+
+
 
     const submit = async (setLoading) => {
         const {
@@ -90,14 +97,17 @@ const Form = () => {
                     </div>
                     <div className="bg-gray-50 border border-light shadow p-6 mb-8">
                         {currentStep.fields.map((field, index) => (
-                            <FormItem
-                                error={errorIndex === index}
-                                changeHandler={(input) => {
-                                    setErrorIndex(null);
-                                    inputChangeHandler(field.name, input);
-                                }}
-                                field={field}
-                            />
+                            field.name !== 'zip' && (
+                                <InputField
+                                    key={index}
+                                    error={errorIndex === index}
+                                    changeHandler={(input) => {
+                                        setErrorIndex(null);
+                                        inputChangeHandler(field.name, input);
+                                    }}
+                                    field={field}
+                                />
+                            )
                         ))}
                     </div>
                     <div className="w-full flex justify-between items-center gap-x-3">

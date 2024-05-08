@@ -94,6 +94,7 @@ const useContacts = () => {
                 tags: ["benefitsritenow.com", process.env.NODE_ENV],
                 customField: {
                     [GHL_CUSTOM_FIELDS["contact.primary_ssn"]]: contactDoc.ssn,
+                    [GHL_CUSTOM_FIELDS["contact.county"]]: contactDoc.details.county,
                     [GHL_CUSTOM_FIELDS["contact.current_insurance"]]: contactDoc.details.current_insurance,
                     [GHL_CUSTOM_FIELDS["contact.estimated_household_annual_income"]]: contactDoc.details.estimated_income,
                     [GHL_CUSTOM_FIELDS["contact.recent_employer"]]: contactDoc.details.recent_employer,
@@ -103,7 +104,7 @@ const useContacts = () => {
                     ...dependentsDetails,
                 }
             };
-    
+
             if (contactDoc.spouse_details) {
                 const spouseCustomFields = {
                     [GHL_CUSTOM_FIELDS["contact.do_you_have_a_spouse_"]]: 'Yes',

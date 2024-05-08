@@ -17,7 +17,7 @@ const useSmoothScroll = () => {
             // Clean up event listener
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [handleScroll]);
+    }, []);
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -25,7 +25,7 @@ const useSmoothScroll = () => {
             // Clean up event listener
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [handleScroll]);
+    }, []);
 
     const scrollTo = useCallback((index) => {
         window.scrollTo({

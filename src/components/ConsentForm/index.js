@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import AttestableCard from "./AttestableCard"
 import Layout from '../../components/Layout'
-import { SecondaryButton } from "../../components/buttons"
+import { SecondaryButton } from '../shared/Buttons'
 import SignaturePad from 'react-signature-canvas'
 import { useNavigate } from "react-router-dom"
 import { CONSENT_DATA } from "../../utils/consent_data"
@@ -28,7 +28,7 @@ const ConsentForm = () => {
             setInitials(`${lead.details.first_name[0].toUpperCase()}${lead.details.last_name[0].toUpperCase()}`);
         };
         validate();
-    }, [navigate]);
+    }, []);
 
     const onSubmit = async () => {
         const signature = signaturePadRef.current.toDataURL();

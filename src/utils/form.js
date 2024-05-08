@@ -150,9 +150,10 @@ export const STEPS = [
                 icon: location,
                 fields: [
                     { name: 'street', type: 'text', placeholder: '1234 Main St.', value: '', required: true, label: 'street' },
+                    { name: 'county', type: 'text', placeholder: 'county', value: '', label: 'county' },
                     { name: 'city', type: 'text', placeholder: 'city', value: '', required: true, label: 'city' },
                     { name: 'state', type: 'select', placeholder: 'state', value: '', required: true, label: 'state', data: states.map(state => state.name) },
-                    { name: 'zip', type: 'text', placeholder: '12345', value: '', required: true, label: 'zip code' },
+                    { name: 'zip', type: 'number', placeholder: '12345', value: '', required: true, label: 'zip code' },
                 ]
             },
             {

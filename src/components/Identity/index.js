@@ -2,10 +2,10 @@ import { useState } from 'react'
 import Layout from "../../components/Layout";
 import employerImg from '../../assets/images/employer.webp'
 import toast, { Toaster } from "react-hot-toast";
-import TextInput from '../../components/formComponents/TextInput';
+import TextField from '../shared/FormElements/TextField';
 import useContacts from '../../hooks/useContacts';
 import { useNavigate } from 'react-router-dom';
-import { SecondaryButton } from '../../components/buttons';
+import { SecondaryButton } from '../shared/Buttons';
 
 const STEP = {
     name: 'details',
@@ -69,7 +69,7 @@ const Identity = () => {
                                 onChange: (input) => setField(field.name, input),
                                 required: field.required
                             };
-                            return <TextInput key={index} {...commonProps} />;
+                            return <TextField key={index} {...commonProps} />;
                         })}
                     </div>
                     <SecondaryButton

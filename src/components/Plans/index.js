@@ -22,7 +22,8 @@ const Plans = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...leadData, offset: pageParam })
             });
-            return await req.json();
+            const response = await req.json();
+            return response
         },
         enabled: leadData !== null,
         getNextPageParam: (_lastPage, allPages) => {
@@ -44,13 +45,11 @@ const Plans = () => {
                 
                 if (data.error) {
                     console.error('Error fetching countyfips:', data.error);
-                    // Handle error
                     return;
                 }
 
                 if (data.counties.length === 0) {
                     console.error('No counties found for the provided ZIP code');
-                    // Handle error
                     return;
                 }
 
@@ -75,18 +74,18 @@ const Plans = () => {
                 place: {
                     countyfips: countyfips,
                     state: states.find(s => s.name === lead.details.state)?.abbreviation,
-                    zipcode: lead.details.zip
+                    zipcode: lead.details.zip.toString()
                 }
             };
             setLeadData(parsedData);
         };
         fetchData();
-    }, [navigate, getContact]);
+    }, []);
 
     useEffect(() => {
         if (isLoading || leadData === null || !isInView) return;
         fetchNextPage();
-    }, [fetchNextPage, isInView, isLoading, leadData]);
+    }, [isInView, isLoading, leadData]);
 
     const dataToPeople = ({ dob, gender, relationship, uses_tobacco }) => ({
         dob: new Date(dob.seconds * 1000).toISOString().split('T')[0],

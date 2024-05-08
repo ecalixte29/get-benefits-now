@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { SecondaryButton } from "../buttons"
-import FormItem from "./FormItem"
+import { SecondaryButton } from "../../shared/Buttons"
+import InputField from "./InputField"
 
 const AppendableForm = ({ label, fields, onAppend, required, error }) => {
     const [formData, setFormData] = useState(fields.map(field => ({ ...field })))
@@ -30,7 +30,7 @@ const AppendableForm = ({ label, fields, onAppend, required, error }) => {
             </label>
             <div className="">
                 {formData && formData.map((field, index) => (
-                    <FormItem
+                    <InputField
                         error={errorIndex === index}
                         changeHandler={(input) => changeHandler(field.name, input)}
                         field={field}
