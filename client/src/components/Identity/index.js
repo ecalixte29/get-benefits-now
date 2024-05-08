@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Layout from "../../components/Layout";
+import Layout from "../Layout";
 import employerImg from '../../assets/images/employer.webp'
 import toast, { Toaster } from "react-hot-toast";
 import TextField from '../shared/FormElements/TextField';

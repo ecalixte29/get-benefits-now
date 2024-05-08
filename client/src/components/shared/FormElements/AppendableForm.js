@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { SecondaryButton } from "../../shared/Buttons"
+import { SecondaryButton } from "../Buttons"
 import InputField from "./InputField"
 
 const AppendableForm = ({ label, fields, onAppend, required, error }) => {

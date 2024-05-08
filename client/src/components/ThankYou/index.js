@@ -1,5 +1,5 @@
 import React from "react"
-import Logo from '../../components/shared/Logo';
+import Logo from '../shared/Logo';
 import HappyFamilyImg from '../../assets/images/happy-family.webp';
 import { FaFlagCheckered } from "react-icons/fa";
 

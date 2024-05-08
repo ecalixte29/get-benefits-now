@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import AttestableCard from "./AttestableCard"
-import Layout from '../../components/Layout'
+import Layout from '../Layout'
 import { SecondaryButton } from '../shared/Buttons'
 import SignaturePad from 'react-signature-canvas'
 import { useNavigate } from "react-router-dom"
