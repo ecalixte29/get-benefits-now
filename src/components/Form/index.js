@@ -20,6 +20,16 @@ const Form = () => {
         initializeForm();
     }, []);
 
+    useEffect(() => {
+        const fieldIndex = currentStep.fields.findIndex((field) => field.name === 'zip')
+        const zip = localStorage.getItem('zip')
+        if (fieldIndex >= 0 && zip && zip.length > 0) {
+            setErrorIndex(null)
+            inputChangeHandler('zip', zip)
+        }
+    }, [currentStep.fields])
+
+
     const submit = async (setLoading) => {
         const {
             type,
