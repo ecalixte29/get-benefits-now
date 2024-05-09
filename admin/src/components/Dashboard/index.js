@@ -3,8 +3,10 @@ import Layout from '../shared/Layout'
 
 const Dashboard = () => {
     return (
-        <Layout>
+        <Layout title='dashboard'>
+            <div className='p-6 bg-white shadow-sm rounded-lg'>
             <h1>Dashboard</h1>
+            </div>
         </Layout>
     )
 }
