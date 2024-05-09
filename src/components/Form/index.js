@@ -23,7 +23,7 @@ const Form = () => {
     useEffect(() => {
         const zip = localStorage.getItem('zip')
         if (zip && zip.length > 0) inputChangeHandler('zip', zip);
-    }, [currentSubStep])
+    }, [])
 
     const submit = async (setLoading) => {
         const {
@@ -95,7 +95,7 @@ const Form = () => {
                     </div>
                     <div className="bg-gray-50 border border-light shadow p-6 mb-8">
                         {currentStep.fields.map((field, index) => (
-                            field.name !== 'zip' && (
+                            (localStorage.getItem('zip') === null || field.name !== 'zip') && (
                                 <InputField
                                     key={index}
                                     error={errorIndex === index}
