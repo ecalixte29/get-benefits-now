@@ -13,17 +13,12 @@ const Form = () => {
     const [loading, setLoading] = useState(false);
 
     const { createContact } = useContacts()
-    const { initializeForm, currentStep, currentSubStep, state, parseData, nextStep, previousStep, inputChangeHandler, isEndReached } = useForm();
+    const { initializeForm, currentStep, state, parseData, nextStep, previousStep, inputChangeHandler, isEndReached } = useForm();
     const navigate = useNavigate();
 
     useEffect(() => {
         initializeForm();
     }, []);
-
-    useEffect(() => {
-        const zip = localStorage.getItem('zip')
-        if (zip && zip.length > 0) inputChangeHandler('zip', zip);
-    }, [])
 
     const submit = async (setLoading) => {
         const {

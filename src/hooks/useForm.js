@@ -27,6 +27,9 @@ const useForm = () => {
             ),
         }));
         setForm(data);
+
+        const zip = localStorage.getItem('zip')
+        if (zip && zip.length > 0) inputChangeHandler('zip', zip);
     };
 
     const updateFormField = (key, value, filterFunc = null) => {
