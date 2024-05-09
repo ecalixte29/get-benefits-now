@@ -228,7 +228,7 @@ const Sidebar = () => {
                                     <span className="sr-only">
                                         Your profile
                                     </span>
-                                    <span aria-hidden="true">Tom Cook</span>
+                                    <span aria-hidden="true">Huzaifa Jalil</span>
                                 </a>
                             </li>
                         </ul>
