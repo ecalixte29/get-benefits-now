@@ -78,9 +78,10 @@ const Form = () => {
         if (spouse_details) data['spouse_details'] = spouse_details
 
         try {
+            console.log('data', data)
             const response = await createContact(data)
             localStorage.setItem('uuid', response.id)
-            navigate('/plans')
+            navigate('/plans')  
         } catch (error) {
             return toast.error(String(error), { duration: 3000 })
         }

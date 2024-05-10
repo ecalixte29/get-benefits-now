@@ -8,6 +8,8 @@ import {
 } from '@firebase/firestore'
 import { database } from '../configs/firebase'
 import GHL_CUSTOM_FIELDS from '../utils/ghl_custom_fields'
+import axios from 'axios'
+import { IoCompassOutline } from 'react-icons/io5'
 
 const COLLECTION = 'contacts'
 
@@ -16,13 +18,24 @@ const useContacts = () => {
     const contactRef = id => doc(database, COLLECTION, id)
 
     const createContact = async payload => {
-        try {
-            const response = await addDoc(contactsRef, payload)
-            return response
-        } catch (error) {
-            console.error('Error creating contact:', error)
-            throw error
-        }
+        let config = {
+            method: 'post',
+            url: 'http://localhost:5001/contacts',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(payload)
+        };
+
+
+        axios.request(config)
+            .then((response) => {
+                console.log('response', response)
+                return response.status
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     const updateContact = async (id, payload) => {
@@ -78,7 +91,7 @@ const useContacts = () => {
                     if (index >= 1 && index <= 2) {
                         dependentsDetails[
                             GHL_CUSTOM_FIELDS[
-                                `contact.do_you_have_a_${index + 1}nd_dependent`
+                            `contact.do_you_have_a_${index + 1}nd_dependent`
                             ]
                         ] = 'Yes'
                     }

@@ -99,15 +99,14 @@ const useForm = () => {
         const parseField = field => {
             switch (field.type) {
                 case 'number':
+                    return Number(field.value);
                 case 'currency_slider':
                 case 'currency':
                     return Number(field.value)
                 case 'radio_group':
-                    return field.value === 'Yes' || field.value === 'No'
-                        ? field.value.toUpperCase() === 'YES'
-                            ? 'true'
-                            : 'false'
-                        : field.value
+                    return field.value.toLowerCase() === 'yes' || field.value.toLowerCase() === 'no'
+                        ? field.value.toLowerCase() === 'yes'
+                        : field.value;
                 case 'date':
                     return new Date(field.value)
                 default:
@@ -150,7 +149,20 @@ const useForm = () => {
                         f => f.name === field.dependency && f.value === 'Yes'
                     )
             )
-            if (
+            console.log('filteredFields', filteredFields, 'stepName', step.name)
+            if (filteredFields[0].name === 'dependents') {
+                parsedStep[step.name] = [];
+                filteredFields[0].value.forEach((dependentValue, index) => {
+                    filteredFields[0].fields.forEach((field) => {
+                        const parsedValue = parseField({ value: dependentValue[field.name], type: field.type });
+                        if (parsedStep[step.name][index]) {
+                            parsedStep[step.name][index] = { ...parsedStep[step.name][index], [field.name]: parsedValue };
+                        } else {
+                            parsedStep[step.name].push({ [field.name]: parsedValue });
+                        }
+                    });
+                });
+            } else if (
                 filteredFields.length === 1 &&
                 filteredFields[0].name === step.name
             ) {
@@ -176,6 +188,7 @@ const useForm = () => {
         const parsedData = parseFormData(state.form)
         return parsedData
     }
+
     return {
         initializeForm,
         setForm,
