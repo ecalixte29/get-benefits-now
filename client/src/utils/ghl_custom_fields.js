@@ -10,7 +10,6 @@ const GHL_CUSTOM_FIELDS = {
     'contact.consultant_name': 'XJnwbuI6R6GJ7dAasBPp',
     'contact.consent': '5uF9t3J96JGcbcTY6lnl',
     'contact.county': 'IocevIdNBY7CbXTUO2HJ',
-    'contact.current_insurance': 'ZbiD3hnNT84pA457jKSI',
     'contact.dependent_1_dob': 'yHxZLs5CDyrXDSPdBj6E',
     'contact.dependent_1_full_name': '  ',
     'contact.dependent_1_ssn': 'VHEsDNv6Ix9GwDS5t7K1',

@@ -62,7 +62,6 @@ const Plans = () => {
             } catch (error) {
                 console.error('Error fetching countyfips:', error)
             }
-            console.log('countyfips', countyfips)
             const hasMarriedCouple = ['family', 'couple'].includes(lead.type)
 
             const parsedData = {
@@ -105,11 +104,11 @@ const Plans = () => {
     }, [isInView, isLoading, leadData])
 
     const dataToPeople = ({ dob, gender, relationship, uses_tobacco }) => ({
-        dob: new Date(dob.seconds * 1000).toISOString().split('T')[0],
+        dob: dob.split('T')[0],
         gender: gender.charAt(0).toUpperCase() + gender.slice(1),
         relationship,
         aptc_eligible: true,
-        uses_tobacco: uses_tobacco.toLowerCase() === 'true',
+        uses_tobacco,
     })
 
     return (

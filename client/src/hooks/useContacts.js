@@ -1,47 +1,23 @@
-import {
-    addDoc,
-    collection,
-    deleteDoc,
-    doc,
-    getDoc,
-    updateDoc,
-} from '@firebase/firestore'
-import { database } from '../configs/firebase'
 import GHL_CUSTOM_FIELDS from '../utils/ghl_custom_fields'
 import axios from 'axios'
-import { IoCompassOutline } from 'react-icons/io5'
-
-const COLLECTION = 'contacts'
 
 const useContacts = () => {
-    const contactsRef = collection(database, COLLECTION)
-    const contactRef = id => doc(database, COLLECTION, id)
 
     const createContact = async payload => {
         let config = {
             method: 'post',
-            url: 'http://localhost:5001/contacts',
+            url: `${process.env.REACT_APP_BACKEND_URL}/contacts`,
             headers: {
                 'Content-Type': 'application/json'
             },
             data: JSON.stringify(payload)
         };
-
-
-        axios.request(config)
-            .then((response) => {
-                console.log('response', response)
-                return response.status
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        return (await axios.request(config)).data
     }
 
     const updateContact = async (id, payload) => {
         try {
-            const contactRef = doc(database, COLLECTION, id)
-            await updateDoc(contactRef, payload)
+            return (await axios.put(`${process.env.REACT_APP_BACKEND_URL}/contacts/${id}`, { payload })).data
         } catch (error) {
             console.error('Error updating contact:', error)
             throw error
@@ -50,25 +26,10 @@ const useContacts = () => {
 
     const getContact = async id => {
         try {
-            const reponse = await getDoc(contactRef(id))
-            if (reponse.exists()) {
-                return reponse.data()
-            } else {
-                let errMessage = 'No such record!'
-                console.log(errMessage)
-                throw new Error(errMessage)
-            }
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/contacts/${id}`)
+            return response.data
         } catch (error) {
             console.error('Error fetching contact:', error)
-            throw error
-        }
-    }
-
-    const deleteContact = async id => {
-        try {
-            await deleteDoc(contactRef(id))
-        } catch (error) {
-            console.error('Error deleting contact:', error)
             throw error
         }
     }
@@ -116,7 +77,7 @@ const useContacts = () => {
                     [GHL_CUSTOM_FIELDS['contact.primary_ssn']]: contactDoc.ssn,
                     [GHL_CUSTOM_FIELDS['contact.county']]:
                         contactDoc.details.county,
-                    [GHL_CUSTOM_FIELDS['contact.current_insurance']]:
+                    [GHL_CUSTOM_FIELDS['contact.are_you_on_medicaid_or_medicare']]:
                         contactDoc.details.current_insurance,
                     [GHL_CUSTOM_FIELDS[
                         'contact.estimated_household_annual_income'
@@ -190,21 +151,14 @@ const useContacts = () => {
         }
     }
 
-    const formatDate = timestamp => {
-        const date = new Date(timestamp.seconds * 1000)
-
-        const year = date.getFullYear()
-        const month = (date.getMonth() + 1).toString().padStart(2, '0')
-        const day = date.getDate().toString().padStart(2, '0')
-
-        return `${year}-${month}-${day}`
+    const formatDate = dateString => {
+        return dateString.split("T")[0]
     }
 
     return {
         createContact,
         updateContact,
         getContact,
-        deleteContact,
         sendContactToGHL,
     }
 }

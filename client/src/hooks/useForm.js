@@ -73,7 +73,6 @@ const useForm = () => {
                 return true
             return false
         })
-
         if (invalidFieldIndex >= 0) return onError(invalidFieldIndex)
 
         if (state.currentSubStep < currentStep.subSteps.length - 1) {
@@ -149,7 +148,6 @@ const useForm = () => {
                         f => f.name === field.dependency && f.value === 'Yes'
                     )
             )
-            console.log('filteredFields', filteredFields, 'stepName', step.name)
             if (filteredFields[0].name === 'dependents') {
                 parsedStep[step.name] = [];
                 filteredFields[0].value.forEach((dependentValue, index) => {

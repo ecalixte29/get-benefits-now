@@ -38,7 +38,8 @@ const Form = () => {
         }
     }, [currentStep.fields])
 
-    const submit = async setLoading => {
+    const submit = async () => {
+        setLoading(true);
         const {
             type,
             current_insurance,
@@ -54,22 +55,21 @@ const Form = () => {
             spouse_details,
             dependents,
         } = parseData()
-
         let data = {
-            details: _.pickBy(
+            details: _.omitBy(
                 {
                     current_insurance,
                     ...income,
                     ...details,
                     ...contact,
                     ...address,
-                    us_national,
+                    us_national: us_national,
                     recent_employer,
                     providers_in_network,
                     medications_in_network,
                     procedures_in_network,
                 },
-                _.identity
+                _.isNil
             ),
             type: type.toLowerCase().replace(' ', '-'),
         }
@@ -78,9 +78,9 @@ const Form = () => {
         if (spouse_details) data['spouse_details'] = spouse_details
 
         try {
-            console.log('data', data)
+            setLoading(false);
             const response = await createContact(data)
-            localStorage.setItem('uuid', response.id)
+            localStorage.setItem('uuid', response._id)
             navigate('/plans')  
         } catch (error) {
             return toast.error(String(error), { duration: 3000 })

@@ -26,7 +26,7 @@ const AppendableForm = ({ label, fields, onAppend, required, error }) => {
         )
         setFormData(fields.map(field => ({ ...field })))
     }
-
+    
     return (
         <div className="relative mb-5 p-6 shadow-sm ring-1 ring-inset ring-gray-300">
             <label

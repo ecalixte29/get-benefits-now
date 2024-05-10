@@ -26,7 +26,7 @@ const Contacts = () => {
         <Layout title='Contacts'>
             <ul role="list" className="divide-y divide-gray-100">
                 {contacts.map((contact) => (
-                    <li key={contact.id} className="flex justify-between items-center gap-x-6 p-4 rounded-lg hover:bg-primary-50">
+                    <li key={contact._id} className="flex justify-between items-center gap-x-6 p-4 rounded-lg hover:bg-primary-50">
                         <div className="min-w-0 flex gap-x-4 items-center">
                             <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary-100">
                                 <span className="text-xs font-medium leading-none text-primary-400 uppercase">{contact.details.first_name[0]}{contact.details.last_name[0]}</span>
@@ -62,7 +62,7 @@ const Contacts = () => {
                         </div>
                         <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
                             <button
-                                onClick={() => navigate(`/contacts/${contact.id}`)}
+                                onClick={() => navigate(`/contacts/${contact._id}`)}
                                 className="rounded bg-primary-500 px-2.5 py-1 text-xs font-semibold text-white shadow-sm ring-0 hover:bg-primary-600"
                             >
                                 View

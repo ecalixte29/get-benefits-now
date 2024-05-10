@@ -18,9 +18,7 @@ const InputField = ({ field, error, changeHandler }) => {
         type: field.type,
         onChange: input => changeHandler(input),
         error,
-        value: state.form[state.currentStep].subSteps[
-            state.currentSubStep
-        ].fields.find(stateField => stateField.name === field.name)?.value,
+        value: field.value,
         required: field.required,
     }
 

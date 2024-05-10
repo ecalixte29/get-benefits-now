@@ -14,7 +14,6 @@ const RadioGroup = ({
 }) => {
     const [showConditionalComponent, setShowConditionalComponent] =
         useState(false)
-
     return (
         <div key={id} className={`${label ? 'relative mb-5 shadow-sm' : ''} `}>
             {label && (

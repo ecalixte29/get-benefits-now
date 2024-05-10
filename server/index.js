@@ -1,12 +1,11 @@
 import dotenv from "dotenv";
 import express from "express";
-import { v4 as uuid } from "uuid";
-import ContactSchema from "./schemas/Contacts.js";
 import parser from "body-parser";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
-import mongoose from 'mongoose';
+import Contact from './schemas/Contact.js'
+import mongoose from 'mongoose'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,63 +31,6 @@ mongoose
     .then(() => console.log(`Database connected successfully`))
     .catch((err) => console.log(err));
 
-const dependentSchema = new mongoose.Schema(
-    {
-        first_name: { type: String, required: true },
-        last_name: { type: String, required: true },
-        dob: { type: Date, required: true },
-        relationship: { type: String, required: true },
-        social_security_number: { type: String, required: true },
-        gender: { type: String, required: true },
-        uses_tobacco: { type: Boolean, required: true }
-    },
-    { _id: false }
-);
-
-const spouseSchema = new mongoose.Schema(
-    {
-        first_name: { type: String, required: false },
-        last_name: { type: String, required: false },
-        dob: { type: Date, required: false },
-        social_security_number: { type: String, required: false },
-        gender: { type: String, required: false },
-        uses_tobacco: { type: Boolean, required: false }
-    },
-    { _id: false }
-);
-
-const detailsSchema = new mongoose.Schema({
-    first_name: { type: String, required: true },
-    last_name: { type: String, required: true },
-    dob: { type: Date, required: true },
-    email: { type: String, required: true },
-    phone: { type: String, required: true },
-    street: { type: String, required: true },
-    city: { type: String, required: true },
-    state: { type: String, required: true },
-    zip: { type: Number, required: true },
-    county: { type: String, required: false },
-    gross_income: { type: Number, required: true },
-    estimated_income: { type: String, required: true },
-    us_national: { type: Boolean, required: true },
-    uses_tobacco: { type: Boolean, required: true },
-    current_insurance: { type: Boolean, required: true }
-});
-
-const contactSchema = new mongoose.Schema(
-    {
-        details: { type: detailsSchema, required: true },
-        spouse_details: { type: spouseSchema, required: false },
-        dependents: { type: [dependentSchema], required: false },
-        type: { type: String, required: true },
-        source: { type: String, required: true, default: "https://www.benefitsritenow.com" },
-        test: { type: String, default: process.env.NODE_ENV },
-    },
-    { timestamps: true }
-);
-
-const Contact = mongoose.model('Todo', contactSchema);
-
 router
     .post("/", async (req, res) => {
         try {
@@ -108,13 +50,25 @@ router
         }
     })
     .get("/", async (req, res) => {
-        res.json({ status: 200 });
+        const allContacts = await Contact.find();
+        return res.json(allContacts);
     })
     .get("/:id", async (req, res) => {
-        res.json({ status: 200 });
+        const id = req.params.id || 0;
+        const contact = await Contact.findById(id);
+        if(!contact) return res.status(401).json({ message: "No contact found" });
+        res.json(contact);
     })
     .put("/:id", async (req, res) => {
-        res.json({ status: 200 });
+        const id = req.params.id || 0;
+        const payload = req.body.payload;
+        let contact = await Contact.findById(id);
+        if(!contact) return res.status(401).json({ message: "No contact found" });
+        if(payload.ssn) contact.details = { ...contact.details, ...payload };
+        else if(payload.plan_id) contact.plan_id = payload.plan_id;
+        else if(payload.signature) contact.signature = payload.signature;
+        await contact.save();
+        return res.status(200).send();
     })
 
 app.use("/contacts", router);
