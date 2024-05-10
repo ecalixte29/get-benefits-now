@@ -37,6 +37,8 @@ const useContacts = () => {
     const sendContactToGHL = async id => {
         try {
             const contactDoc = await getContact(id)
+            const planDetails = (await axios.get(`https://marketplace.api.healthcare.gov/api/v1/plans/${contactDoc.plan_id}?apikey=${process.env.REACT_APP_API_KEY}`))?.data?.plan;
+
             const dependentsDetails = {}
 
             if (contactDoc.dependents) {
@@ -99,6 +101,10 @@ const useContacts = () => {
                             ? 'Yes'
                             : 'No',
                     ...dependentsDetails,
+                    [GHL_CUSTOM_FIELDS['contact.carrier_selected']]: 
+                        planDetails?.issuer?.name || "",
+                    [GHL_CUSTOM_FIELDS['contact.carrierplan_selected']]:
+                        planDetails?.name || "",
                 },
             }
 
