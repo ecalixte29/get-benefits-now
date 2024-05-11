@@ -40,7 +40,7 @@ const detailsSchema = new mongoose.Schema({
     employer: { type: String, required: false },
     county: { type: String, required: false },
     gross_income: { type: Number, required: true },
-    estimated_income: { type: String, required: true },
+    gross_annual_income: { type: Number, required: true },
     us_national: { type: Boolean, required: true },
     uses_tobacco: { type: Boolean, required: true },
     current_insurance: { type: Boolean, required: true }

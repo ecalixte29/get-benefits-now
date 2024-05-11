@@ -74,6 +74,7 @@ const Form = () => {
             type: type.toLowerCase().replace(' ', '-'),
         }
 
+        if(income) data['details']['gross_annual_income'] = income.gross_income*12
         if (dependents) data['dependents'] = dependents
         if (spouse_details) data['spouse_details'] = spouse_details
 

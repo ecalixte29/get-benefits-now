@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-const CurrencyInput = ({ label, error, id, required, onChange, value }) => {
+const CurrencyInput = ({ label, error, id, required, onChange, value, min = "0" }) => {
     return (
         <div key={id} className="relative mb-5 shadow-sm">
             <label
@@ -20,6 +20,7 @@ const CurrencyInput = ({ label, error, id, required, onChange, value }) => {
                 onChange={e => onChange(e.target.value)}
                 className={`block w-full border-0 py-4 pl-7 pr-20 text-gray-900 ${error ? 'ring-2 ring-error' : 'ring-1 ring-gray-300'} placeholder:text-gray-400 ${error ? 'focus:ring-2 focus:ring-error' : 'focus:ring-2 focus:ring-inset focus:ring-primary'} sm:text-sm sm:leading-6`}
                 placeholder="0.00"
+                min={min}
                 value={value}
             />
             <div className="absolute inset-y-0 right-0 flex h-full items-center border-0 bg-transparent py-0 pl-2 pr-7 font-semibold text-gray-500 sm:text-sm">

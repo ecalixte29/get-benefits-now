@@ -1,5 +1,16 @@
 import { useSearchParams } from 'react-router-dom'
 import { useFormContext } from '../context/FormContext'
+import { PhoneNumberUtil } from 'google-libphonenumber';
+
+const phoneUtil = PhoneNumberUtil.getInstance();
+
+const isPhoneValid = (phone) => {
+  try {
+    return phoneUtil.isValidNumber(phoneUtil.parseAndKeepRawInput(phone));
+  } catch (error) {
+    return false;
+  }
+};
 
 const useForm = () => {
     const { state, dispatch } = useFormContext()
@@ -64,13 +75,22 @@ const useForm = () => {
     const nextStep = (onError, onEndReached) => {
         //validation
         const invalidFieldIndex = currentSubStep.fields.findIndex(field => {
-            if (
-                (!field.dependency &&
-                    field.required &&
-                    field.value.length === 0) ||
-                (field.type === 'number' && Number(field.value) < 0)
-            )
-                return true
+            if(field.type === 'tel') {
+                return !isPhoneValid(field.value)
+            }
+            
+            if (!field.dependency && field.required && field.value.length === 0) {
+                return true;
+            }
+            
+            if (field.type === 'number' && Number(field.value) < 0) {
+                return true;
+            }
+            
+            if (field.min && field.value < field.min) {
+                return true;
+            }
+
             return false
         })
         if (invalidFieldIndex >= 0) return onError(invalidFieldIndex)

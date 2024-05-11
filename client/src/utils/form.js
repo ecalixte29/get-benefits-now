@@ -65,44 +65,13 @@ export const STEPS = [
                 icon: wage,
                 fields: [
                     {
-                        name: 'estimated_income',
-                        label: 'estimated income',
-                        type: FIELD_TYPES.RADIO_GROUP,
-                        required: true,
-                        value: '',
-                        data: [
-                            '$0 - $1215',
-                            '$1216 - $2000',
-                            '$2001 - $3500',
-                            '$3501+',
-                        ],
-                    },
-                    {
                         name: 'gross_income',
-                        type: 'currency_slider',
+                        type: FIELD_TYPES.CURRENCY,
                         required: true,
                         value: '',
                         label: 'gross salary',
                         prefix: '$',
-                        value_dependency: 'estimated_income',
-                        minMax: {
-                            '$0 - $1215': {
-                                min: 0,
-                                max: 1215,
-                            },
-                            '$1216 - $2000': {
-                                min: 1216,
-                                max: 2000,
-                            },
-                            '$2001 - $3500': {
-                                min: 2001,
-                                max: 3500,
-                            },
-                            '$3501+': {
-                                min: 3501,
-                                max: Infinity,
-                            },
-                        },
+                        min: '1500'
                     },
                 ],
             },

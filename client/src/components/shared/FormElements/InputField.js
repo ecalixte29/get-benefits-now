@@ -7,6 +7,7 @@ import CurrencySlider from './CurrencySlider'
 import RadioGroup from './RadioGroup'
 import Select from './Select'
 import TextField from './TextField'
+import PhoneField from './PhoneField'
 
 const InputField = ({ field, error, changeHandler }) => {
     const { state, currentStep, removeDependent } = useForm()
@@ -20,12 +21,13 @@ const InputField = ({ field, error, changeHandler }) => {
         error,
         value: field.value,
         required: field.required,
+        min: field.min
     }
 
     if (
         field.dependencify &&
         currentStep.fields.find(f => f.name === field.dependency)?.value !==
-            'Yes'
+        'Yes'
     ) {
         return <></>
     }
@@ -68,9 +70,11 @@ const InputField = ({ field, error, changeHandler }) => {
             )
         case 'currency_slider':
             return <CurrencySlider {...commonProps} field={field} />
+        case 'tel':
+            return <PhoneField {...commonProps} />
         default:
             if (
-                ['email', 'tel', 'date', 'text', 'number'].includes(field.type)
+                ['email', 'date', 'text', 'number'].includes(field.type)
             ) {
                 return <TextField {...commonProps} />
             } else {
