@@ -11,6 +11,29 @@ import wage from '../assets/images/wage.png'
 //types: radio_group, text, currency, email, tel, select, number
 //TODO: Add icons for each
 //TODO: Add advance validation ie max length, min length
+export const FIELD_NAMES = {
+    TYPE: 'type',
+    CURRENT_INSURANCE: 'current_insurance',
+    GROSS_INCOME: 'gross_income',
+    FIRST_NAME: 'first_name',
+    LAST_NAME: 'last_name',
+    GENDER: 'gender',
+    DOB: 'dob',
+    USES_TOBACCO: 'uses_tobacco',
+    SPOUSE_DETAILS: 'spouse_details',
+    EMAIL: 'email',
+    PHONE: 'phone',
+    STREET: 'street',
+    COUNTY: 'county',
+    CITY: 'city',
+    STATE: 'state',
+    ZIP: 'zip',
+    DEPENDENTS: 'dependents',
+    RELATIONSHIP: 'relationship',
+    SOCIAL_SECURITY_NUMBER: 'social_security_number',
+    US_NATIONAL: 'us_national',
+};
+
 const FIELD_TYPES = {
     RADIO_GROUP: 'radio_group',
     TEXT: 'text',
@@ -28,12 +51,12 @@ export const STEPS = [
         name: 'eligibility',
         subSteps: [
             {
-                name: 'type',
+                name: FIELD_NAMES.TYPE,
                 title: 'Who would you like to insure?',
                 icon: insurance,
                 fields: [
                     {
-                        name: 'type',
+                        name: FIELD_NAMES.TYPE,
                         label: 'Insurance Type',
                         type: FIELD_TYPES.RADIO_GROUP,
                         required: true,
@@ -43,12 +66,12 @@ export const STEPS = [
                 ],
             },
             {
-                name: 'current_insurance',
+                name: FIELD_NAMES.CURRENT_INSURANCE,
                 title: 'Are you on Medicaid or Medicare?',
                 icon: insurance,
                 fields: [
                     {
-                        name: 'current_insurance',
+                        name: FIELD_NAMES.CURRENT_INSURANCE,
                         label: 'are you on Medicare or Medicaid?',
                         type: FIELD_TYPES.RADIO_GROUP,
                         required: true,
@@ -65,7 +88,7 @@ export const STEPS = [
                 icon: wage,
                 fields: [
                     {
-                        name: 'gross_income',
+                        name: FIELD_NAMES.GROSS_INCOME,
                         type: FIELD_TYPES.CURRENCY,
                         required: true,
                         value: '',
@@ -87,7 +110,7 @@ export const STEPS = [
                 icon: user,
                 fields: [
                     {
-                        name: 'first_name',
+                        name: FIELD_NAMES.FIRST_NAME,
                         placeholder: 'john',
                         type: 'text',
                         value: '',
@@ -95,7 +118,7 @@ export const STEPS = [
                         label: 'first name',
                     },
                     {
-                        name: 'last_name',
+                        name: FIELD_NAMES.LAST_NAME,
                         placeholder: 'doe',
                         type: 'text',
                         value: '',
@@ -103,14 +126,14 @@ export const STEPS = [
                         label: 'last name',
                     },
                     {
-                        name: 'gender',
+                        name: FIELD_NAMES.GENDER,
                         type: FIELD_TYPES.RADIO_GROUP,
                         value: '',
                         required: true,
                         data: ['male', 'female'],
                     },
                     {
-                        name: 'dob',
+                        name: FIELD_NAMES.DOB,
                         placeholder: 'john',
                         type: 'date',
                         value: '',
@@ -118,7 +141,7 @@ export const STEPS = [
                         label: 'date of birth',
                     },
                     {
-                        name: 'uses_tobacco',
+                        name: FIELD_NAMES.USES_TOBACCO,
                         type: FIELD_TYPES.RADIO_GROUP,
                         value: '',
                         required: true,
@@ -138,7 +161,7 @@ export const STEPS = [
                 },
                 fields: [
                     {
-                        name: 'first_name',
+                        name: FIELD_NAMES.FIRST_NAME,
                         placeholder: 'john',
                         type: 'text',
                         value: '',
@@ -146,7 +169,7 @@ export const STEPS = [
                         label: 'first name',
                     },
                     {
-                        name: 'last_name',
+                        name: FIELD_NAMES.LAST_NAME,
                         placeholder: 'doe',
                         type: 'text',
                         value: '',
@@ -154,15 +177,15 @@ export const STEPS = [
                         label: 'last name',
                     },
                     {
-                        name: 'gender',
-                        label: 'gender',
+                        name: FIELD_NAMES.GENDER,
+                        label: FIELD_NAMES.GENDER,
                         type: FIELD_TYPES.RADIO_GROUP,
                         value: '',
                         required: true,
                         data: ['male', 'female'],
                     },
                     {
-                        name: 'dob',
+                        name: FIELD_NAMES.DOB,
                         placeholder: 'john',
                         type: 'date',
                         value: '',
@@ -170,14 +193,14 @@ export const STEPS = [
                         label: 'date of birth',
                     },
                     {
-                        name: 'social_security_number',
+                        name: FIELD_NAMES.SOCIAL_SECURITY_NUMBER,
                         type: 'number',
                         value: '',
                         required: true,
                         label: 'social security number',
                     },
                     {
-                        name: 'uses_tobacco',
+                        name: FIELD_NAMES.USES_TOBACCO,
                         type: FIELD_TYPES.RADIO_GROUP,
                         value: '',
                         required: true,
@@ -193,12 +216,12 @@ export const STEPS = [
                 icon: phone,
                 fields: [
                     {
-                        name: 'email',
-                        type: 'email',
+                        name: FIELD_NAMES.EMAIL,
+                        type: FIELD_NAMES.EMAIL,
                         placeholder: 'john.doe@example.com',
                         value: '',
                         required: true,
-                        label: 'email',
+                        label: FIELD_NAMES.EMAIL,
                     },
                     {
                         name: 'phone',
@@ -217,39 +240,39 @@ export const STEPS = [
                 icon: location,
                 fields: [
                     {
-                        name: 'street',
+                        name: FIELD_NAMES.STREET,
                         type: 'text',
                         placeholder: '1234 Main St.',
                         value: '',
                         required: true,
-                        label: 'street',
+                        label: FIELD_NAMES.STREET,
                     },
                     {
-                        name: 'county',
+                        name: FIELD_NAMES.COUNTY,
                         type: 'text',
-                        placeholder: 'county',
+                        placeholder: FIELD_NAMES.COUNTY,
                         value: '',
-                        label: 'county',
+                        label: FIELD_NAMES.COUNTY,
                     },
                     {
-                        name: 'city',
+                        name: FIELD_NAMES.CITY,
                         type: 'text',
-                        placeholder: 'city',
+                        placeholder: FIELD_NAMES.CITY,
                         value: '',
                         required: true,
-                        label: 'city',
+                        label: FIELD_NAMES.CITY,
                     },
                     {
-                        name: 'state',
+                        name: FIELD_NAMES.STATE,
                         type: 'select',
-                        placeholder: 'state',
+                        placeholder: FIELD_NAMES.STATE,
                         value: '',
                         required: true,
-                        label: 'state',
+                        label: FIELD_NAMES.STATE,
                         data: states.map(state => state.name),
                     },
                     {
-                        name: 'zip',
+                        name: FIELD_NAMES.ZIP,
                         type: 'number',
                         placeholder: '12345',
                         value: '',
@@ -269,14 +292,14 @@ export const STEPS = [
                 },
                 fields: [
                     {
-                        name: 'dependents',
+                        name: FIELD_NAMES.DEPENDENTS,
                         label: 'add dependent',
                         type: 'appendable_form',
                         value: [],
                         required: false,
                         fields: [
                             {
-                                name: 'first_name',
+                                name: FIELD_NAMES.FIRST_NAME,
                                 placeholder: 'john',
                                 type: 'text',
                                 value: '',
@@ -284,7 +307,7 @@ export const STEPS = [
                                 label: 'first name',
                             },
                             {
-                                name: 'last_name',
+                                name: FIELD_NAMES.LAST_NAME,
                                 placeholder: 'doe',
                                 type: 'text',
                                 value: '',
@@ -292,15 +315,15 @@ export const STEPS = [
                                 label: 'last name',
                             },
                             {
-                                name: 'gender',
-                                label: 'gender',
+                                name: FIELD_NAMES.GENDER,
+                                label: FIELD_NAMES.GENDER,
                                 type: FIELD_TYPES.RADIO_GROUP,
                                 value: '',
                                 required: true,
                                 data: ['male', 'female'],
                             },
                             {
-                                name: 'relationship',
+                                name: FIELD_NAMES.RELATIONSHIP,
                                 label: 'relationship with applicant',
                                 placeholder: 'child, sibling etc',
                                 type: 'select',
@@ -333,7 +356,7 @@ export const STEPS = [
                                 ],
                             },
                             {
-                                name: 'dob',
+                                name: FIELD_NAMES.DOB,
                                 placeholder: 'john',
                                 type: 'date',
                                 value: '',
@@ -341,14 +364,14 @@ export const STEPS = [
                                 label: 'date of birth',
                             },
                             {
-                                name: 'social_security_number',
+                                name: FIELD_NAMES.SOCIAL_SECURITY_NUMBER,
                                 type: 'number',
                                 value: '',
                                 required: true,
                                 label: 'social security number',
                             },
                             {
-                                name: 'uses_tobacco',
+                                name: FIELD_NAMES.USES_TOBACCO,
                                 type: FIELD_TYPES.RADIO_GROUP,
                                 value: '',
                                 required: true,
