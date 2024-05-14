@@ -9,7 +9,6 @@ import Plans from './components/Plans'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import TermsAndConditions from './components/TermsAndConditions'
 import ThankYou from './components/ThankYou'
-import { FormContextProvider } from './context/FormContext'
 import useSmoothScroll from './hooks/useSmoothScoll'
 import './style.css'
 
@@ -19,7 +18,6 @@ const App = () => {
 
     return (
         <Router>
-            <FormContextProvider>
                 <div className="overflow-y-auto bg-white">
                     <Routes>
                         <Route exact path="/" element={<Home />} />
@@ -48,7 +46,6 @@ const App = () => {
                         <Route path="/thank-you" element={<ThankYou />} />
                     </Routes>
                 </div>
-            </FormContextProvider>
             {sticky && (
                 <button
                     className="fixed bottom-8 right-8 z-50 flex h-10 w-10 items-center justify-center border-2 border-secondary bg-white text-xl text-secondary"

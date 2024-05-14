@@ -1,37 +1,31 @@
 import PropTypes from 'prop-types'
+import React from 'react'
 
 const TextField = ({
     label,
+    id,
     type,
+    placeholder,
+    pattern,
     value,
     error,
+    wrapperClasses,
+    innerClasses,
     onChange,
-    id,
-    required,
-    wrapperClasses = '',
-    innerClasses = '',
-    ...additional_options
 }) => {
     return (
-        <div key={id} className={`relative mb-5 ${wrapperClasses}`}>
-            <label
-                htmlFor={id}
-                className={`absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium ${error ? 'animate-fadein text-error' : 'text-dark'} capitalize`}
-            >
-                {error
-                    ? `Please enter a valid ${label.toLowerCase()}`
-                    : `${label} ${required ? '*' : ''}`}
+        <div key={label} className={`mb-8 flex-1 ${wrapperClasses}`}>
+            <label className="block text-base font-bold text-gray-700">
+                {label}
             </label>
             <input
-                key={id}
                 id={id}
-                name={id}
                 type={type}
-                value={value}
-                onChange={e => onChange(e.target.value)}
-                min={0}
-                {...additional_options}
-                className={`block w-full border border-light py-3 text-gray-900 shadow-sm outline-0 ring-0 focus:ring-0 ${error ? 'border-error' : 'border-light'} placeholder:text-gray-400 ${error ? 'focus:border-error' : 'focus:border-primary'} sm:text-sm sm:leading-6 ${innerClasses}`}
+                placeholder={placeholder}
+                defaultValue={value}
+                pattern={pattern}
+                onChange={onChange}
+                className={`appearance-none shadow ${error ? 'border-red-600' : 'border-light'} focus:shadow-outline w-full rounded px-4 py-3 leading-tight text-gray-700 shadow-md focus:border-light focus:outline-none focus:ring-0 ${innerClasses}`}
             />
         </div>
     )

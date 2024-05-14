@@ -62,12 +62,12 @@ const HeroSection = () => {
                         <TextField
                             placeholder="123456"
                             label={''}
-                            onChange={value => {
-                                setZipCode(value)
+                            onChange={e => {
+                                setZipCode(e.target.value)
                                 setError(false)
                             }}
-                            wrapperClasses="flex-1"
-                            innerClasses={`py-4 sm:text-xl font-bold ${error ? 'border-error' : 'border-light'}`}
+                            wrapperClasses="!mt-0 !mb-0"
+                            innerClasses={`rounded-none py-4 sm:text-xl font-bold ${error ? 'border-error' : 'border-light'}`}
                             required={true}
                             error={error}
                             type="number"
@@ -75,7 +75,7 @@ const HeroSection = () => {
                         <SecondaryButton
                             onClick={handleNextButtonClick}
                             text="Next"
-                            classNames="font-bold text-xl mb-5 border border-secondary"
+                            classNames="font-bold mt-0 mb-0 text-xl border border-secondary"
                         />
                     </div>
                 </div>

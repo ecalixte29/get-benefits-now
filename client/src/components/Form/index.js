@@ -1,190 +1,162 @@
-import _ from 'lodash'
-import { useEffect, useState } from 'react'
-import toast, { Toaster } from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
-import useContacts from '../../hooks/useContacts'
-import useForm from '../../hooks/useForm'
-import Layout from '../Layout'
-import { SecondaryButton } from '../shared/Buttons'
-import InputField from '../shared/FormElements/InputField'
+import React, { useMemo, useState } from 'react'
+import { Toaster } from 'react-hot-toast'
+import Layout from '../../components/Layout'
+import STEPS from '../../utils/form'
+import PrimaryButton from '../shared/Buttons/PrimaryButton'
+import Stepper from './Stepper'
 
 const Form = () => {
-    const [errorIndex, setErrorIndex] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [errorIds, setErrorIds] = useState([])
+    const [currentStep, setCurrentStep] = useState(0)
+    const [data, setData] = useState({})
 
-    const { createContact } = useContacts()
-    const {
-        initializeForm,
-        currentStep,
-        state,
-        parseData,
-        nextStep,
-        previousStep,
-        inputChangeHandler,
-        isEndReached,
-    } = useForm()
-    const navigate = useNavigate()
+    const parseDependents = (inputs, filterKey) => {
+        const dependents = inputs
+            .filter(
+                input => input.id.split('_')[0].toLowerCase() === filterKey //ignore normal input fields
+            )
+            .map(input => [
+                input.id,
+                input.type === 'checkbox' ? input.checked : input.value, //set value based on checkbox checked or input's value
+            ])
 
-    useEffect(() => {
-        initializeForm()
-    }, [])
+        const grouped = {}
 
-    useEffect(() => {
-        const fieldIndex = currentStep.fields.findIndex((field) => field.name === 'zip')
-        const zip = localStorage.getItem('zip')
-        if (fieldIndex >= 0 && zip && zip.length > 0) {
-            setErrorIndex(null)
-            inputChangeHandler('zip', zip)
-        }
-    }, [currentStep.fields])
+        dependents.forEach(([key, value]) => {
+            let split_key = key.split('_') // Extract the number from the key
+            const number = split_key[split_key.length - 1]
+            const parsedKey = split_key.slice(1, -1).join('_')
 
-    const submit = async () => {
-        setLoading(true);
-        const {
-            type,
-            current_insurance,
-            income,
-            details,
-            contact,
-            address,
-            us_national,
-            recent_employer,
-            providers_in_network,
-            medications_in_network,
-            procedures_in_network,
-            spouse_details,
-            dependents,
-        } = parseData()
-        let data = {
-            details: _.omitBy(
-                {
-                    current_insurance,
-                    ...income,
-                    ...details,
-                    ...contact,
-                    ...address,
-                    us_national: us_national,
-                    recent_employer,
-                    providers_in_network,
-                    medications_in_network,
-                    procedures_in_network,
-                },
-                _.isNil
-            ),
-            type: type.toLowerCase().replace(' ', '-'),
-        }
+            if (!grouped[number]) {
+                grouped[number] = []
+            }
+            grouped[number].push([parsedKey, value])
+        })
 
-        if (dependents) data['dependents'] = dependents
-        if (spouse_details) data['spouse_details'] = spouse_details
-
-        try {
-            setLoading(false);
-            const response = await createContact(data)
-            localStorage.setItem('uuid', response._id)
-            navigate('/plans')  
-        } catch (error) {
-            return toast.error(String(error), { duration: 3000 })
-        }
+        return Object.values(grouped).map(dependent =>
+            Object.fromEntries(dependent)
+        )
     }
 
+    const onClickNext = () => {
+        setErrorIds([])
+        let inputs = Array.from(document.querySelectorAll('input, select'))
+        const erroredInputs = inputs
+            .map(input => {
+                if (
+                    input.tagName === 'SELECT' ||
+                    input.type === 'checkbox' ||
+                    new RegExp(input.getAttribute('pattern')).test(input.value) //test pattern set in pattern attribute for regex validation
+                )
+                    return
+                return input.id
+            })
+            .filter(val => val !== undefined)
+        if (erroredInputs.length > 0) return setErrorIds(erroredInputs)
+        const dependents = parseDependents(inputs, 'dependent')
+        const spouse = parseDependents(inputs, 'spouse')[0]
+        const currentStepId = STEPS[currentStep].id
+
+        setData({
+            ...data,
+            [currentStepId]: {
+                ...Object.fromEntries(
+                    //build an object from key value pairs of input_id: input_value
+                    inputs
+                        .filter(
+                            input =>
+                                !['dependent', 'spouse'].includes(
+                                    input.id.split('_')[0].toLowerCase()
+                                ) //ignore dependent and spouse in normal parsing
+                        )
+                        .map(input => [
+                            input.id,
+                            input.type === 'checkbox'
+                                ? input.checked
+                                : input.value, //set value based on checkbox checked or input's value
+                        ])
+                ),
+                ...(currentStepId === 'details'
+                    ? {
+                          dependents,
+                          spouse,
+                      }
+                    : {}),
+            },
+        })
+        setCurrentStep(currentStep + 1)
+    }
+    // const submit = async (setLoading) => {
+    //     const {
+    //         type,
+    //         current_insurance,
+    //         income,
+    //         details,
+    //         contact,
+    //         address,
+    //         us_national,
+    //         dental_insurance,
+    //         recent_employer,
+    //         procedures_in_network,
+    //         spouse_details,
+    //         dependents,
+    //     } = parseData();
+
+    //     const data = {
+    //         details: {
+    //             current_insurance,
+    //             ...income,
+    //             ...details,
+    //             ...contact,
+    //             ...address,
+    //             us_national,
+    //             dental_insurance,
+    //             recent_employer,
+    //             procedures_in_network,
+    //         },
+    //         spouse_details,
+    //         dependents,
+    //         type: type.toLowerCase().replace(" ", "-"),
+    //     };
+    //     try {
+    //         setLoading(false);
+    //         const response = await createContact(data)
+    //         localStorage.setItem('uuid', response._id)
+    //         navigate('/plans');
+    //     } catch (error) {
+    //         return toast.error(String(error), { duration: 3000 });
+    //     }
+    // };
+    const StepComponent = useMemo(() => {
+        return STEPS[currentStep].component
+    }, [currentStep])
+    console.log(data)
     return (
         <Layout>
-            <div className="mx-auto w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/3">
-                <div
-                    aria-label="Progress"
-                    className="grid grid-cols-3 justify-center gap-x-8"
-                >
-                    {state.form.map((step, index) => (
-                        <div
-                            key={index}
-                            className={`flex flex-col border-${index <= state.currentStep ? 'secondary' : 'gray-200'} border-t-4 py-2 md:pt-4`}
-                        >
-                            <span
-                                className={`text-xs font-medium text-${index <= state.currentStep ? 'secondary' : 'gray-500'}`}
-                            >
-                                Step {index + 1}
-                            </span>
-                            <span className="text-sm font-medium uppercase text-dark">
-                                {step.name}
-                            </span>
-                        </div>
-                    ))}
+            <div className="mx-auto max-w-2xl">
+                <Stepper
+                    steps={STEPS.length}
+                    currentStep={currentStep}
+                    title={STEPS[currentStep].subtitle}
+                />
+                <StepComponent
+                    errorIds={errorIds}
+                    title={STEPS[currentStep].title}
+                    data={data[STEPS[currentStep].id]}
+                />
+                <div className="mx-auto mt-4 flex w-full max-w-2xl justify-between space-x-4">
+                    <PrimaryButton
+                        text={'Back'}
+                        classNames="w-[50%]"
+                        disabled={currentStep === 0}
+                        onClick={() => setCurrentStep(currentStep - 1)}
+                    />
+                    <PrimaryButton
+                        text={currentStep === 3 ? 'See Plans' : 'Next'}
+                        classNames="w-[50%]"
+                        onClick={onClickNext}
+                    />
                 </div>
-                <form onSubmit={e => e.preventDefault()} className="mt-8">
-                    <div className="mb-8 flex flex-col items-center">
-                        {currentStep.icon && (
-                            <img
-                                className="size-20"
-                                src={currentStep.icon}
-                                alt=""
-                            />
-                        )}
-                        <h1 className="my-1 text-center text-2xl font-semibold text-dark">
-                            {currentStep.title}
-                        </h1>
-                        <p className="text-center text-base text-gray-400">
-                            {currentStep.subtitle}
-                        </p>
-                    </div>
-                    <div className="mb-8 border border-light bg-gray-50 p-6 shadow">
-                        {currentStep.fields.map(
-                            (field, index) =>
-                                field.name !== 'zip' && (
-                                    <InputField
-                                        key={index}
-                                        error={errorIndex === index}
-                                        changeHandler={input => {
-                                            setErrorIndex(null)
-                                            inputChangeHandler(
-                                                field.name,
-                                                input
-                                            )
-                                        }}
-                                        field={field}
-                                    />
-                                )
-                        )}
-                    </div>
-                    <div className="flex w-full items-center justify-between gap-x-3">
-                        {
-                            <SecondaryButton
-                                text="Back"
-                                classNames="w-full col-span-1"
-                                invert={true}
-                                disabled={
-                                    state.currentStep === 0 &&
-                                    state.currentSubStep === 0
-                                }
-                                onClick={() => {
-                                    setErrorIndex(null)
-                                    previousStep()
-                                }}
-                            />
-                        }
-                        {isEndReached ? (
-                            <SecondaryButton
-                                text="See plans"
-                                classNames="w-full"
-                                onClick={() => {
-                                    setLoading(false)
-                                    nextStep(
-                                        i => setErrorIndex(i),
-                                        () => {
-                                            submit(setLoading)
-                                        }
-                                    )
-                                }}
-                                loading={loading}
-                            />
-                        ) : (
-                            <SecondaryButton
-                                text={'Continue'}
-                                classNames="w-full"
-                                onClick={() => nextStep(i => setErrorIndex(i))}
-                            />
-                        )}
-                    </div>
-                </form>
             </div>
             <Toaster />
         </Layout>
