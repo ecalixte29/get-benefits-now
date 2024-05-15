@@ -8,18 +8,22 @@ import Plans from './components/Plans'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import TermsAndConditions from './components/TermsAndConditions'
 import ThankYou from './components/ThankYou'
-import { FormContextProvider } from './context/FormContext'
 import useSmoothScroll from './hooks/useSmoothScoll'
 import './style.css'
+import useForm from './hooks/useForm'
+import { useEffect } from 'react'
 
 const App = () => {
     const { sticky, scrollToTop } = useSmoothScroll()
     const queryClient = new QueryClient()
+    const { initializeForm } = useForm()
+    useEffect(() => {
+        initializeForm()
+    }, [])
 
     return (
         <Router>
             <div className="overflow-y-auto bg-white">
-                <FormContextProvider>
                     <Routes>
                         <Route exact path="/" element={<Home />} />
                         <Route path="/form" element={<Form />} />
@@ -42,7 +46,6 @@ const App = () => {
                         />
                         <Route path="/thank-you" element={<ThankYou />} />
                     </Routes>
-                </FormContextProvider>
             </div>
             {sticky && (
                 <button
