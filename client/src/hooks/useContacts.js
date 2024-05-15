@@ -38,7 +38,7 @@ const useContacts = () => {
         try {
             const contactDoc = await getContact(id)
             const planDetails = (await axios.get(`https://marketplace.api.healthcare.gov/api/v1/plans/${contactDoc.plan_id}?apikey=${process.env.REACT_APP_API_KEY}`))?.data?.plan;
-
+            const state = localStorage.getItem('state')
             const dependentsDetails = {}
 
             if (contactDoc.dependents) {
@@ -69,8 +69,7 @@ const useContacts = () => {
                 name: `${contactDoc.details.first_name} ${contactDoc.details.last_name}`,
                 dateOfBirth: formatDate(contactDoc.details.dob),
                 address1: contactDoc.details.street,
-                city: contactDoc.details.city,
-                state: contactDoc.details.state,
+                state: state,
                 country: 'US',
                 postalCode: contactDoc.details.zip,
                 source: 'benefitsritenow.com',
@@ -79,25 +78,11 @@ const useContacts = () => {
                     [GHL_CUSTOM_FIELDS['contact.primary_ssn']]: contactDoc.ssn,
                     [GHL_CUSTOM_FIELDS['contact.county']]:
                         contactDoc.details.county,
-                    [GHL_CUSTOM_FIELDS['contact.are_you_on_medicaid_or_medicare']]:
-                        contactDoc.details.current_insurance,
                     [GHL_CUSTOM_FIELDS[
                         'contact.estimated_household_annual_income'
-                    ]]: contactDoc.details.estimated_income,
-                    [GHL_CUSTOM_FIELDS['contact.recent_employer']]:
-                        contactDoc.details.recent_employer,
-                    [GHL_CUSTOM_FIELDS['contact.are_you_a_us_national_']]:
-                        contactDoc.details.us_national === 'true'
-                            ? 'Yes'
-                            : 'No',
+                    ]]: contactDoc.details.gross_income,
                     [GHL_CUSTOM_FIELDS['contact.are_you_a_tobacco_user_']]:
                         contactDoc.details.uses_tobacco === 'true'
-                            ? 'Yes'
-                            : 'No',
-                    [GHL_CUSTOM_FIELDS[
-                        'contact.are_you_on_medicaid_or_medicare'
-                    ]]:
-                        contactDoc.details.current_insurance === 'true'
                             ? 'Yes'
                             : 'No',
                     ...dependentsDetails,
@@ -120,12 +105,8 @@ const useContacts = () => {
                         `${contactDoc.spouse_details.first_name} ${contactDoc.spouse_details.last_name}`,
                     [GHL_CUSTOM_FIELDS['contact.spouse_date_of_birth']]:
                         formatDate(contactDoc.spouse_details.dob),
-                    [GHL_CUSTOM_FIELDS['contact.spouse_email']]:
-                        contactDoc.spouse_details.email,
                     [GHL_CUSTOM_FIELDS['contact.spouse_ssn']]:
                         contactDoc.spouse_details.social_security_number,
-                    [GHL_CUSTOM_FIELDS['contact.spouse_phone']]:
-                        contactDoc.spouse_details.phone,
                     [GHL_CUSTOM_FIELDS['contact.do_your_partner_uses_tobacco']]:
                         contactDoc.spouse_details.uses_tobacco === 'true'
                             ? 'Yes'

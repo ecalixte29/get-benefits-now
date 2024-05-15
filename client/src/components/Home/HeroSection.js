@@ -3,15 +3,16 @@ import { useNavigate } from 'react-router-dom'
 import HeroImg from '../../assets/images/hero.webp'
 import { SecondaryButton } from '../shared/Buttons'
 import TextField from '../shared/FormElements/TextField'
+import useForm from '../../hooks/useForm'
 
 const HeroSection = () => {
     const navigate = useNavigate()
-    const [zipCode, setZipCode] = useState('')
     const [error, setError] = useState(false)
+    const { returnFormField } = useForm()
 
     const handleNextButtonClick = () => {
+        const zipCode = returnFormField('details-zip')
         if (zipCode.trim() !== '') {
-            localStorage.setItem('zip', zipCode.trim())
             navigate('/form')
         } else {
             setError(true)
@@ -62,15 +63,11 @@ const HeroSection = () => {
                         <TextField
                             placeholder="123456"
                             label={''}
-                            onChange={e => {
-                                setZipCode(e.target.value)
-                                setError(false)
-                            }}
                             wrapperClasses="!mt-0 !mb-0"
                             innerClasses={`rounded-none py-4 sm:text-xl font-bold ${error ? 'border-error' : 'border-light'}`}
                             required={true}
-                            error={error}
                             type="number"
+                            id={'details-zip'}
                         />
                         <SecondaryButton
                             onClick={handleNextButtonClick}

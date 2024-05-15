@@ -1,13 +1,18 @@
+import { FaCheckCircle } from 'react-icons/fa'
+import { ImCross } from 'react-icons/im'
+
 const StepWrapper = (props) => {
     return (
-        <div class="bg-white border border-light rounded-lg overflow-hidden mb-8">
-            <div class="bg-primary p-6 flex justify-between items-center">
-                <h2 class="text-white font-semibold text-2xl">{props.title}</h2>
-                <i class="fas fa-check-circle text-white text-2xl"></i>
+        <div key={props.title} className="mb-8 overflow-hidden rounded-lg border border-light bg-white">
+            <div className="flex items-center justify-between bg-primary p-6">
+                <h2 className="text-2xl font-semibold text-white">{props.title}</h2>
+                {props.removable ? (
+                    <ImCross onClick={props.onRemove} color="white" className="hover:cursor-pointer" />
+                ) : (
+                    <FaCheckCircle color='white' size={25} />
+                )}
             </div>
-            <form class="p-6 border-b-8 border-primary">
-                {props.children}
-            </form>
+            <form className="border-b-8 border-primary p-6">{props.children}</form>
         </div>
     )
 }

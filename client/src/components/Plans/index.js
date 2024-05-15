@@ -2,7 +2,6 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import React, { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate } from 'react-router-dom'
-import states from 'states-us'
 import useContacts from '../../hooks/useContacts'
 import Layout from '../Layout'
 import ActivityIndicator from '../shared/ActivityIndicator'
@@ -42,6 +41,7 @@ const Plans = () => {
             let lead = await getContact(uuid)
 
             let countyfips
+            let state;
             try {
                 const response = await fetch(
                     `https://marketplace.api.healthcare.gov/api/v1/counties/by/zip/${lead.details.zip}?apikey=${process.env.REACT_APP_API_KEY}`
@@ -59,6 +59,8 @@ const Plans = () => {
                 }
 
                 countyfips = data.counties[0].fips
+                state = data.counties[0].state
+                localStorage.setItem('state', state)
             } catch (error) {
                 console.error('Error fetching countyfips:', error)
             }
@@ -66,7 +68,7 @@ const Plans = () => {
 
             const parsedData = {
                 household: {
-                    income: lead.details.gross_income * 12,
+                    income: lead.details.gross_income,
                     has_married_couple: hasMarriedCouple,
                     people: [
                         dataToPeople({ ...lead.details, relationship: 'Self' }),
@@ -88,26 +90,25 @@ const Plans = () => {
                 market: 'Individual',
                 place: {
                     countyfips: countyfips,
-                    state: states.find(s => s.name === lead.details.state)
-                        ?.abbreviation,
+                    state: state,
                     zipcode: lead.details.zip.toString(),
                 },
             }
             setLeadData(parsedData)
         }
         fetchData()
-    }, [])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if (isLoading || leadData === null || !isInView) return
         fetchNextPage()
-    }, [isInView, isLoading, leadData])
+    }, [isInView, isLoading, leadData]) // eslint-disable-line react-hooks/exhaustive-deps
 
-    const dataToPeople = ({ dob, gender, relationship, uses_tobacco }) => ({
+    const dataToPeople = ({ dob, relationship, uses_tobacco, has_mec }) => ({
         dob: dob.split('T')[0],
-        gender: gender.charAt(0).toUpperCase() + gender.slice(1),
         relationship,
         aptc_eligible: true,
+        //has_mec,
         uses_tobacco,
     })
 

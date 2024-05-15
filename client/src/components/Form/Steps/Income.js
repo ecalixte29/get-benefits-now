@@ -1,28 +1,26 @@
 import TextField from '../../shared/FormElements/TextField'
 import StepWrapper from '../StepWrapper'
 
-const Income = ({ errorIds, data }) => {
+const Income = () => {
     return (
         <StepWrapper title={'Income'}>
             <TextField
-                label={'Household Income'}
-                id={'gross_income'}
+                label={'Household Income (Annual)'}
+                id={'details-gross_income'}
                 type={'number'}
+                placeholder={'Household Income'}
                 pattern={
                     '.{5,7}'
                 }
-                error={errorIds.includes('gross_income')}
-                value={data?.gross_income || 0}
             />
             <TextField
                 label={'County'}
-                id={'county'}
+                id={'details-county'}
                 type={'text'}
+                placeholder={'County'}
                 pattern={
                     '.{4,15}'
                 }
-                error={errorIds.includes('county')}
-                value={data?.county || ""}
             />
         </StepWrapper>
     )

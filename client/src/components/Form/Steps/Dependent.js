@@ -1,45 +1,57 @@
-import TextField from "../../shared/FormElements/TextField"
-import CheckBox from "../../shared/FormElements/CheckBox"
-import StepWrapper from "../StepWrapper"
+import useForm from '../../../hooks/useForm'
+import CheckBox from '../../shared/FormElements/CheckBox'
+import TextField from '../../shared/FormElements/TextField'
+import StepWrapper from '../StepWrapper'
 
-const Dependent = ({ errorIds, n, title }) => {
+const Dependent = ({ n, title, id }) => {
+    const idPrefx = (n !== undefined) ? `${id}-${n}` : `${id}`
+    const { removeInput } = useForm()
     return (
-        <StepWrapper title={title}>
+        <StepWrapper
+            title={title}
+            removable={true}
+            onRemove={() => {
+                removeInput(idPrefx)
+            }}
+        >
             <div>
-                <div className="flex space-x-6 mb-6">
+                <div className="mb-6 flex space-x-6">
                     <TextField
                         label={'Your Date of Birth'}
-                        id={`${title}_dob_${n}`}
+                        id={`${idPrefx}-dob`}
                         type={'date'}
-                        pattern={'(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])'}
-                        error={errorIds.includes(`${title}_dob_${n}`)}
+                        pattern={
+                            '(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])'
+                        }
                     />
                 </div>
-                <div className="flex space-x-6 mb-6">
+                <div className="mb-6 flex space-x-6">
                     <TextField
                         label={'First Name'}
-                        id={`${title}_first_name_${n}`}
+                        id={`${idPrefx}-first_name`}
                         type={'text'}
                         placeholder={'First Name'}
                         pattern={'.{2,20}'}
-                        error={errorIds.includes(`${title}_first_name_${n}`)}
                     />
                     <TextField
                         label={'Last Name'}
-                        id={`${title}_last_name_${n}`}
+                        id={`${idPrefx}-last_name`}
                         type={'text'}
                         placeholder={'Last Name'}
                         pattern={'.{2,20}'}
-                        error={errorIds.includes(`${title}_last_name_${n}`)}
                     />
                 </div>
-                <CheckBox 
-                    label={'Eligible for coverage through a job, Medicaid, Medicare, or CHIP'}
-                    id={'current_insurance'}
+                <CheckBox
+                    label={
+                        'Eligible for coverage through a job, Medicaid, Medicare, or CHIP'
+                    }
+                    id={`${idPrefx}-has_mec`}
                 />
-                <CheckBox 
-                    label={'Used tobacco products four (4) or more times per week on average during the past six (6) months (not including ceremonial uses)'}
-                    id={'uses_tobacco'}
+                <CheckBox
+                    label={
+                        'Used tobacco products four (4) or more times per week on average during the past six (6) months (not including ceremonial uses)'
+                    }
+                    id={`${idPrefx}-uses_tobacco`}
                 />
             </div>
         </StepWrapper>

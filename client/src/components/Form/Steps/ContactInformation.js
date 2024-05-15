@@ -1,28 +1,32 @@
 import TextField from '../../shared/FormElements/TextField'
 import StepWrapper from '../StepWrapper'
 
-const ContactInformation = ({ errorIds, data }) => {
+const ContactInformation = () => {
     return (
         <StepWrapper title={'Income'}>
             <TextField
                 label={'Email'}
-                id={'gross_income'}
-                type={'number'}
+                id={'details-email'}
+                type={'text'}
+                placeholder={'Email'}
                 pattern={
-                    '.{5,7}'
+                    '^[a-zA-Z0-9. _-]+@[a-zA-Z0-9. -]+\\.[a-zA-Z]{2,4}$'
                 }
-                error={errorIds.includes('gross_income')}
-                value={data?.gross_income || 0}
             />
             <TextField
-                label={'County'}
-                id={'county'}
+                label={'Phone Number'}
+                id={'details-phone'}
                 type={'text'}
+                placeholder={'Phone Number'}
                 pattern={
-                    '.{4,15}'
+                    '^(\\+\\d{1,3}\\s?)?(?![ -])(?!.*[- ]$)(?!.*[- ]{2})(?!.*[()]{2})[0-9- ()]+$'
                 }
-                error={errorIds.includes('county')}
-                value={data?.county || ""}
+            />
+            <TextField
+                label={'Address'}
+                id={'details-street'}
+                type={'text'}
+                placeholder={'Address'}
             />
         </StepWrapper>
     )

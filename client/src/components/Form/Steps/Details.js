@@ -1,108 +1,101 @@
-import Select from "../../shared/FormElements/Select";
-import TextField from "../../shared/FormElements/TextField";
-import CheckBox from "../../shared/FormElements/CheckBox";
-import StepWrapper from "../StepWrapper";
-import Dependent from "./Dependent"
-import { PrimaryButton } from "../../shared/Buttons";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
+import useForm from '../../../hooks/useForm'
+import { PrimaryButton } from '../../shared/Buttons'
+import CheckBox from '../../shared/FormElements/CheckBox'
+import Select from '../../shared/FormElements/Select'
+import TextField from '../../shared/FormElements/TextField'
+import StepWrapper from '../StepWrapper'
+import Dependent from './Dependent'
 
-const Details = ({ errorIds, title, data }) => {
-  const [dependents, setDependents] = useState(0);
-  const [spouse, setSpouse] = useState(false);
+const Details = ({ title }) => {
+    const [dependents, setDependents] = useState(0)
+    const [spouse, setSpouse] = useState(false)
+    const { data } = useForm()
 
-  useEffect(() => {
-     setDependents(data?.dependents?.length || 0)
-     setSpouse(!!dependents?.spouse)
-  }, [data])
+    useEffect(() => {
+        setDependents(data?.dependents?.length || 0)
+        setSpouse(!!data?.spouse_details)
+    }, [data])
 
-  return (
-    <div>
-      <StepWrapper title={title}>
+    return (
         <div>
-          <div className="flex space-x-6 mb-6">
-            <TextField
-              label={"Your Date of Birth"}
-              id={"dob"}
-              type={"date"}
-              pattern={"(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])"}
-              error={errorIds.includes("dob")}
-              value={data?.dob || ""}
-            />
-            <TextField
-              label={"Zip Code"}
-              id={"zip"}
-              type={"number"}
-              placeholder={"Zip Code"}
-              pattern={".{5}"}
-              error={errorIds.includes("zip")}
-              value={data?.zip || ''}
-            />
-            <div className="flex-1">
-              <Select
-                label="Year"
-                id={"year"}
-                options={["2024", "2024"]}
-                error={errorIds.includes("year")}
-                value={data?.year || ''}
-              />
+            <StepWrapper title={title}>
+                <div>
+                    <div className="mb-6 flex space-x-6">
+                        <TextField
+                            label={'Your Date of Birth'}
+                            id={'details-dob'}
+                            type={'date'}
+                            pattern={
+                                '(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|1\\d|2\\d|3[01])'
+                            }
+                        />
+                        <TextField
+                            label={'Zip Code'}
+                            id={'details-zip'}
+                            type={'number'}
+                            placeholder={'Zip Code'}
+                            pattern={'.{5}'}
+                        />
+                        <div className="flex-1">
+                            <Select
+                                label="Year"
+                                id={'details-year'}
+                                options={['2024', '2024']}
+                            />
+                        </div>
+                    </div>
+                    <div className="mb-6 flex space-x-6">
+                        <TextField
+                            label={'First Name'}
+                            id={'details-first_name'}
+                            type={'text'}
+                            placeholder={'First Name'}
+                            pattern={'.{2,20}'}
+                        />
+                        <TextField
+                            label={'Last Name'}
+                            id={'details-last_name'}
+                            type={'text'}
+                            placeholder={'Last Name'}
+                            pattern={'.{2,20}'}
+                        />
+                    </div>
+                    <CheckBox
+                        label={
+                            'Eligible for coverage through a job, Medicaid, Medicare, or CHIP'
+                        }
+                        id={'details-has_mec'}
+                    />
+                    <CheckBox
+                        label={
+                            'Used tobacco products four (4) or more times per week on average during the past six (6) months (not including ceremonial uses)'
+                        }
+                        id={'details-uses_tobacco'}
+                    />
+                </div>
+            </StepWrapper>
+            {spouse && <Dependent title={'Spouse'} id={'spouse_details'} />}
+            {Array.from({ length: dependents }).map((val, index) => (
+                <Dependent title={'Dependent'} id={'dependents'} n={index} />
+            ))}
+            <div className="mx-auto mt-4 flex w-full max-w-2xl justify-between space-x-4">
+                <PrimaryButton
+                    text={'Spouse'}
+                    classNames="w-[50%] !border-green-500 !text-green-500 !font-bold hover:!bg-green-500 hover:!text-white"
+                    onClick={() => {
+                        setSpouse(true)
+                    }}
+                    disabled={spouse}
+                />
+                <PrimaryButton
+                    text={'Dependent'}
+                    classNames="w-[50%] !border-green-500 !text-green-500 !font-bold hover:!bg-green-500 hover:!text-white"
+                    onClick={() => setDependents(dependents + 1)}
+                />
             </div>
-          </div>
-          <div className="flex space-x-6 mb-6">
-            <TextField
-              label={"First Name"}
-              id={"first_name"}
-              type={"text"}
-              placeholder={"First Name"}
-              pattern={".{2,20}"}
-              error={errorIds.includes("first_name")}
-              value={data?.first_name || ''}
-            />
-            <TextField
-              label={"Last Name"}
-              id={"last_name"}
-              type={"text"}
-              placeholder={"Last Name"}
-              pattern={".{2,20}"}
-              value={data?.last_name || ''}
-              error={errorIds.includes("last_name")}
-            />
-          </div>
-          <CheckBox
-            label={
-              "Eligible for coverage through a job, Medicaid, Medicare, or CHIP"
-            }
-            id={"has_mec"}
-            value={data?.has_mec || ''}
-          />
-          <CheckBox
-            label={
-              "Used tobacco products four (4) or more times per week on average during the past six (6) months (not including ceremonial uses)"
-            }
-            id={"uses_tobacco"}
-            value={data?.users_tobacco || ''}
-          />
         </div>
-      </StepWrapper>
-      {Array.from({ length: dependents }).map((val, index) => (
-        <Dependent title={(index === 0 && spouse) ? "Spouse" : "Dependent"} errorIds={errorIds} n={index + 1} data={data.dependents[index]} />
-      ))}
-      <div className="w-full max-w-2xl mx-auto flex justify-between space-x-4 mt-4">
-        <PrimaryButton
-          text={"Spouse"}
-          classNames="w-[50%] !border-green-500 !text-green-500 !font-bold hover:bg-transparent hover:bg-green-500 hover:!text-white"
-          onClick={() => {
-            setSpouse(true);
-            setDependents(dependents + 1)
-          }}
-        />
-        <PrimaryButton
-          text={"Dependent"}
-          classNames="w-[50%] !border-green-500 !text-green-500 !font-bold hover:bg-green-500 hover:!text-white"
-          onClick={() => setDependents(dependents + 1)}
-        />
-      </div>
-    </div>
-  );
-};
+    )
+}
 
-export default Details;
+export default Details

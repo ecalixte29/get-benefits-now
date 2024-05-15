@@ -23,7 +23,7 @@ const PlanCard = ({ plan }) => {
             await updateContact(localStorage.getItem('uuid'), {
                 plan_id: plan.id,
             })
-            navigate('/identity-verification')
+            navigate('/consent')
         } catch (error) {
             return toast.error(String(error), { duration: 3000 })
         }
