@@ -12,7 +12,7 @@ const GHL_CUSTOM_FIELDS = {
     'contact.county': 'IocevIdNBY7CbXTUO2HJ',
     'contact.primary_dob': 'WUMEOlUI8lhiZ7LTdAYj',
     'contact.dependent_1_dob': 'yHxZLs5CDyrXDSPdBj6E',
-    'contact.dependent_1_full_name': '  ',
+    'contact.dependent_1_full_name': 'enQUkO6vwyuBeYZ6k52n',
     'contact.dependent_1_ssn': 'VHEsDNv6Ix9GwDS5t7K1',
     'contact.dependent_2_dob': 'PAt2XpcToXIrfMHsSTTv',
     'contact.dependent_2_full_name': 'JPzanbVESKBBfzB07iri',
