@@ -30,14 +30,14 @@ const ConsentForm = () => {
             )
         }
         validate()
-    }, [])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     const onSubmit = async () => {
         const signature = signaturePadRef.current.toDataURL()
 
         await updateContact(uuid, { signature })
         sendContactToGHL(uuid)
-        localStorage.removeItem("uuid");
+        localStorage.clear();
         navigate('/thank-you')
     }
 

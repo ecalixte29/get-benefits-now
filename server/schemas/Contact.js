@@ -5,9 +5,8 @@ const dependentSchema = new mongoose.Schema(
         first_name: { type: String, required: true },
         last_name: { type: String, required: true },
         dob: { type: Date, required: true },
-        relationship: { type: String, required: true },
         social_security_number: { type: String, required: true },
-        gender: { type: String, required: true },
+        has_mec: { type: Boolean, required: true },
         uses_tobacco: { type: Boolean, required: true }
     },
     { _id: false }
@@ -19,7 +18,7 @@ const spouseSchema = new mongoose.Schema(
         last_name: { type: String, required: false },
         dob: { type: Date, required: false },
         social_security_number: { type: String, required: false },
-        gender: { type: String, required: false },
+        has_mec: { type: Boolean, required: false },
         uses_tobacco: { type: Boolean, required: false }
     },
     { _id: false }
@@ -28,22 +27,16 @@ const spouseSchema = new mongoose.Schema(
 const detailsSchema = new mongoose.Schema({
     first_name: { type: String, required: true },
     last_name: { type: String, required: true },
-    gender: { type: String, required: true },
     dob: { type: Date, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
     street: { type: String, required: true },
-    city: { type: String, required: true },
-    state: { type: String, required: true },
+    county: { type: String, required: true },
     zip: { type: Number, required: true },
     ssn: {type: String, required: false },
-    employer: { type: String, required: false },
-    county: { type: String, required: false },
     gross_income: { type: Number, required: true },
-    gross_annual_income: { type: Number, required: true },
-    us_national: { type: Boolean, required: true },
     uses_tobacco: { type: Boolean, required: true },
-    current_insurance: { type: Boolean, required: true }
+    has_mec: { type: Boolean, required: true }
 });
 
 const contactSchema = new mongoose.Schema(

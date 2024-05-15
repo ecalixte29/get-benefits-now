@@ -3,30 +3,29 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import HeroImg from '../../assets/images/hero.webp'
 import { SecondaryButton } from '../shared/Buttons'
 import TextField from '../shared/FormElements/TextField'
+import useForm from '../../hooks/useForm'
 
 const HeroSection = () => {
     const navigate = useNavigate()
-    const location = useLocation()
-
-    const [zipCode, setZipCode] = useState('')
     const [error, setError] = useState(false)
+    const { returnFormField } = useForm()
 
     const handleNextButtonClick = () => {
+        const zipCode = returnFormField('details-zip')
         if (zipCode.trim() !== '') {
-            localStorage.setItem('zip', zipCode.trim())
             navigate('/form')
         } else {
             setError(true)
         }
     }
 
-    useEffect(() => {
-        const queryParams = new URLSearchParams(location.search)
-        const zipParam = queryParams.get('zip')
-        if (zipParam) {
-            setZipCode(zipParam)
-        }
-    }, [location.search])
+    // useEffect(() => {
+    //     const queryParams = new URLSearchParams(location.search)
+    //     const zipParam = queryParams.get('zip')
+    //     if (zipParam) {
+    //         setZipCode(zipParam)
+    //     }
+    // }, [location.search])
 
     useEffect(() => localStorage.removeItem('zip'), [])
 
@@ -72,21 +71,16 @@ const HeroSection = () => {
                         <TextField
                             placeholder="123456"
                             label={''}
-                            onChange={value => {
-                                setZipCode(value)
-                                setError(false)
-                            }}
-                            wrapperClasses="flex-1"
-                            innerClasses={`py-4 sm:text-xl font-bold ${error ? 'border-error' : 'border-light'}`}
+                            wrapperClasses="!mt-0 !mb-0"
+                            innerClasses={`rounded-none py-4 sm:text-xl font-bold ${error ? 'border-error' : 'border-light'}`}
                             required={true}
-                            value={zipCode}
-                            error={error}
                             type="number"
+                            id={'details-zip'}
                         />
                         <SecondaryButton
                             onClick={handleNextButtonClick}
                             text="Next"
-                            classNames="font-bold text-xl mb-5 border border-secondary"
+                            classNames="font-bold mt-0 mb-0 text-xl border border-secondary"
                         />
                     </div>
                 </div>

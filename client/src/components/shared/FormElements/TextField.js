@@ -1,46 +1,34 @@
-import PropTypes from 'prop-types'
+import React from 'react'
+import useForm from '../../../hooks/useForm'
 
 const TextField = ({
     label,
-    type,
-    value,
-    error,
-    onChange,
     id,
-    required,
-    wrapperClasses = '',
-    innerClasses = '',
-    ...additional_options
+    type,
+    placeholder,
+    pattern,
+    disableAutoUpdate,
+    value,
+    wrapperClasses,
+    innerClasses,
+    onChange,
 }) => {
+    const { returnFormField, inputChangeHandler, errorIds } = useForm()
     return (
-        <div key={id} className={`relative mb-5 ${wrapperClasses}`}>
-            <label
-                htmlFor={id}
-                className={`absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium ${error ? 'animate-fadein text-error' : 'text-dark'} capitalize`}
-            >
-                {error
-                    ? `Please enter a valid ${label.toLowerCase()}`
-                    : `${label} ${required ? '*' : ''}`}
+        <div key={label} className={`mb-8 flex-1 ${wrapperClasses}`}>
+            <label className="block text-base font-bold text-gray-700">
+                {label}
             </label>
             <input
-                key={id}
                 id={id}
-                name={id}
                 type={type}
-                value={value}
-                onChange={e => onChange(e.target.value)}
-                min={0}
-                {...additional_options}
-                className={`block w-full border border-light py-3 text-gray-900 shadow-sm outline-0 ring-0 focus:ring-0 ${error ? 'border-error' : 'border-light'} placeholder:text-gray-400 ${error ? 'focus:border-error' : 'focus:border-primary'} sm:text-sm sm:leading-6 ${innerClasses}`}
+                placeholder={placeholder}
+                value={disableAutoUpdate ? value : (returnFormField(id) || '')}
+                pattern={pattern || '^(?!\\s*$).+'}
+                onChange={disableAutoUpdate ? onChange : (e) => inputChangeHandler(id, e.target.value)}
+                className={`appearance-none shadow ${errorIds.includes(id) ? 'border-red-600' : 'border-light'} focus:shadow-outline w-full rounded px-4 py-3 leading-tight text-gray-700 shadow-md focus:border-light focus:outline-none focus:ring-0 ${innerClasses}`}
             />
         </div>
     )
 }
-
-TextField.propTypes = {
-    label: PropTypes.string.isRequired,
-    autoComplete: PropTypes.bool,
-    error: PropTypes.bool.isRequired,
-}
-
 export default TextField

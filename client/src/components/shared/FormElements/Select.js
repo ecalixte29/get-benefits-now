@@ -1,51 +1,47 @@
-import PropTypes from 'prop-types'
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import useForm from "../../../hooks/useForm";
 
 const Select = ({
-    label,
-    options,
-    id,
-    onChange,
-    value,
-    error,
-    required,
-    additional_options,
+  label,
+  options,
+  id,
+  onChange,
+  value,
+  disableAutoUpdate
 }) => {
-    return (
-        <div kev={id} className="relative mb-5">
-            <label
-                htmlFor={label}
-                className={`absolute -top-2 left-2 inline-block bg-white px-1 text-xs font-medium ${error ? 'animate-fadein text-error' : 'text-dark'} capitalize`}
-            >
-                {error
-                    ? `Please select a valid ${label.toLowerCase()}`
-                    : `${label.toLowerCase()} ${required ? '*' : ''}`}
-            </label>
-            <select
-                id={label}
-                name={id}
-                onChange={e => onChange(e.target.value)}
-                defaultValue={value}
-                {...additional_options}
-                className={`block w-full ${error ? 'outline-error' : 'outline-gray-300'} border-0 border-r-8 border-r-transparent p-4 text-gray-900 shadow-sm outline outline-1 placeholder:text-gray-400 focus:z-10 focus:border-0 focus:outline-2 focus:outline-secondary focus:ring-0 focus-visible:outline-secondary sm:text-sm sm:leading-6`}
-            >
-                {options.map((option, index) => (
-                    <option key={index} value={option}>
-                        {option}
-                    </option>
-                ))}
-            </select>
-        </div>
-    )
-}
+  const { returnFormField, inputChangeHandler, errorIds } = useForm()
+  useEffect(() => {
+    //sets a default value on first render
+    if(!returnFormField(id) && !disableAutoUpdate) inputChangeHandler(id,options[0])
+  },[]) // eslint-disable-line react-hooks/exhaustive-deps
+  return (
+    <div kev={id} className="relative mb-5">
+      <label className="block text-gray-700 text-base font-bold mb-2">
+        {label}
+      </label>
+      <select
+        className={`block appearance-none w-full bg-white ${errorIds.includes(id) ? 'border-red-600' : 'border-light'} focus:border-light ring-0 focus:ring-0 hover:border-gray-500 px-4 py-3 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline shadow-md`}
+        id="year"
+        onChange={disableAutoUpdate ? onChange : (e) => inputChangeHandler(id,e.target.value)}
+        value={disableAutoUpdate ? value: returnFormField(id)}
+      >
+        {options.map((option, index) => (
+            <option key={option + index}>{option}</option>
+        ))}
+      </select>
+    </div>
+  );
+};
 
 Select.propTypes = {
-    label: PropTypes.string.isRequired,
-    options: PropTypes.arrayOf(
-        PropTypes.shape({
-            value: PropTypes.string.isRequired,
-            label: PropTypes.string.isRequired,
-        })
-    ).isRequired,
-}
+  label: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 
-export default Select
+export default Select;
