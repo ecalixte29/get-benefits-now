@@ -3,7 +3,7 @@ import CheckBox from '../../shared/FormElements/CheckBox'
 import TextField from '../../shared/FormElements/TextField'
 import StepWrapper from '../StepWrapper'
 
-const Dependent = ({ n, title, id }) => {
+const Dependent = ({ n, title, id, onRemove }) => {
     const idPrefx = (n !== undefined) ? `${id}-${n}` : `${id}`
     const { removeInput } = useForm()
     return (
@@ -11,7 +11,8 @@ const Dependent = ({ n, title, id }) => {
             title={title}
             removable={true}
             onRemove={() => {
-                removeInput(idPrefx)
+                removeInput(idPrefx);
+                onRemove();
             }}
         >
             <div>

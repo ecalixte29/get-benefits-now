@@ -77,7 +77,7 @@ const Details = ({ title }) => {
             </StepWrapper>
             {spouse && <Dependent title={'Spouse'} id={'spouse_details'} />}
             {Array.from({ length: dependents }).map((val, index) => (
-                <Dependent title={'Dependent'} id={'dependents'} n={index} />
+                <Dependent title={'Dependent'} id={'dependents'} n={index} onRemove={() => setDependents(dependents - 1)} />
             ))}
             <div className="mx-auto mt-4 flex w-full max-w-2xl justify-between space-x-4">
                 <PrimaryButton

@@ -1,9 +1,9 @@
 import TextField from '../../shared/FormElements/TextField'
 import StepWrapper from '../StepWrapper'
 
-const ContactInformation = () => {
+const ContactInformation = ({ title }) => {
     return (
-        <StepWrapper title={'Income'}>
+        <StepWrapper title={title}>
             <TextField
                 label={'Email'}
                 id={'details-email'}

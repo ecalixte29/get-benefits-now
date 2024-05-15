@@ -2,10 +2,10 @@ import useForm from '../../../hooks/useForm'
 import TextField from '../../shared/FormElements/TextField'
 import StepWrapper from '../StepWrapper'
 
-const SSN = () => {
+const SSN = ({ title }) => {
     const { data } = useForm()
     return (
-        <StepWrapper title="Social Security Number">
+        <StepWrapper title={title}>
             <TextField
                 label="Social Security Number"
                 placeholder={'Social Security Number'}
