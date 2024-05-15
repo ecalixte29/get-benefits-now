@@ -72,21 +72,28 @@ const useContacts = () => {
                 state: state,
                 country: 'US',
                 postalCode: contactDoc.details.zip,
-                source: 'benefitsritenow.com',
                 tags: ['benefitsritenow.com', process.env.NODE_ENV],
                 customField: {
                     [GHL_CUSTOM_FIELDS['contact.primary_ssn']]: contactDoc.ssn,
-                    [GHL_CUSTOM_FIELDS['contact.county']]:
-                        contactDoc.details.county,
+                    [GHL_CUSTOM_FIELDS['contact.county']]: contactDoc.details.county,
+                    [GHL_CUSTOM_FIELDS['contact.primary_dob']]: formatDate(contactDoc.details.dob),
+                    [GHL_CUSTOM_FIELDS['contact.are_you_on_medicaid_or_medicare']]:
+                        contactDoc.details.current_insurance,
                     [GHL_CUSTOM_FIELDS[
                         'contact.estimated_household_annual_income'
-                    ]]: contactDoc.details.gross_income,
+                    ]]: contactDoc.details.gross_annual_income,
+                    [GHL_CUSTOM_FIELDS['contact.recent_employer']]:
+                        contactDoc.details.recent_employer,
+                    [GHL_CUSTOM_FIELDS['contact.are_you_a_us_national_']]:
+                        contactDoc.details.us_national === 'true'
+                            ? 'Yes'
+                            : 'No',
                     [GHL_CUSTOM_FIELDS['contact.are_you_a_tobacco_user_']]:
                         contactDoc.details.uses_tobacco === 'true'
                             ? 'Yes'
                             : 'No',
                     ...dependentsDetails,
-                    [GHL_CUSTOM_FIELDS['contact.carrier_selected']]: 
+                    [GHL_CUSTOM_FIELDS['contact.carrier_selected']]:
                         planDetails?.issuer?.name || "",
                     [GHL_CUSTOM_FIELDS['contact.carrierplan_selected']]:
                         planDetails?.name || "",
@@ -103,7 +110,7 @@ const useContacts = () => {
                         'Yes',
                     [GHL_CUSTOM_FIELDS['contact.spouse_full_name']]:
                         `${contactDoc.spouse_details.first_name} ${contactDoc.spouse_details.last_name}`,
-                    [GHL_CUSTOM_FIELDS['contact.spouse_date_of_birth']]:
+                    [GHL_CUSTOM_FIELDS['contact.spouse_dob']]:
                         formatDate(contactDoc.spouse_details.dob),
                     [GHL_CUSTOM_FIELDS['contact.spouse_ssn']]:
                         contactDoc.spouse_details.social_security_number,
@@ -139,7 +146,18 @@ const useContacts = () => {
     }
 
     const formatDate = dateString => {
-        return dateString.split("T")[0]
+        const date = new Date(dateString);
+
+        const monthAbbreviations = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        // Extract day, month, and year components from the date object
+        const day = date.getDate();
+        const monthIndex = date.getMonth();
+        const year = date.getFullYear();
+
+        // Format the date string as "DD Month YYYY"
+        const formattedDate = `${day < 10 ? '0' + day : day} ${monthAbbreviations[monthIndex]} ${year}`;
+        return formattedDate;
     }
 
     return {
