@@ -4,15 +4,16 @@ import TextField from '../../shared/FormElements/TextField'
 import StepWrapper from '../StepWrapper'
 
 const Dependent = ({ n, title, id, onRemove }) => {
-    const idPrefx = (n !== undefined) ? `${id}-${n}` : `${id}`
+    const idPrefx = n !== undefined ? `${id}-${n}` : `${id}`
     const { removeInput } = useForm()
     return (
         <StepWrapper
             title={title}
             removable={true}
+            dependent={true}
             onRemove={() => {
-                removeInput(idPrefx);
-                onRemove();
+                removeInput(idPrefx)
+                onRemove()
             }}
         >
             <div>

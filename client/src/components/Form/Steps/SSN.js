@@ -35,7 +35,7 @@ const DependentSSN = ({ name, isSpouse, index }) => {
             : `${isSpouse ? 'spouse_details' : 'dependents'}`
     return (
         <>
-            <StepWrapper title={name}>
+            <StepWrapper title={name} rounded={false} borderBottom={false}>
                 <TextField
                     label="Social Security Number"
                     placeholder={'Social Security Number'}

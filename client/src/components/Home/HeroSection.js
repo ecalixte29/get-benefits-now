@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import HeroImg from '../../assets/images/hero.webp'
+import useForm from '../../hooks/useForm'
 import { SecondaryButton } from '../shared/Buttons'
 import TextField from '../shared/FormElements/TextField'
-import useForm from '../../hooks/useForm'
 
 const HeroSection = () => {
     const navigate = useNavigate()
@@ -12,20 +12,12 @@ const HeroSection = () => {
 
     const handleNextButtonClick = () => {
         const zipCode = returnFormField('details-zip')
-        if (zipCode.trim() !== '') {
+        if (zipCode && zipCode.trim() !== '') {
             navigate('/form')
         } else {
             setError(true)
         }
     }
-
-    // useEffect(() => {
-    //     const queryParams = new URLSearchParams(location.search)
-    //     const zipParam = queryParams.get('zip')
-    //     if (zipParam) {
-    //         setZipCode(zipParam)
-    //     }
-    // }, [location.search])
 
     useEffect(() => localStorage.removeItem('zip'), [])
 

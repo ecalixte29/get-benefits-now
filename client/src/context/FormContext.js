@@ -5,19 +5,18 @@ const FormContext = createContext({
     state: {
         data: {},
         currentStep: 0,
-        errorIds: []
+        errorIds: [],
     },
-    dispatch: () => { },
+    dispatch: () => {},
 })
 
 export const useFormContext = () => useContext(FormContext)
 
 export const FormContextProvider = ({ children }) => {
-
     const [state, dispatch] = useReducer(FormReducer, {
         currentStep: 0,
         data: {},
-        errorIds: []
+        errorIds: [],
     })
 
     return (

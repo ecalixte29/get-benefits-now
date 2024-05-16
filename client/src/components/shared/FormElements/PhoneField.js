@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import {
-    PhoneInput,
     defaultCountries,
     parseCountry,
-} from 'react-international-phone';
-import 'react-international-phone/style.css';
+    PhoneInput,
+} from 'react-international-phone'
+import 'react-international-phone/style.css'
 
 const PhoneField = ({
     label,
@@ -18,16 +18,16 @@ const PhoneField = ({
     innerClasses = '',
     ...additional_options
 }) => {
-    const countries = defaultCountries.filter((country) => {
-        const { iso2 } = parseCountry(country);
-        return ['us'].includes(iso2);
-    });
+    const countries = defaultCountries.filter(country => {
+        const { iso2 } = parseCountry(country)
+        return ['us'].includes(iso2)
+    })
 
     return (
         <div key={id} className={`relative mb-5 ${wrapperClasses}`}>
             <label
                 htmlFor={id}
-                className={`absolute z-50 -top-2 left-2 inline-block bg-white px-1 text-xs font-medium ${error ? 'animate-fadein text-error' : 'text-dark'} capitalize`}
+                className={`absolute -top-2 left-2 z-50 inline-block bg-white px-1 text-xs font-medium ${error ? 'animate-fadein text-error' : 'text-dark'} capitalize`}
             >
                 {error
                     ? `Please enter a valid ${label.toLowerCase()}`

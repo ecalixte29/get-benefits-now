@@ -26,8 +26,12 @@ const useForm = () => {
         const queryString = window.location.search
         const urlParams = new URLSearchParams(queryString)
         const queryParams = Object.fromEntries(urlParams.entries())
-        if(queryParams.dob) queryParams.dob = new Date(queryParams.dob).toISOString().split('T')[0]
-        if(Object.keys(queryParams).length > 0) setForm({ details: queryParams })
+        if (queryParams.dob)
+            queryParams.dob = new Date(queryParams.dob)
+                .toISOString()
+                .split('T')[0]
+        if (Object.keys(queryParams).length > 0)
+            setForm({ details: queryParams })
     }
 
     const setErrorIds = ids => {

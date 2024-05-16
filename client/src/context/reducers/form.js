@@ -8,7 +8,8 @@ export const FormReducer = (state, action) => {
             let errorIds = state.errorIds
             let current = state.data
 
-            if (value.length > 0 && state.errorIds.includes(id)) errorIds = state.errorIds.filter(errorId => errorId !== id)
+            if (value.length > 0 && state.errorIds.includes(id))
+                errorIds = state.errorIds.filter(errorId => errorId !== id)
             keys.forEach((key, index) => {
                 // Check if the key is an index for an array
                 if (!isNaN(key)) {

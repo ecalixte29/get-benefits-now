@@ -41,7 +41,7 @@ const Plans = () => {
             let lead = await getContact(uuid)
 
             let countyfips
-            let state;
+            let state
             try {
                 const response = await fetch(
                     `https://marketplace.api.healthcare.gov/api/v1/counties/by/zip/${lead.details.zip}?apikey=${process.env.REACT_APP_API_KEY}`

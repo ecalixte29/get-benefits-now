@@ -37,7 +37,7 @@ const ConsentForm = () => {
 
         await updateContact(uuid, { signature })
         sendContactToGHL(uuid)
-        localStorage.clear();
+        localStorage.clear()
         navigate('/thank-you')
     }
 

@@ -9,18 +9,14 @@ const Income = () => {
                 id={'details-gross_income'}
                 type={'number'}
                 placeholder={'Household Income'}
-                pattern={
-                    '.{5,7}'
-                }
+                pattern={'.{5,7}'}
             />
             <TextField
                 label={'County'}
                 id={'details-county'}
                 type={'text'}
                 placeholder={'County'}
-                pattern={
-                    '.{4,15}'
-                }
+                pattern={'.{4,15}'}
             />
         </StepWrapper>
     )
