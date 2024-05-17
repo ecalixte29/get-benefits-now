@@ -45,7 +45,7 @@ const contactSchema = new mongoose.Schema(
         spouse_details: { type: spouseSchema, required: false },
         dependents: { type: [dependentSchema], required: false },
         plan_id: { type: String, required: false },
-        signature: { type: String, required: false },
+        consent: { type: String, required: false },
         type: { type: String, required: true },
         source: { type: String, required: true, default: "https://www.benefitsritenow.com" },
         environment: { type: String, default: process.env.NODE_ENV },

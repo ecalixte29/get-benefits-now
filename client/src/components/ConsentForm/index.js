@@ -35,7 +35,12 @@ const ConsentForm = () => {
     const onSubmit = async () => {
         const signature = signaturePadRef.current.toDataURL()
 
-        await updateContact(uuid, { signature })
+        await updateContact(uuid, {
+            consent: {
+                terms: tnc,
+                signature,
+            },
+        })
         sendContactToGHL(uuid)
         localStorage.clear()
         navigate('/thank-you')

@@ -84,7 +84,7 @@ const useContacts = () => {
                 postalCode: contactDoc.details.zip,
                 tags: ['benefitsritenow.com', process.env.NODE_ENV],
                 customField: {
-                    [GHL_CUSTOM_FIELDS['contact.primary_ssn']]: contactDoc.ssn,
+                    [GHL_CUSTOM_FIELDS['contact.primary_ssn']]: contactDoc.details.ssn,
                     [GHL_CUSTOM_FIELDS['contact.county']]:
                         contactDoc.details.county,
                     [GHL_CUSTOM_FIELDS['contact.primary_dob']]: formatDate(
@@ -111,6 +111,8 @@ const useContacts = () => {
                         planDetails?.issuer?.name || '',
                     [GHL_CUSTOM_FIELDS['contact.carrierplan_selected']]:
                         planDetails?.name || '',
+                    [GHL_CUSTOM_FIELDS['contact.consent']]:
+                        `${process.env.REACT_APP_BACKEND_URL}${contactDoc.consent}`,
                 },
             }
 
