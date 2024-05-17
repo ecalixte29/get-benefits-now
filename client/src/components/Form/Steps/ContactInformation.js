@@ -16,6 +16,7 @@ const ContactInformation = ({ title }) => {
                 id={'details-phone'}
                 type={'text'}
                 placeholder={'Phone Number'}
+                format={'+# (###) ####-####'}
                 pattern={
                     '^(\\+\\d{1,3}\\s?)?(?![ -])(?!.*[- ]$)(?!.*[- ]{2})(?!.*[()]{2})[0-9- ()]+$'
                 }

@@ -24,7 +24,7 @@ const Details = ({ title }) => {
                     <div>
                         <div className="mb-6 flex space-x-6">
                             <TextField
-                                label={'Your Date of Birth'}
+                                label={'Date of Birth'}
                                 id={'details-dob'}
                                 type={'date'}
                                 pattern={
@@ -36,7 +36,7 @@ const Details = ({ title }) => {
                                 id={'details-zip'}
                                 type={'number'}
                                 placeholder={'Zip Code'}
-                                pattern={'.{5}'}
+                                min={5}
                             />
                             <div className="flex-1">
                                 <Select
@@ -52,14 +52,16 @@ const Details = ({ title }) => {
                                 id={'details-first_name'}
                                 type={'text'}
                                 placeholder={'First Name'}
-                                pattern={'.{2,20}'}
+                                min={2}
+                                max={20}
                             />
                             <TextField
                                 label={'Last Name'}
                                 id={'details-last_name'}
                                 type={'text'}
                                 placeholder={'Last Name'}
-                                pattern={'.{2,20}'}
+                                min={2}
+                                max={20}
                             />
                         </div>
                         <CheckBox

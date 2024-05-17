@@ -11,6 +11,7 @@ const SSN = ({ title }) => {
                 placeholder={'Social Security Number'}
                 id={'details-ssn'}
                 pattern={'^\\d{3}-\\d{2}-\\d{4}$'}
+                format={'###-##-####'}
             />
             {(data?.dependents || []).map((dependent, index) => (
                 <DependentSSN
@@ -41,6 +42,7 @@ const DependentSSN = ({ name, isSpouse, index }) => {
                     placeholder={'Social Security Number'}
                     id={`${prefixId}-social_security_number`}
                     pattern={`^\\d{3}-\\d{2}-\\d{4}$`}
+                    format={'###-##-####'}
                 />
             </StepWrapper>
         </>

@@ -83,13 +83,45 @@ const useForm = () => {
         let inputs = Array.from(document.querySelectorAll('input, select'))
         const erroredInputs = inputs
             .map(input => {
-                if (
-                    input.tagName === 'SELECT' ||
-                    input.type === 'checkbox' ||
-                    new RegExp(input.getAttribute('pattern')).test(input.value) //test pattern set in pattern attribute for regex validation
-                )
+                if (input.tagName === 'SELECT' || input.type === 'checkbox')
                     return undefined
-                return input.id
+                const min = parseInt(input.getAttribute('min') || 0)
+                const max = parseInt(input.getAttribute('max'))
+                const pattern = input.getAttribute('pattern')
+
+                //check for character length || min max
+                if (input.type === 'text') {
+                    if (!isNaN(min) && min > input.value.length)
+                        return {
+                            id: input.id,
+                            message: `{label} should be longer than ${min} characters`,
+                        }
+                    if (!isNaN(max) && max < input.value.length)
+                        return {
+                            id: input.id,
+                            message: `{label} should be shorter than ${max} characters`,
+                        }
+                } else if (input.type === 'number') {
+                    if (!isNaN(min) && min > parseInt(input.value))
+                        return {
+                            id: input.id,
+                            message: `{label} should be greater than ${min}`,
+                        }
+                    if (!isNaN(max) && max < parseInt(input.value.length))
+                        return {
+                            id: input.id,
+                            message: `{label} should be lesser than ${max}`,
+                        }
+                }
+
+                //check for regex if both pass
+                if (!new RegExp(pattern).test(input.value))
+                    return {
+                        id: input.id,
+                        message: `Please enter a valid {label}`,
+                    }
+
+                return undefined
             })
             .filter(val => val !== undefined)
         if (erroredInputs.length > 0) return setErrorIds(erroredInputs)

@@ -19,7 +19,7 @@ const Dependent = ({ n, title, id, onRemove }) => {
             <div>
                 <div className="mb-6 flex space-x-6">
                     <TextField
-                        label={'Your Date of Birth'}
+                        label={'Date of Birth'}
                         id={`${idPrefx}-dob`}
                         type={'date'}
                         pattern={
@@ -34,6 +34,8 @@ const Dependent = ({ n, title, id, onRemove }) => {
                         type={'text'}
                         placeholder={'First Name'}
                         pattern={'.{2,20}'}
+                        min={2}
+                        max={20}
                     />
                     <TextField
                         label={'Last Name'}
@@ -41,6 +43,8 @@ const Dependent = ({ n, title, id, onRemove }) => {
                         type={'text'}
                         placeholder={'Last Name'}
                         pattern={'.{2,20}'}
+                        min={2}
+                        max={20}
                     />
                 </div>
                 <CheckBox

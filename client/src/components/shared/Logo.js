@@ -11,7 +11,7 @@ const Logo = ({ invert = false }) => {
                 onClick={() => navigate('/')}
                 className={`${invert ? 'text-white' : 'text-secondary'} cursor-pointer text-lg font-semibold sm:text-2xl`}
             >
-                Insurance Made Simple ®
+                Benefitsritesnow ®
             </h1>
         </div>
     )
