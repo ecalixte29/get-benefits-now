@@ -1,8 +1,10 @@
 import GHL_CUSTOM_FIELDS from '../utils/ghl_custom_fields'
 import axios from 'axios'
+import { useAuth } from './useAuth'
 
 const useContacts = () => {
-
+    const { token } = useAuth()
+    
     const createContact = async payload => {
         let config = {
             method: 'post',
@@ -36,7 +38,11 @@ const useContacts = () => {
 
     const getContacts = async () => {
         try{
-            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/contacts`);
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/contacts`, {
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
             return response.data;
         } catch (error) {
             console.error('Error fetching contact:', error);
@@ -170,7 +176,7 @@ const useContacts = () => {
         updateContact,
         getContact,
         getContacts,
-        sendContactToGHL,
+        sendContactToGHL
     }
 }
 

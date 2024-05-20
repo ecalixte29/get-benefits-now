@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { PaperClipIcon } from '@heroicons/react/20/solid'
 import useContacts from '../../hooks/useContacts';
 
 const Contact = () => {

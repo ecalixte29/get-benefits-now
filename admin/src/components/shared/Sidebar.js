@@ -13,6 +13,7 @@ import {
 import classNames from 'classnames'
 import React, { Fragment, useState } from 'react'
 import LogoImg from '../../assets/images/logo.svg'
+import { useAuth } from '../../hooks/useAuth'
 
 const navigation = [
     { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
@@ -26,6 +27,7 @@ const teams = [
 
 const Sidebar = () => {
     const [sidebarOpen, setSidebarOpen] = useState(true)
+    const { user } = useAuth()
 
     return (
         <>
@@ -215,20 +217,20 @@ const Sidebar = () => {
                                     ))}
                                 </ul>
                             </li>
-                            <li className="-mx-6 mt-auto">
+                            <li className="-mx-8 mt-auto">
                                 <a
                                     href="#"
                                     className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-primary-100 hover:bg-primary-800"
                                 >
                                     <img
                                         className="h-8 w-8 rounded-full bg-primary-700"
-                                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                        src={`https://robohash.org/${encodeURIComponent(user.username)}`}
                                         alt=""
                                     />
                                     <span className="sr-only">
                                         Your profile
                                     </span>
-                                    <span aria-hidden="true">Huzaifa Jalil</span>
+                                    <span aria-hidden="true">{user.username}</span>
                                 </a>
                             </li>
                         </ul>
