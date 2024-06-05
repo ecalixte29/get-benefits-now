@@ -1,18 +1,26 @@
 import Footer from '../shared/Footer'
-import AboutSection from './AboutSection'
+import Afford from './Afford'
+import ApplySticky from './ApplySticky'
+import Carriers from './Carriers'
+import FAQ from './FAQ'
 import HeroSection from './HeroSection'
-import Navbar from './Navbar'
 import ProcessSection from './ProcessSection'
+import WaitingFor from './WaitingFor'
+import WhyUs from './WhyUs'
 
 const Home = () => {
     return (
         <>
+            <ApplySticky />
             <div className="flex min-h-screen flex-col">
-                <Navbar />
                 <HeroSection />
             </div>
-            <AboutSection />
+            <Carriers />
             <ProcessSection />
+            <Afford />
+            <WhyUs />
+            <WaitingFor />
+            <FAQ />
             <Footer />
         </>
     )

@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
                     that information, and your rights regarding your personal
                     data.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     1.⁠ ⁠Information We Collect
                 </h4>
                 <p>
@@ -58,7 +58,7 @@ const PrivacyPolicy = () => {
                     you interact with our website or mobile applications, such
                     as IP addresses, browser type, and browsing behavior.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     2. How We Use Your Information
                 </h4>
                 <p>
@@ -88,7 +88,7 @@ const PrivacyPolicy = () => {
                         identity verification and fraud prevention.
                     </li>
                 </ul>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     3. Information Sharing and Disclosure
                 </h4>
                 <p>
@@ -124,7 +124,7 @@ const PrivacyPolicy = () => {
                     We do not sell or rent your personal information to third
                     parties for marketing purposes.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     4. Data Security
                 </h4>
                 <p>
@@ -134,7 +134,7 @@ const PrivacyPolicy = () => {
                     destruction. These measures include encryption, access
                     controls, and regular security assessments.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     5. Your Rights and Choices
                 </h4>
                 <p>
@@ -164,7 +164,7 @@ const PrivacyPolicy = () => {
                         communications.
                     </li>
                 </ul>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     6. Children's Privacy
                 </h4>
                 <p>
@@ -172,7 +172,7 @@ const PrivacyPolicy = () => {
                     of 18. We do not knowingly collect personal information from
                     children without parental consent.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     7. Changes to This Policy
                 </h4>
                 <p>
@@ -181,7 +181,7 @@ const PrivacyPolicy = () => {
                     notify you of any material changes by posting the updated
                     policy on our website or through other means.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     8. Contact Us
                 </h4>
                 <p>

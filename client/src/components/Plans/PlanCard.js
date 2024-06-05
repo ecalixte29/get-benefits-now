@@ -31,7 +31,7 @@ const PlanCard = ({ plan }) => {
 
     return (
         <div>
-            <span className="bg-primary px-3 py-1 text-sm text-dark">
+            <span className="bg-blue-800 px-3 py-1 text-sm text-white">
                 Lowest premium plan
             </span>
             <div className="flex w-full flex-col border border-gray-300 shadow">
@@ -125,7 +125,7 @@ const PlanCard = ({ plan }) => {
                         </div>
                     </div>
                     <SecondaryButton
-                        classNames={'text-sm px-3 py-1'}
+                        classNames='text-sm px-3 py-1 !rounded-none'
                         onClick={onPlanEnroll}
                         text="enroll now"
                     />

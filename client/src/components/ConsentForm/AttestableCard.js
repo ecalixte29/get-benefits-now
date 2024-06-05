@@ -1,17 +1,17 @@
 const AttestableCard = ({ initials, isSelected, title, text, onSelect }) => (
     <div
         onClick={onSelect}
-        className={`mb-3 flex cursor-pointer gap-x-3 p-3 ${
+        className={`mb-3 flex cursor-pointer gap-x-3 p-3 rounded-lg border ${
             isSelected
-                ? 'border border-secondary bg-gray-50'
-                : 'bg-white shadow-global'
+                ? 'border-blue-600 bg-gray-50'
+                : 'border-gray-100 bg-white shadow-global'
         }`}
     >
         <div
-            className={`mt-1 flex h-6 min-w-6 items-center justify-center text-xs font-semibold ${
+            className={`mt-1 flex h-6 min-w-6 items-center justify-center rounded text-xs font-semibold ${
                 isSelected
-                    ? 'border-2 border-secondary text-secondary'
-                    : 'border border-gray-300 text-gray-400 hover:border-primary'
+                    ? 'border-2 border-blue-600 text-blue-600'
+                    : 'border-2 border-gray-300 text-gray-400'
             }`}
         >
             {isSelected ? initials : ' '}

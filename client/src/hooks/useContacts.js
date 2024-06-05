@@ -84,7 +84,8 @@ const useContacts = () => {
                 postalCode: contactDoc.details.zip,
                 tags: ['benefitsritenow.com', process.env.NODE_ENV],
                 customField: {
-                    [GHL_CUSTOM_FIELDS['contact.primary_ssn']]: contactDoc.details.ssn,
+                    [GHL_CUSTOM_FIELDS['contact.primary_ssn']]:
+                        contactDoc.details.ssn,
                     [GHL_CUSTOM_FIELDS['contact.county']]:
                         contactDoc.details.county,
                     [GHL_CUSTOM_FIELDS['contact.primary_dob']]: formatDate(

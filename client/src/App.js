@@ -46,7 +46,7 @@ const App = () => {
             </div>
             {sticky && (
                 <button
-                    className="fixed bottom-8 right-8 z-50 flex h-10 w-10 items-center justify-center border-2 border-secondary bg-white text-xl text-secondary"
+                    className="fixed bottom-1.5 right-8 z-50 flex h-10 w-10 items-center justify-center rounded-lg border-2 border-blue-800 bg-white text-xl text-blue-800"
                     onClick={scrollToTop}
                 >
                     <BsChevronDoubleUp />
