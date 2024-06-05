@@ -96,7 +96,7 @@ const useContacts = () => {
                     ]]: contactDoc.details.current_insurance,
                     [GHL_CUSTOM_FIELDS[
                         'contact.estimated_household_annual_income'
-                    ]]: contactDoc.details.gross_annual_income,
+                    ]]: contactDoc.details.gross_income,
                     [GHL_CUSTOM_FIELDS['contact.recent_employer']]:
                         contactDoc.details.recent_employer,
                     [GHL_CUSTOM_FIELDS['contact.are_you_a_us_national_']]:
