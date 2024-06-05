@@ -15,7 +15,7 @@ const CheckBox = ({
             inputChangeHandler(id, false)
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
     return (
-        <div className="mb-6 flex items-center" key={label}>
+        <div className="flex items-center" key={label}>
             <input
                 onChange={
                     disableAutoUpdate

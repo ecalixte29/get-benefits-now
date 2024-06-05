@@ -118,9 +118,9 @@ const Plans = () => {
                 <div className="mx-auto w-11/12 space-y-8 lg:w-3/4">
                     {data.pages[0].plans ? (
                         <>
-                            <h4 className="text-base font-thin text-dark">
+                            <h4 className="text-base font-extralight text-dark">
                                 We have found{' '}
-                                <span className="mx-1 bg-secondary px-1 text-base font-normal text-white">
+                                <span className="mx-1 bg-blue-800 px-1 text-base font-normal text-white">
                                     {data.pages[0]?.total}
                                 </span>
                                 plans matching your profile!
@@ -144,8 +144,8 @@ const Plans = () => {
                         ref={ref}
                         width={24}
                         height={24}
-                        spinnerClass={'text-secondary'}
-                        backgroundClass={'text-gray-300 animate-spin'}
+                        spinnerClass='text-blue-600'
+                        backgroundClass='text-gray-300 animate-spin'
                     />
                 </div>
             )}

@@ -1,17 +1,23 @@
+import classNames from 'classnames'
 import { useNavigate } from 'react-router-dom'
-import LogoImg from '../../assets/images/logo.webp'
+import LogoImg from '../../assets/images/logo.png'
 
-const Logo = ({ invert = false }) => {
+const Logo = ({ className }) => {
     const navigate = useNavigate()
 
     return (
-        <div className="flex items-center justify-center gap-x-2">
+        <div
+            className={classNames(
+                `flex cursor-pointer items-center justify-center gap-x-2 text-center text-blue-800 sm:justify-start`,
+                className
+            )}
+        >
             <img src={LogoImg} alt="" width={30} />
             <h1
                 onClick={() => navigate('/')}
-                className={`${invert ? 'text-white' : 'text-secondary'} cursor-pointer text-lg font-semibold sm:text-2xl`}
+                className="cursor-pointer text-xl font-semibold sm:text-2xl"
             >
-                Benefitsritesnow ®
+                Benefits Rite Now
             </h1>
         </div>
     )

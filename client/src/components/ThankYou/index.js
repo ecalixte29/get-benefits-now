@@ -4,7 +4,7 @@ import Logo from '../shared/Logo'
 
 const ThankYou = () => {
     return (
-        <div className="relative flex h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-transparent to-gray-200">
+        <div className="relative flex h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-blue-400 via-transparent to-green-100">
             <img
                 src={HappyFamilyImg}
                 alt="Happy Family"

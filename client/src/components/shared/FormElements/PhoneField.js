@@ -43,7 +43,7 @@ const PhoneField = ({
                 countries={countries}
                 defaultCountry="us"
                 {...additional_options}
-                inputClassName={`block w-full border border-light py-3 text-gray-900 shadow-sm outline-0 ring-0 focus:ring-0 ${error ? 'border-error' : 'border-light'} placeholder:text-gray-400 ${error ? 'focus:border-error' : 'focus:border-primary'} sm:text-sm sm:leading-6 ${innerClasses}`}
+                inputClassName={`block w-full border border-light py-3 text-gray-900 shadow-sm outline-0 ring-0 focus:ring-0 ${error ? 'border-error' : 'border-light'} placeholder:text-gray-400 ${error ? 'focus:border-error' : 'focus:border-blue-600'} sm:text-sm sm:leading-6 ${innerClasses}`}
             />
         </div>
     )

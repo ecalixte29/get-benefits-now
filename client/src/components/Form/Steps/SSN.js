@@ -41,6 +41,7 @@ const DependentSSN = ({ name, isSpouse, index }) => {
                     label="Social Security Number"
                     placeholder={'Social Security Number'}
                     id={`${prefixId}-social_security_number`}
+                    wrapperClasses='mb-6'
                     pattern={`^\\d{3}-\\d{2}-\\d{4}$`}
                     format={'###-##-####'}
                 />

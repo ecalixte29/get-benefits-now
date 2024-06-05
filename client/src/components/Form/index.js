@@ -47,10 +47,11 @@ const Form = () => {
                 <StepComponent title={STEPS[currentStep].title} />
                 <div className="mx-auto mt-4 flex w-full max-w-2xl justify-between space-x-4">
                     <PrimaryButton
-                        text={'Back'}
+                        text="Back"
                         classNames="w-[50%]"
                         disabled={currentStep === 0}
                         onClick={previousStep}
+                        invert={true}
                     />
                     <PrimaryButton
                         text={

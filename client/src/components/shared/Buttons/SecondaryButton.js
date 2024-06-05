@@ -1,16 +1,26 @@
-import ActivityIndicator from '../ActivityIndicator'
+import classNames from 'classnames'
+import React from 'react'
 
-const SecondaryButton = ({
+const PrimaryButton = ({
     text,
-    invert,
+    invert = false,
     type = 'button',
-    classNames = '',
+    classNames: additionalClasses = '',
     onClick,
-    loading,
-    style = {},
+    loading = false,
+    style,
     disabled = false,
 }) => {
-    const buttonClasses = `flex items-center justify-center px-3 md:px-8 py-2 capitalize text-lg border border-secondary ${invert ? 'text-secondary' : 'text-white bg-secondary'} ${classNames} ${disabled || loading ? 'cursor-not-allowed' : ''}`
+    const buttonClasses = classNames(
+        'flex items-center justify-center rounded border px-4 py-2 text-lg capitalize md:px-8',
+        {
+            'border-green-500 text-green-500 hover:bg-green-100': invert,
+            'border-green-500 bg-green-500 text-white hover:bg-green-600':
+                !invert,
+            'cursor-not-allowed': disabled || loading,
+        },
+        additionalClasses
+    )
 
     return (
         <button
@@ -20,17 +30,9 @@ const SecondaryButton = ({
             onClick={onClick}
             disabled={loading || disabled}
         >
-            {loading && (
-                <ActivityIndicator
-                    height={20}
-                    width={20}
-                    spinnerClass={'text-secondary'}
-                    backgroundClass={'animate-spin mr-2'}
-                />
-            )}
-            <p>{text}</p>
+            {loading ? <div>Loading...</div> : text}
         </button>
     )
 }
 
-export default SecondaryButton
+export default PrimaryButton

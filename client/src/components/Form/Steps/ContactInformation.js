@@ -9,6 +9,7 @@ const ContactInformation = ({ title }) => {
                 id={'details-email'}
                 type={'text'}
                 placeholder={'Email'}
+                wrapperClasses='mb-6'
                 pattern={'^[a-zA-Z0-9. _-]+@[a-zA-Z0-9. -]+\\.[a-zA-Z]{2,4}$'}
             />
             <TextField
@@ -17,6 +18,7 @@ const ContactInformation = ({ title }) => {
                 type={'text'}
                 placeholder={'Phone Number'}
                 format={'+# (###) ###-####'}
+                wrapperClasses='mb-6'
                 pattern={
                     '^(\\+\\d{1,3}\\s?)?(?![ -])(?!.*[- ]$)(?!.*[- ]{2})(?!.*[()]{2})[0-9- ()]+$'
                 }
@@ -25,6 +27,7 @@ const ContactInformation = ({ title }) => {
                 label={'Address'}
                 id={'details-street'}
                 type={'text'}
+                wrapperClasses='mb-6'
                 placeholder={'Address'}
             />
         </StepWrapper>

@@ -6,23 +6,23 @@ const TermsAndConditions = () => {
             <div className="mx-auto w-11/12 pb-10 md:w-2/3">
                 <p>
                     These Terms and Conditions
-                    <span className="mx-1 bg-primary p-1 text-sm font-semibold">
+                    <span className="mx-1 bg-blue-300 p-1 text-sm font-semibold">
                         "Terms"
                     </span>
                     outline the eligibility criteria and requirements for
                     individuals seeking to enroll in the Zero Monthly Premium
                     insurance plan
-                    <span className="mx-1 bg-primary p-1 text-sm font-semibold">
+                    <span className="mx-1 bg-blue-300 p-1 text-sm font-semibold">
                         "Plan"
                     </span>
                     provided by K&A insurance Agency
-                    <span className="mx-1 bg-primary p-1 text-sm font-semibold">
+                    <span className="mx-1 bg-blue-300 p-1 text-sm font-semibold">
                         "we", "us", or "our"
                     </span>
                     . By submitting an application for enrollment in the Plan,
                     you acknowledge and agree to comply with these Terms.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     1. Eligibility Criteria
                 </h4>
                 <p>
@@ -63,7 +63,7 @@ const TermsAndConditions = () => {
                         enrollment in the offered insurance plans.
                     </li>
                 </ul>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     2. Income Verification Process
                 </h4>
                 <p>
@@ -81,7 +81,7 @@ const TermsAndConditions = () => {
                     Failure to provide sufficient income verification may result
                     in ineligibility for the Zero Monthly Premium plan.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     3. Household Size Determination
                 </h4>
                 <p>
@@ -92,7 +92,7 @@ const TermsAndConditions = () => {
                     such as birth certificates or court documents, may be
                     required to verify household composition.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     4. Tax Filing Status Verification
                 </h4>
                 <p>
@@ -102,7 +102,7 @@ const TermsAndConditions = () => {
                     documentation may result in denial of enrollment in the Zero
                     Monthly Premium plan.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     5. Possibility of Monthly Premiums
                 </h4>
                 <p>
@@ -114,7 +114,7 @@ const TermsAndConditions = () => {
                     review plan details carefully to understand any applicable
                     premium amounts.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     6. Contact Consent
                 </h4>
                 <p>
@@ -124,7 +124,7 @@ const TermsAndConditions = () => {
                     your enrollment and ongoing communication regarding your
                     insurance coverage.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     7. Changes in Eligibility Status
                 </h4>
                 <p>
@@ -135,7 +135,7 @@ const TermsAndConditions = () => {
                     coverage and premium amounts, and failure to report changes
                     may result in termination of coverage.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     8. Compliance with Laws and Regulations
                 </h4>
                 <p>
@@ -146,7 +146,7 @@ const TermsAndConditions = () => {
                     eligibility and enforce compliance with these Terms and
                     applicable laws and regulations.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     9. Disclaimers
                 </h4>
                 <p>
@@ -158,7 +158,7 @@ const TermsAndConditions = () => {
                     Terms at any time without prior notice, subject to
                     applicable law.
                 </p>
-                <h4 className="my-3 font-semibold text-secondary">
+                <h4 className="my-3 font-semibold text-blue-800">
                     10. Contact Information
                 </h4>
                 <p>

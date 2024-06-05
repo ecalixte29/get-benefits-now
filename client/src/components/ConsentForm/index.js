@@ -4,7 +4,7 @@ import SignaturePad from 'react-signature-canvas'
 import useContacts from '../../hooks/useContacts'
 import { CONSENT_DATA } from '../../utils/consent_data'
 import Layout from '../Layout'
-import { SecondaryButton } from '../shared/Buttons'
+import { PrimaryButton, SecondaryButton } from '../shared/Buttons'
 import AttestableCard from './AttestableCard'
 
 const ConsentForm = () => {
@@ -71,18 +71,18 @@ const ConsentForm = () => {
                 <SignaturePad
                     ref={signaturePadRef}
                     canvasProps={{
-                        className: 'w-full h-48 bg-white mt-5 shadow-global',
+                        className: 'w-full h-48 bg-white mt-5 shadow-global rounded-lg',
                         height: 200,
                     }}
                 />
                 <div className="flex justify-end">
-                    <SecondaryButton
+                    <PrimaryButton
                         text="Clear"
                         invert={true}
                         classNames="mr-5"
                         onClick={() => signaturePadRef.current.clear()}
                     />
-                    <SecondaryButton
+                    <PrimaryButton
                         text="Submit"
                         disabled={tnc.some(term => !term.isSelected)}
                         onClick={onSubmit}

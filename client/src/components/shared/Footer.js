@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="mt-8 bg-dark">
             <div className="container mx-auto space-y-8 pb-4 pt-8 text-white">
                 <div className="mx-auto grid w-11/12 grid-cols-1 items-start justify-between sm:w-auto sm:grid-cols-4">
-                    <Logo invert={true} />
+                    <Logo className="!text-white" />
                     <div className="col-span-1 col-start-1 mt-3 sm:col-span-2 sm:col-end-5 sm:mt-0">
                         <h1 className="font-semibold">Attention: </h1>
                         <p className="text-justify text-xs text-gray-400">
@@ -38,13 +38,13 @@ const Footer = () => {
                     <div className="space-x-4">
                         <Link
                             to="/privacy-policy"
-                            className="hover:text-primary hover:underline"
+                            className="hover:text-blue-300 hover:underline"
                         >
                             Privacy Policy
                         </Link>
                         <Link
                             to="/terms-and-conditions"
-                            className="hover:text-primary hover:underline"
+                            className="hover:text-blue-300 hover:underline"
                         >
                             Terms & Conditions
                         </Link>
