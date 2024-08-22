@@ -21,7 +21,11 @@ const PlanCard = ({ plan }) => {
     const onPlanEnroll = async () => {
         try {
             await updateContact(localStorage.getItem('uuid'), {
-                plan_id: plan.id,
+                plan: {
+                  id: plan.id,
+                  name: plan.name,
+                  issuer: plan.issuer.name
+                }
             })
             navigate('/consent')
         } catch (error) {

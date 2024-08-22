@@ -45,12 +45,11 @@ const useContacts = () => {
             const contactDoc = await getContact(id)
             const planDetails = (
                 await axios.get(
-                    `https://marketplace.api.healthcare.gov/api/v1/plans/${contactDoc.plan_id}?apikey=${process.env.REACT_APP_API_KEY}`
+                    `https://marketplace.api.healthcare.gov/api/v1/plans/${contactDoc.plan.id}?apikey=${process.env.REACT_APP_API_KEY}`
                 )
             )?.data?.plan
             const state = localStorage.getItem('state')
             const dependentsDetails = {}
-
             if (contactDoc.dependents) {
                 contactDoc.dependents.forEach((dependent, index) => {
                     const keyPrefix = `contact.dependent_${index + 1}`
@@ -70,7 +69,6 @@ const useContacts = () => {
                     }
                 })
             }
-
             const contact = {
                 email: contactDoc.details.email,
                 phone: contactDoc.details.phone,
@@ -116,7 +114,6 @@ const useContacts = () => {
                         `${process.env.REACT_APP_BACKEND_URL}${contactDoc.consent}`,
                 },
             }
-
             if (contactDoc.spouse_details) {
                 const spouseCustomFields = {
                     [GHL_CUSTOM_FIELDS['contact.do_you_have_a_spouse_']]: 'Yes',
@@ -142,18 +139,16 @@ const useContacts = () => {
                     ...spouseCustomFields,
                 }
             }
-
             const res = await fetch(process.env.REACT_APP_GHL_URL, {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
-                    Authorization: process.env.REACT_APP_TOKEN,
+                    Authorization: process.env.REACT_APP_GHL_TOKEN,
                     Version: process.env.REACT_APP_VERSION,
                 },
                 method: 'POST',
                 body: JSON.stringify(contact),
             })
-
             if (res.status === 200)
                 console.log('Contact published on GHL successfully 🎉')
             else console.error('Failed to publish contact on GHL')

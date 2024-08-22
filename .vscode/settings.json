@@ -1,0 +1,47 @@
+{
+  "editor.tabSize": 2,
+  "window.nativeTabs": true,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": true,
+  "editor.fontSize": 16,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "colorTabs.config": [
+    {
+      "regex": "server/.*",
+      "color": "#365d97",
+      "label": " Server "
+    },
+    {
+      "regex": "client/.*",
+      "color": "#b8b157",
+      "label": " Client "
+    }
+  ],
+  // "colorTabs.titleBackground": true,
+  "colorTabs.ignoreCase": true,
+  "colorTabs.titleLabel": true,
+  // "colorTabs.activityBarBackground": true,
+  "colorTabs.tabBorder": true,
+  "colorTabs.statusBarBackground": true,
+  "decorateFiles.decorations.apply": {
+    "enableNonWorkspaceFiles": true,
+    "enableFilePaths": true,
+    "enableFolders": true,
+    "enableBadges": true
+  },
+  "decorateFiles.filePaths": {
+    "client": "#dcdcaa",
+    "server": "#569cd6",
+    "*": "#fff"
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "vuesion",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  }
+}

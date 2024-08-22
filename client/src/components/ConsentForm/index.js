@@ -4,7 +4,7 @@ import SignaturePad from 'react-signature-canvas'
 import useContacts from '../../hooks/useContacts'
 import { CONSENT_DATA } from '../../utils/consent_data'
 import Layout from '../Layout'
-import { PrimaryButton, SecondaryButton } from '../shared/Buttons'
+import { PrimaryButton } from '../shared/Buttons'
 import AttestableCard from './AttestableCard'
 
 const ConsentForm = () => {
@@ -24,7 +24,7 @@ const ConsentForm = () => {
             setUUID(storedUUID)
             let lead = await getContact(storedUUID)
 
-            if (!lead?.plan_id) return navigate('/plans')
+            if (!lead?.plan.id) return navigate('/plans')
             setInitials(
                 `${lead.details.first_name[0].toUpperCase()}${lead.details.last_name[0].toUpperCase()}`
             )
