@@ -2,6 +2,7 @@ import express from "express";
 import parser from "body-parser";
 import cors from "cors";
 import path from "path";
+import fs from "fs";
 import { fileURLToPath } from "url";
 import contactRoutes from "./routes/contact.routes.js";
 import plansRoutes from "./routes/plan.routes.js";
@@ -23,12 +24,12 @@ app.use(
 );
 
 app.use("/contacts", contactRoutes);
-app.use("/plans", plansRoutes)
+app.use("/plans", plansRoutes);
 
 app.get("/pdfs/:fileName", (req, res) => {
   const fileName = req.params.fileName;
-  const filePath = `${__dirname}/pdfs/${fileName}`;
-
+  const filePath = path.join(__dirname, `../pdfs/${fileName}`);
+  console.log("filePath", filePath);
   fs.access(filePath, fs.constants.F_OK, (err) => {
     if (err) return res.status(404).send("File not found");
     res.sendFile(filePath);

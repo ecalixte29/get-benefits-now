@@ -1,7 +1,7 @@
 import PDFDocument from "pdfkit";
 import fs from "fs";
 
-const doc = new PDFDocument({ bufferPages: true });
+const doc = new PDFDocument({ bufferPages: true, size: "A4" });
 
 doc.pipe(fs.createWriteStream("output.pdf"));
 
@@ -118,7 +118,7 @@ function drawTable(doc, title, rows, options, page = 0) {
     itemHeight: 20,
     borderRadius: 5,
     borderColor: "#D3D3D3",
-    headerColor: "orange",
+    headerColor: "blue",
     textColor: "black",
     rowSeparatorColor: "#D3D3D3",
   };

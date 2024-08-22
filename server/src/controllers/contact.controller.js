@@ -40,7 +40,7 @@ export const updateContactById = async (req, res) => {
   else if (payload.plan) contact.plan = payload.plan;
   else if (payload.consent) {
     const { terms, signature } = payload.consent;
-    const pdfPath = generatePDF(contact, terms);
+    const pdfPath = await generatePDF(contact, terms, signature);
     contact.consent = pdfPath;
   }
 

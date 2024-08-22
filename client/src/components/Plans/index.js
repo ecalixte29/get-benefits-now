@@ -16,7 +16,7 @@ const Plans = () => {
         queryKey: ['plans'],
         queryFn: async ({ pageParam = 0 }) => {
             const req = await fetch(
-                `${process.env.REACT_APP_BACKEND_URL}/plans/${uuid}?offset=${pageParam}`,
+                `${process.env.REACT_APP_BACKEND_URL}/plans/lead/${uuid}?offset=${pageParam}`,
                 {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json' },

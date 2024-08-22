@@ -7,6 +7,19 @@ const dataToPeople = ({ dob, relationship, uses_tobacco }) => ({
   uses_tobacco,
 });
 
+export const getPlans  = async (req, res) => {
+  const planId = req.params.id;
+
+  try {
+    const response = await fetch(
+      `https://marketplace.api.healthcare.gov/api/v1/plans/${planId}?apikey=${process.env.MARKETPLACE_API_KEY}`
+    );
+    return res.status(200).json(await response.json());
+  } catch (error) {
+    res.status(500).send();
+  }
+}
+
 export const getPlansByContact = async (req, res) => {
   const uuid = req.params.contactId;
   const offset = parseInt(req.query.offset || 0);
