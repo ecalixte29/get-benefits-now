@@ -4,6 +4,7 @@ import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
 import contactRoutes from "./routes/contact.routes.js";
+import plansRoutes from "./routes/plan.routes.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import dotenv from "dotenv";
 
@@ -22,6 +23,7 @@ app.use(
 );
 
 app.use("/contacts", contactRoutes);
+app.use("/plans", plansRoutes)
 
 app.get("/pdfs/:fileName", (req, res) => {
   const fileName = req.params.fileName;

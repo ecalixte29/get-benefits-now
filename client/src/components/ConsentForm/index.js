@@ -43,7 +43,7 @@ const ConsentForm = () => {
         })
         sendContactToGHL(uuid)
         localStorage.clear()
-        navigate('/thank-you')
+        // navigate('/thank-you')
     }
 
     return (
