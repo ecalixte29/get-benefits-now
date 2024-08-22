@@ -39,12 +39,18 @@ const detailsSchema = new mongoose.Schema({
     has_mec: { type: Boolean, required: true }
 });
 
+const planSchema = new mongoose.Schema({
+  id: { type: String, required: true },
+  name: { type: String, required: true },
+  issuer: { type: String, required: true }
+});
+
 const contactSchema = new mongoose.Schema(
     {
         details: { type: detailsSchema, required: true },
         spouse_details: { type: spouseSchema, required: false },
         dependents: { type: [dependentSchema], required: false },
-        plan_id: { type: String, required: false },
+        plan: { type: planSchema, required: false },
         consent: { type: String, required: false },
         type: { type: String, required: true },
         source: { type: String, required: true, default: "https://www.benefitsritenow.com" },

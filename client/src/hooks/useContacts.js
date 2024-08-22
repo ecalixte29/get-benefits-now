@@ -45,7 +45,7 @@ const useContacts = () => {
             const contactDoc = await getContact(id)
             const planDetails = (
                 await axios.get(
-                    `https://marketplace.api.healthcare.gov/api/v1/plans/${contactDoc.plan_id}?apikey=${process.env.REACT_APP_API_KEY}`
+                    `https://marketplace.api.healthcare.gov/api/v1/plans/${contactDoc.plan.id}?apikey=${process.env.REACT_APP_API_KEY}`
                 )
             )?.data?.plan
             const state = localStorage.getItem('state')
